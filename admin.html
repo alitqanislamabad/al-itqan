@@ -136,6 +136,55 @@
             .buttons-grid { padding:8px; }
             .admin-btn { padding:10px 12px; font-size:0.95rem; }
         }
+        /* Mobile fine-tuning: keep same design, just scale down */
+
+@media (max-width: 768px) {
+
+    body {
+        font-size: 90%;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 14px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .back-link {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .buttons-grid {
+        gap: 8px;
+    }
+
+    .admin-btn {
+        font-size: 0.95rem;
+        padding: 10px 12px;
+        border-radius: 7px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    body {
+        font-size: 85%;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .admin-btn {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -163,4 +212,5 @@
     });
     </script>
 </body>
+
 </html>
