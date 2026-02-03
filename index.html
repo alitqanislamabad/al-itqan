@@ -43,10 +43,10 @@
         /* ہیڈر سٹائل - پہلے جیسا ہی */
         header {
             background: linear-gradient(to right, #002147a6, #1a3a6c);
-            color: white;
-            padding: 25px 0 15px;
+            color: rgb(0, 60, 255);
+            padding: px 0 15px;
             position: relative;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
         }
         
         .header-content {
@@ -119,14 +119,14 @@
         
         /* نویگیشن بار اور لائن */
         .nav-line-container {
-            margin-top: 20px;
-            width: 100%;
+            margin-top: 0px;
+            width: 1070%;
         }
         
         .header-line {
-            height: 2px;
+            height: 5px;
             background: linear-gradient(to right, #4dabf7, #a5d8ff94, #4dabf765);
-            margin-bottom: 12px;
+            margin-bottom: 0px;
             border-radius: 1px;
         }
         
@@ -141,7 +141,7 @@
             flex-wrap: nowrap;
             list-style: none;
             gap: 2px;
-            padding-bottom: 5px;
+            padding-bottom: 50px;
         }
         
         .nav-buttons li {
@@ -163,15 +163,6 @@
             text-decoration: none;
             display: inline-block;
             white-space: nowrap;
-            opacity: 0;
-            transform: translateY(207px);
-            transition: transform 1.1s cubic-bezier(.22,.9,.18,1), opacity 1.1s ease;
-            will-change: transform, opacity;
-        }
-        
-        .nav-buttons.show .nav-button {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .nav-button:hover {
@@ -179,8 +170,59 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        
-        /* مرکزی مواد - پہلے جیسا ہی */
+
+        /* Admin dropdown styles */
+        .admin-dropdown {
+            position: relative;
+        }
+
+        /* Courses dropdown styles */
+        .courses-dropdown {
+            position: relative;
+        }
+
+        .buttons-grid {
+            position: absolute;
+            top: 100%;
+            left: 20;
+            background: linear-gradient(to right, #002147a6, #1a3a6c);
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.466);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            min-width: 150px;
+            padding: 8px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-dropdown:hover .buttons-grid,
+        .courses-dropdown:hover .buttons-grid {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .admin-btn {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            font-family: 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border-radius: 4px;
+            margin: 2px 8px;
+        }
+
+        .admin-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
         .main-content {
             padding: 40px 0;
             background-color: rgba(0, 58, 247, 0.753);
@@ -251,11 +293,11 @@
         .lang-select select {
             background: rgba(255,255,255,0.08);
             color: white;
-            font-family: 'Jameel Noori Nastaleeq', serif !important;
             border: 1px solid rgba(255,255,255,0.15);
             padding: 6px 8px;
             border-radius: 4px;
             font-size: 1rem;
+            font-family: 'jameel noori nastaleeq', serif;
             outline: none;
             -webkit-appearance: none;
             appearance: none;
@@ -809,27 +851,43 @@ img {
                     فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونَ
                 </div>
             </div>
-            
-            <div class="nav-line-container">
-                <div class="header-line"></div>
-                <nav>
-                    <ul class="nav-buttons">
-                        <li><a href="admin.html" class="nav-button" data-i18n="nav_admin">ایڈمن</a></li>
-                        <li><a href="#" class="nav-button" data-i18n="nav_courses">کورسز اینڈ پروگرام</a></li>
-                        <li><a href="#" class="nav-button" data-i18n="nav_articles">آرٹیکل اور مقالہ جات</a></li>
-                        <li><a href="daruliftah.html" class="nav-button" data-i18n="nav_daruliftah">دارالافتاء</a></li>
-                        <li><a href="mustaqbil.html" class="nav-button" data-i18n="nav_future">مستقبل کے منصوبہ جات</a></li>
-                        <li><a href="#" class="nav-button" data-i18n="nav_cooperate">طریقہ تعاون</a></li>
-                        <li><a href="#" class="nav-button" data-i18n="nav_contact">رابطہ</a></li>
-                        <li><a href="#" class="nav-button" data-i18n="nav_gallery">گیلری</a></li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </header>
 
+    <div class="nav-line-container">
+        <div class="header-line"></div>
+        <nav>
+        </nav>
+    </div>
+
     <!-- مرکزی مواد سیکشن -->
     <main class="main-content">
+        <ul class="nav-buttons">
+            <li class="admin-dropdown">
+                <a class="nav-button" data-i18n="nav_admin">ایڈمن</a>
+                <nav class="buttons-grid" aria-label="Admin navigation">
+                    <a class="admin-btn" href="admission.html" target="_blank" rel="noopener noreferrer">داخلہ فارم</a>
+                    <a class="admin-btn" href="faculty.html">فیکلٹی ممبرز</a>
+                    <a class="admin-btn" href="#">پراسپیکٹس</a>
+                    <a class="admin-btn" href="#">مجلۃ الاتقان</a>
+                    <a class="admin-btn" href="#">سٹوڈنٹس پورٹل</a>
+                </nav>
+            </li>
+            <li class="courses-dropdown">
+                <a href="#" class="nav-button" data-i18n="nav_courses">کورسز اینڈ پروگرام</a>
+                <nav class="buttons-grid" aria-label="Courses navigation">
+                    <a class="admin-btn" href="ifta.html">تخصص فی الافتاء</a>
+                    <a class="admin-btn" href="arabic-english.html">تخصص فی اللغۃ العربیۃ والانجلیزیہ</a>
+                    <a class="admin-btn" href="#">حفظ ناظرہ قاعدہ</a>
+                </nav>
+            </li>
+            <li><a href="#" class="nav-button" data-i18n="nav_articles">آرٹیکل اور مقالہ جات</a></li>
+            <li><a href="daruliftah.html" class="nav-button" data-i18n="nav_daruliftah">دارالافتاء</a></li>
+            <li><a href="mustaqbil.html" class="nav-button" data-i18n="nav_future">مستقبل کے منصوبہ جات</a></li>
+            <li><a href="cooperation.html" class="nav-button" data-i18n="nav_cooperate">طریقہ تعاون</a></li>
+            <li><a href="#" class="nav-button" data-i18n="nav_contact">رابطہ</a></li>
+            <li><a href="#" class="nav-button" data-i18n="nav_gallery">گیلری</a></li>
+        </ul>
         <div class="container">
             <div class="institute-description">
                 <p id="description" data-i18n="description">
@@ -963,10 +1021,7 @@ img {
                 });
             }
 
-            // trigger glide animation for all buttons together
-            if (navList) {
-                setTimeout(() => navList.classList.add('show'), 80);
-            }
+            // Navigation is now outside header, no animation needed
 
             // initialize language from storage or browser
             const saved = (function(){ 
@@ -1032,5 +1087,3 @@ img {
     </script>
 </body>
 </html>
-
-
