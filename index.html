@@ -348,210 +348,210 @@
         nav::-webkit-scrollbar {
             height: 6px;
         }
-        
+
         nav::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 3px;
         }
-        
+
         nav::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.3);
             border-radius: 3px;
         }
-        
+
         nav::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.5);
         }
 
-    </style>
-</head>
-<body>
-    <!-- ہیڈر سیکشن -->
-    <header>
-        <div class="container">
-    <div class="lang-select">
-        <select id="lang-select" aria-label="Select language">
-            <option value="ur">اردو</option>
-            <option value="en">English</option>
-            <option value="ar">العربية</option>
-        </select>
-    </div>
-
-
-            <div class="header-content">
-                <div class="logo-section">
-                    <div class="logo-text">
-                        <div class="al-itqan-title">
-                            <img src="logo.jpg" alt="logo" class="header-logo">
-                            <span class="al-itqan-word" data-i18n="title_word">الاتقان</span>
-                            <span class="islamabad-text" data-i18n="islamabad_text">اسلام آباد</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ayah-text" id="ayah" data-i18n="ayah_text">
-                    فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونَ
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="nav-line-container">
-        <div class="header-line"></div>
-        <nav>
-        </nav>
-    </div>
-
-    <!-- مرکزی مواد سیکشن -->
-    <main class="main-content">
-        <ul class="nav-buttons">
-            <li class="admin-dropdown">
-                <a class="nav-button" data-i18n="nav_admin">ایڈمن</a>
-                <nav class="buttons-grid" aria-label="Admin navigation">
-                    <a class="admin-btn" href="admissionform.html" target="_blank" rel="noopener noreferrer">داخلہ فارم</a>
-                    <a class="admin-btn" href="faculty.html">فیکلٹی ممبرز</a>
-                    <a class="admin-btn" href="#">پراسپیکٹس</a>
-                    <a class="admin-btn" href="#">مجلۃ الاتقان</a>
-                    <a class="admin-btn" href="#">سٹوڈنٹس پورٹل</a>
-                </nav>
-            </li>
-            <li class="courses-dropdown">
-                <a href="#" class="nav-button" data-i18n="nav_courses">کورسز اینڈ پروگرام</a>
-                <nav class="buttons-grid" aria-label="Courses navigation">
-                    <a class="admin-btn" href="ifta.html">تخصص فی الافتاء</a>
-                    <a class="admin-btn" href="arabic-english.html">تخصص فی اللغۃ العربیۃ والانجلیزیہ</a>
-                    <a class="admin-btn" href="#">حفظ ناظرہ قاعدہ</a>
-                </nav>
-            </li>
-            <li><a href="#" class="nav-button" data-i18n="nav_articles">آرٹیکل اور مقالہ جات</a></li>
-            <li><a href="daruliftah.html" class="nav-button" data-i18n="nav_daruliftah">دارالافتاء</a></li>
-            <li><a href="mustaqbil.html" class="nav-button" data-i18n="nav_future">مستقبل کے منصوبہ جات</a></li>
-            <li><a href="cooperation.html" class="nav-button" data-i18n="nav_cooperate">طریقہ تعاون</a></li>
-            <li><a href="#" class="nav-button" data-i18n="nav_contact">رابطہ</a></li>
-            <li><a href="#" class="nav-button" data-i18n="nav_gallery">گیلری</a></li>
-        </ul>
-        <div class="container">
-            <div class="institute-description">
-                <p id="description" data-i18n="description">
-                    "الاتقان" گولڑہ موڑ اسلام آباد میں، I-14/2 (سیکٹر) کے قریب واقع ہے اور وفاق المدارس العربیہ پاکستان سے ملحق ایک معیاری دینی ادارہ ہے۔ یہاں تقریبا چالیس (40) رہائشی علماء کرام کو ہرسال، افتاء (مفتی کورس)، عربی اور انگریزی زبان کی مفت تعلیم دی جاتی ہے۔
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <!-- فوٹر سیکشن -->
-    <footer>
-        <div class="footer-content">
-            <p id="footer-text" data-i18n="footer_text">
-                ممتاز فضلاء کےلیے افتاء اور لغۃ عربیہ وانجلیزیہ کا معیاری ادارہ
-            </p>
-            <p class="copyright">© 2026 All rights reserved.</p>
-        </div>
-    </footer>
-    
-    <script>
-        // Translations and UI behavior
-        const translations = {
-            ur: {
-                title: 'الاتقان - اسلام آباد',
-                title_word: 'الاتقان',
-                islamabad_text: 'اسلام آباد',
-                ayah_text: 'فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونَ',
-                nav_admin: 'ایڈمن',
-                nav_courses: 'کورسز اینڈ پروگرام',
-                nav_articles: 'آرٹیکل اور مقالہ جات',
-                nav_daruliftah: 'دارالافتاء',
-                nav_future: 'مستقبل کے منصوبہ جات',
-                nav_cooperate: 'طریقہ تعاون',
-                nav_contact: 'رابطہ',
-                nav_gallery: 'گیلری',
-                description: '"الاتقان" گولڑہ موڑ اسلام آباد میں، I-14/2 (سیکٹر) کے قریب واقع ہے اور وفاق المدارس العربیہ پاکستان سے ملحق ایک معیاری دینی ادارہ ہے۔ یہاں تقریبا چالیس (40) رہائشی علماء کرام کو ہرسال، افتاء (مفتی کورس)، عربی اور انگریزی زبان کی مفت تعلیم دی جاتی ہے۔',
-                footer_text: 'ممتاز فضلاء کےلیے افتاء اور لغۃ عربیہ وانجلیزیہ کا معیاری ادارہ'
-            },
-            en: {
-                title: 'Al-Itqan - Islamabad',
-                title_word: 'Al-Itqan',
-                islamabad_text: 'Islamabad',
-                ayah_text: '"So ask the people of remembrance if you do not know."',
-                nav_admin: 'Admin',
-                nav_courses: 'Courses & Programs',
-                nav_articles: 'Articles & Papers',
-                nav_daruliftah: 'Darul Ifta',
-                nav_future: 'Future Projects',
-                nav_cooperate: 'How to Cooperate',
-                nav_contact: 'Contact',
-                nav_gallery: 'Gallery',
-                description: '"Al-Itqan" is located near Golra Mor, Islamabad, close to sector I-14/2, and is a reputable religious institution affiliated with Wifaq ul Madaris al-Arabia Pakistan. Each year approximately forty (40) resident scholars receive free education in Ifta (Mufti course), Arabic and English.',
-                footer_text: 'A premier institute for Ifta and Arabic & English languages for distinguished scholars.'
-            },
-            ar: {
-                title: 'الاتقان - إسلام أباد',
-                title_word: 'الاتقان',
-                islamabad_text: 'إسلام أباد',
-                ayah_text: 'فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونَ',
-                nav_admin: 'الإدارة',
-                nav_courses: 'الدورات والبرامج',
-                nav_articles: 'مقالات وأبحاث',
-                nav_daruliftah: 'دار الإفتاء',
-                nav_future: 'مشروعات مستقبلية',
-                nav_cooperate: 'طريقة التعاون',
-                nav_contact: 'اتصل',
-                nav_gallery: 'المعرض',
-                description: 'تقع "الاتقان" قرب جُلره مور في إسلام أباد بالقرب من القطاع I-14/2، وهي مؤسسة دينية معروفة مرتبطة بوفاق المدارس العربية باكستان. يتلقى حوالي أربعون (40) عالمًا مقيمًا سنويًا تعليمًا مجانيًا في الإفتاء (دورة مفتي) واللغة العربية والإنجليزية.',
-                footer_text: 'مؤسسة متميزة للإفتاء وتعليم اللغتين العربية والإنجليزية للعلماء المرموقين.'
+        /* Mobile Optimization */
+        @media screen and (max-width: 768px) {
+            html {
+                font-size: 14px;
+                overflow-x: hidden;
             }
-        };
 
-        function applyLanguage(lang) {
-            const dict = translations[lang] || translations.ur;
-            document.documentElement.lang = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'ur');
-            document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
-            document.title = dict.title;
+            body {
+                overflow-x: hidden;
+                width: 100%;
+                position: relative;
+            }
 
-            // set all elements with data-i18n
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (dict[key]) {
-                    el.textContent = dict[key];
-                }
-            });
+            .container {
+                width: 100%;
+                max-width: 100%;
+                padding: 0 15px;
+                margin: 0 auto;
+            }
 
-            // store choice
-            try { localStorage.setItem('site_lang', lang); } catch (e) {}
+            header {
+                padding: 10px 0;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .logo-section {
+                flex-direction: column;
+                margin: 0;
+                width: 100%;
+            }
+
+            .logo-text {
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .al-itqan-title {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                font-size: 2.5rem;
+                white-space: normal;
+                line-height: 1.2;
+                width: 100%;
+            }
+
+            .al-itqan-word {
+                font-size: 2.8rem;
+                margin-bottom: 5px;
+                display: block;
+            }
+
+            .header-logo {
+                width: 60px;
+                height: auto;
+                margin: 0 auto 5px;
+                display: block;
+            }
+
+            .islamabad-text {
+                font-size: 1.5rem;
+                margin-top: 5px;
+                display: block;
+                text-align: center;
+            }
+
+            .ayah-text {
+                font-size: 1.2rem;
+                text-align: center;
+                margin: 10px 0 0 0;
+                line-height: 1.4;
+                width: 100%;
+            }
+
+            .nav-line-container {
+                margin-top: 10px;
+                width: 100%;
+                overflow: visible;
+            }
+
+            nav {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
+                width: 100%;
+            }
+
+            .nav-buttons {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                min-width: max-content;
+                gap: 2px;
+                padding: 5px 0;
+            }
+
+            .nav-buttons li {
+                flex: 0 0 auto;
+            }
+
+            .nav-button {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                white-space: nowrap;
+                border-radius: 6px;
+                margin: 0 1px;
+            }
+
+            .main-content {
+                padding: 20px 0;
+                min-height: auto;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .institute-description {
+                padding: 20px 15px;
+                margin: 15px auto;
+                border-radius: 8px;
+                width: calc(100% - 30px);
+                max-width: 100%;
+            }
+
+            .institute-description h2 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .institute-description p {
+                font-size: 1rem;
+                line-height: 1.6;
+                text-align: justify;
+                hyphens: auto;
+            }
+
+            footer {
+                padding: 20px 0;
+                width: 100%;
+            }
+
+            .footer-content {
+                padding: 0 15px;
+            }
+
+            .footer-content p {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin-bottom: 10px;
+            }
+
+            .footer-content .copyright {
+                font-size: 0.8rem;
+                margin-top: 15px;
+            }
+
+            .lang-select {
+                position: static;
+                margin: 0 auto 10px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .lang-select select {
+                padding: 8px 12px;
+                font-size: 1rem;
+                min-width: 140px;
+                background: rgba(255,255,255,0.2);
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const navButtons = document.querySelectorAll('.nav-button');
-            const navList = document.querySelector('.nav-buttons');
-            const select = document.getElementById('lang-select');
+        @media screen and (max-width: 480px) {
+            html {
+                font-size: 13px;
+            }
 
-            // Desktop hover effects
-            navButtons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.25)';
-                });
+            .container {
+                padding: 0 10px;
+            }
 
-                button.addEventListener('mouseleave', function() {
-                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                });
-            });
-
-            // Navigation is now outside header, no animation needed
-
-            // initialize language from storage or browser
-            const saved = (function(){
-                try {
-                    return localStorage.getItem('site_lang');
-                } catch(e){
-                    return null;
-                }
-            })();
-
-            let initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'ur');
-            if (navigator.language && navigator.language.startsWith('ar')) initial = 'ar';
-
-            if (select) {
-                select.value = initial;
-                select.addEventListener('change', function() {
-    </script>
-</body>
-</html>
+       
