@@ -25,7 +25,7 @@
             color: #333;
             line-height: 1.6;
             background-image:
-                linear-gradient(rgba(3,100,170,0.40), rgba(3,100,170,0.32)),
+                linear-gradient(rgba(3,100,170,0.40), rgba(121, 134, 143, 0.32)),
                 url('background.png');
             background-size: cover;
             background-position: center;
@@ -301,6 +301,33 @@
             outline: none;
             -webkit-appearance: none;
             appearance: none;
+        }
+
+        /* Zoom Controls */
+        .zoom-controls {
+            position: absolute;
+            right: 20px;
+            top: 18px;
+            z-index: 5;
+            display: none;
+            gap: 5px;
+        }
+
+        .zoom-btn {
+            background: rgba(255,255,255,0.08);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 8px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'jameel noori nastaleeq', serif;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            min-width: 40px;
+        }
+
+        .zoom-btn:hover {
+            background: rgba(255,255,255,0.25);
         }
 
         /* language-specific font choices */
@@ -830,13 +857,20 @@ img {
     <!-- ہیڈر سیکشن -->
     <header>
         <div class="container">
-            <div class="lang-select">
-                <select id="lang-select" aria-label="Select language">
-                    <option value="ur">اردو</option>
-                    <option value="en">English</option>
-                    <option value="ar">العربية</option>
-                </select>
-            </div>
+    <div class="lang-select">
+        <select id="lang-select" aria-label="Select language">
+            <option value="ur">اردو</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+        </select>
+    </div>
+
+    <!-- Zoom Controls for Mobile -->
+    <div class="zoom-controls" id="zoomControls">
+        <button class="zoom-btn" id="zoomInBtn" aria-label="Zoom In">+</button>
+        <button class="zoom-btn" id="zoomOutBtn" aria-label="Zoom Out">-</button>
+        <button class="zoom-btn" id="resetZoomBtn" aria-label="Reset Zoom">100%</button>
+    </div>
             <div class="header-content">
                 <div class="logo-section">
                     <div class="logo-text">
@@ -1078,11 +1112,69 @@ img {
                 logoImg.addEventListener('load', function() {
                     this.style.opacity = '1';
                 });
-                
+
                 logoImg.addEventListener('error', function() {
                     console.log('Logo image failed to load');
                 });
             }
+
+            // Zoom functionality for mobile devices
+            let currentZoom = 1.0;
+            const minZoom = 0.5;
+            const maxZoom = 2.0;
+            const zoomStep = 0.1;
+
+            const zoomControls = document.getElementById('zoomControls');
+            const zoomInBtn = document.getElementById('zoomInBtn');
+            const zoomOutBtn = document.getElementById('zoomOutBtn');
+            const resetZoomBtn = document.getElementById('resetZoomBtn');
+
+            // Show zoom controls only on mobile devices
+            function toggleZoomControls() {
+                if (window.innerWidth <= 768) {
+                    zoomControls.style.display = 'flex';
+                } else {
+                    zoomControls.style.display = 'none';
+                }
+            }
+
+            // Apply zoom to the body
+            function applyZoom() {
+                document.body.style.transform = `scale(${currentZoom})`;
+                document.body.style.transformOrigin = 'top center';
+                document.body.style.transition = 'transform 0.3s ease';
+
+                // Update reset button text
+                resetZoomBtn.textContent = Math.round(currentZoom * 100) + '%';
+            }
+
+            // Zoom in
+            zoomInBtn.addEventListener('click', function() {
+                if (currentZoom < maxZoom) {
+                    currentZoom = Math.min(currentZoom + zoomStep, maxZoom);
+                    applyZoom();
+                }
+            });
+
+            // Zoom out
+            zoomOutBtn.addEventListener('click', function() {
+                if (currentZoom > minZoom) {
+                    currentZoom = Math.max(currentZoom - zoomStep, minZoom);
+                    applyZoom();
+                }
+            });
+
+            // Reset zoom
+            resetZoomBtn.addEventListener('click', function() {
+                currentZoom = 1.0;
+                applyZoom();
+            });
+
+            // Initialize zoom controls visibility
+            toggleZoomControls();
+
+            // Update zoom controls on window resize
+            window.addEventListener('resize', toggleZoomControls);
         });
     </script>
 </body>
