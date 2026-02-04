@@ -6,43 +6,100 @@
     <title>آن لائن داخلہ فارم برائے الاتقان اسلام آباد</title>
     <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&display=swap" rel="stylesheet">
     <style>
+        /* language selector (top-left) */
+        .lang-select {
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            z-index: 5;
+        }
+
+        .lang-select select {
+            background: rgba(255,255,255,0.08);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 8px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'jameel noori nastaleeq', serif;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        /* language-specific font choices */
+        html[lang="en"] body {
+            font-family: 'Noto Sans', 'El Messiri', Arial, sans-serif;
+        }
+
+        html[lang="ar"] body {
+            font-family: 'Amiri', 'Noto Sans Arabic', 'El Messiri', serif;
+        }
+
+        html[lang="ur"] body {
+            font-family: 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', 'Amiri', serif;
+        }
+
         body {
-            font-family: 'Jameel Noori Nastaleeq', serif;
-            background: #f5f5f5;
-            direction: rtl;
-            padding: 20px;
+            font-family: 'jameel noori nastaleeq', serif;
+            color: #31005f;
             line-height: 1.6;
+            background-image:
+                linear-gradient(rgba(3,100,170,0.40), rgba(3,100,170,0.32)),
+                url('background.png');
+            background-size: cover;
+            background-position: center;
+            background-color: #001f47cb;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            padding: 20px;
         }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         form {
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.15);
-            max-width: 700px;
-            margin: auto;
+            background-color: rgba(255, 255, 255, 0.555);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'jameel noori nastaleeq', serif;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #34005f;
         }
+
         label {
             display: block;
             margin: 15px 0 8px;
             font-weight: bold;
             font-size: 18px;
+            color: #002147;
         }
+
         input, select, textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            font-family: 'Jameel Noori Nastaleeq', serif;
+            font-family: 'jameel noori nastaleeq', serif;
             font-size: 16px;
             box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.8);
         }
+
         .skills {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin-bottom: 15px;
         }
+
         .skills label {
             display: flex;
             align-items: center;
@@ -51,15 +108,18 @@
             font-weight: normal;
             font-size: 16px;
             white-space: nowrap;
+            color: #070049;
         }
+
         .skills label input {
             margin-left: 5px;
             margin-right: 0;
             width: auto;
         }
+
         .submit-btn {
             position: relative;
-            background: #008080;
+            background: #002147;
             color: white;
             border: none;
             padding: 14px 20px;
@@ -67,28 +127,30 @@
             font-size: 18px;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
-            font-family: 'Jameel Noori Nastaleeq', serif;
+            font-family: 'jameel noori nastaleeq', serif;
             margin-top: 15px;
         }
+
         .submit-btn:hover {
-            background: #006666;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            background: #1a3a6c;
         }
+
         .submit-btn:active {
             transform: translateY(0);
         }
+
         .submit-btn:disabled {
             background: #7fb3b3;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
+
         .spinner {
             width: 22px;
             height: 22px;
@@ -97,59 +159,84 @@
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
         }
+
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
         #submittedMessage {
             display: none;
             text-align: center;
             padding: 30px 20px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.555);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             max-width: 500px;
             margin: 20px auto;
+            color: #34005f;
         }
+
         .success-icon {
             font-size: 60px;
-            color: #28a745;
+            color: #00ecfd;
             margin-bottom: 15px;
         }
+
         .success-text {
             font-size: 24px;
-            color: #28a745;
+            color: #00ecfd;
             margin-bottom: 10px;
             font-weight: bold;
         }
+
         .success-subtext {
             font-size: 16px;
             color: #555;
             margin-bottom: 20px;
         }
+
         .form-heading {
+            color: #00ecfd;
+            margin: 0 auto 20px auto;
+            font-size: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 500px;
             text-align: center;
-            color: #008080;
-            margin-bottom: 25px;
-            font-size: 28px;
-            font-weight: bold;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #008080;
         }
+
+        .logo-img {
+            position: absolute;
+            left: 250px;
+            top:21%;
+            transform: translateY(-50%);
+            height: 100px;
+            width: auto;
+            z-index: 5;
+        }
+
         .required {
             color: red;
             margin-right: 3px;
         }
+
         .fee-description {
-            background-color: #f9f9f9;
+            background-color: rgba(0, 33, 71, 0.05);
             padding: 12px;
             border-radius: 6px;
             margin-bottom: 15px;
             font-size: 16px;
-            border-right: 3px solid #008080;
+            border-right: 3px solid #002147;
+            color: #070049;
         }
+
         .warning-note {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             color: #856404;
             padding: 12px;
             border-radius: 6px;
@@ -157,6 +244,7 @@
             font-size: 16px;
             text-align: center;
         }
+
         .photo-preview-container {
             width: 200px;
             height: 150px;
@@ -167,59 +255,64 @@
             display: none;
             position: relative;
         }
+
         .photo-preview {
             width: 100%;
             height: 100%;
             object-fit: contain;
             background-color: #f9f9f9;
         }
+
         .photo-upload-box {
-            border: 2px dashed #008080;
+            border: 2px dashed #002147;
             border-radius: 8px;
             height: 150px;
             width: 200px;
             padding: 15px;
             text-align: center;
-            background-color: #f9f9f9;
+            background-color: rgba(255, 255, 255, 0.8);
             margin-bottom: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .photo-upload-box:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(255, 255, 255, 0.9);
         }
+
         .photo-upload-box p {
             margin: 0;
             font-size: 16px;
-            color: #008080;
+            color: #002147;
         }
+
         .photo-upload-icon {
             font-size: 40px;
-            color: #008080;
+            color: #002147;
             margin-bottom: -4px;
             margin-top: 25px;
         }
-        
-        /* نئی کلاسیں - دو کالم والے لی آؤٹ کے لئے */
+
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-bottom: 15px;
         }
+
         .photo-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 20px;
         }
+
         .photo-label {
             margin-top: 0;
         }
-        
-        /* تصویر تبدیل کرنے کا بٹن */
+
         .change-photo-btn {
-            background-color: #008080;
+            background-color: #002147;
             color: white;
             border: none;
             padding: 8px 15px;
@@ -227,41 +320,45 @@
             font-size: 14px;
             cursor: pointer;
             margin-top: 10px;
-            font-family: 'Jameel Noori Nastaleeq', serif;
+            font-family: 'jameel noori nastaleeq', serif;
             display: none;
-            transition: all 0.3s ease;
-        }
-        .change-photo-btn:hover {
-            background-color: #006666;
+            transition: background-color 0.3s ease;
         }
 
-        /* ✅ موبائل کے لئے اضافی سیٹنگ */
-        @media (max-width: 600px) {
+        .change-photo-btn:hover {
+            background-color: #1a3a6c;
+        }
+
+        @media (max-width: 768px) {
             body {
                 padding: 10px;
             }
-            form {
+
+            .container {
                 padding: 15px;
             }
-            label {
-                font-size: 16px;
+
+            .form-heading {
+                font-size: 2rem;
             }
-            input, select, textarea {
-                font-size: 14px;
-                padding: 8px;
+
+            form {
+                padding: 20px;
+                font-size: 1rem;
             }
+
             .skills {
                 grid-template-columns: 1fr 1fr;
             }
-            .form-heading {
-                font-size: 22px;
-            }
+
             .success-icon {
                 font-size: 50px;
             }
+
             .success-text {
                 font-size: 20px;
             }
+
             .two-column {
                 grid-template-columns: 1fr;
             }
@@ -269,10 +366,20 @@
     </style>
 </head>
 <body>
-    <form id="admissionForm">
-        <div class="form-heading">آن لائن داخلہ فارم برائے الاتقان اسلام آباد</div>
+    <div class="lang-select">
+        <select id="lang-select" aria-label="Select language">
+            <option value="ur">اردو</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+        </select>
+    </div>
+    <div class="container">
+        <form id="admissionForm">
+        <div class="form-heading">
+            آن لائن داخلہ فارم برائے الاتقان اسلام آباد
+        </div>
+        <img src="logo.jpg" alt="Logo" class="logo-img">
         
-        <!-- تصویر کا سیکشن - سب سے اوپر سنٹر میں -->
         <div class="photo-section">
             <label class="photo-label"> <span class="required">*</span></label>
             <div class="photo-upload-box" id="photoUploadBox">
@@ -286,7 +393,6 @@
             <button type="button" class="change-photo-btn" id="changePhotoBtn">تصویر تبدیل کریں</button>
         </div>
         
-        <!-- نام اور ولدیت - ایک ہی رو میں -->
         <div class="two-column">
             <div>
                 <label>نام<span class="required">*</span></label>
@@ -298,7 +404,6 @@
             </div>
         </div>
         
-        <!-- شناختی کارڈ نمبر اور فون نمبر - ایک ہی رو میں -->
         <div class="two-column">
             <div>
                 <label>شناختی کارڈ نمبر<span class="required">*</span></label>
@@ -313,7 +418,6 @@
         <label>ایڈریس<span class="required">*</span></label>
         <input type="text" name="ایڈریس" required>
         
-        <!-- مطلوبہ درجہ اور حاصل کردہ نمبرات - ایک ہی رو میں -->
         <div class="two-column">
             <div>
                 <label>مطلوبہ درجہ<span class="required">*</span></label>
@@ -336,13 +440,8 @@
             <label><input type="checkbox" name="دیگر_مہارات" value="Printer Settings"> Printer Settings</label>
             <label><input type="checkbox" name="دیگر_مہارات" value="Electricity"> Electricity</label>
             <label><input type="checkbox" name="دیگر_مہارات" value="Cooking"> Cooking</label>
-            <label><input type="checkbox" name="دیگر_مہارات" value="تلاوت"> تلاوت</label>
-            <label><input type="checkbox" name="دیگر_مہارات" value="نعت"> نعت</label>
-            <label><input type="checkbox" name="دیگر_مہارات" value="تقریر"> تقریر</label>
-            <label><input type="checkbox" name="دیگر_مہارات" value="IT"> IT</label>
         </div>
         
-        <!-- فیس رسید اور کشف الدرجات - ایک ہی رو میں -->
         <div class="two-column">
             <div>
                 <label>داخلہ فارم فیس کی رسید<span class="required">*</span></label>
@@ -366,7 +465,7 @@
             <div id="btnSpinner" class="spinner" style="display: none;"></div>
         </button>
     </form>
-    
+
     <div id="submittedMessage">
         <div class="success-icon">✓</div>
         <div class="success-text">
@@ -394,7 +493,6 @@
 
         </div>
         <div class="success-subtext">
-            <!-- یہاں آپ اپنی سب ٹیکسٹ لکھ سکتے ہیں -->
         </div>
     </div>
 
@@ -411,17 +509,12 @@
     const photoPreviewContainer = document.getElementById('photoPreviewContainer');
     const changePhotoBtn = document.getElementById('changePhotoBtn');
 
-    // تصویر اپلوڈ باکس پر کلک
     photoUploadBox.addEventListener('click', function() {
         photoInput.click();
     });
-
-    // تصویر تبدیل کریں بٹن پر کلک
     changePhotoBtn.addEventListener('click', function() {
         photoInput.click();
     });
-
-    // تصویر کا پیش نظارہ
     photoInput.addEventListener('change', function() {
         const file = this.files[0];
         if (file) {
@@ -461,7 +554,6 @@
             return;
         }
 
-        // FileReader ترتیب
         const readerPhoto = new FileReader();
         const readerFee = new FileReader();
         const readerKashf = new FileReader();
