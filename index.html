@@ -333,24 +333,7 @@
             background: rgba(255,255,255,0.25);
         }
 
-        /* Mobile Navigation Button */
-        .mobile-nav-btn {
-            display: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-family: 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', serif;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
-        }
 
-        .mobile-nav-btn:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-        }
 
         /* language-specific font choices */
         html[lang="en"] body {
@@ -495,7 +478,7 @@
             }
 
             .nav-buttons {
-                display: none;
+                display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
                 min-width: max-content;
@@ -505,12 +488,10 @@
 
             }
 
-            .mobile-nav-btn {
-                display: block;
-
             .nav-buttons li {
                 flex: 0 0 auto;
             }
+
 
             .nav-button {
                 padding: 10px 12px;
@@ -701,7 +682,6 @@
                 <div class="ayah-text" id="ayah" data-i18n="ayah_text">
                     فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونَ
                 </div>
-                <button class="mobile-nav-btn" data-i18n="nav_menu">مینو</button>
             </div>
         </div>
     </header>
@@ -868,16 +848,7 @@
             }
             applyLanguage(initial);
 
-            // Mobile navigation button functionality
-            const mobileNavBtn = document.querySelector('.mobile-nav-btn');
-            const navButtons = document.querySelector('.nav-buttons');
 
-            if (mobileNavBtn && navButtons) {
-                mobileNavBtn.addEventListener('click', function() {
-                    navButtons.style.display = 'flex';
-                    navButtons.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
-            }
         });
 </body>
 </html>
