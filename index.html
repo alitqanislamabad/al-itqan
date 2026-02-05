@@ -338,7 +338,7 @@
             display: none;
             position: absolute;
             top: 10px;
-            right: 20px;
+            left: 20px;
             background: rgba(255,255,255,0.1);
             color: white;
             border: 1px solid rgba(255,255,255,0.15);
@@ -356,17 +356,17 @@
 
         .mobile-nav {
             display: none;
-            position: relative;
-            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50%;
+            max-width: 50vw;
             background: linear-gradient(to right, #002147a6, #1a3a6c);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            z-index: 5;
+            z-index: 1000;
         }
 
-        .mobile-nav.open {
-            max-height: 600px;
+        .mobile-nav.active {
+            display: block;
         }
 
         .mobile-nav-list {
@@ -442,7 +442,7 @@
             .mobile-nav-list .buttons-grid {
                 display: none;
                 position: static;
-                background: transparent;
+                background: rgba(173, 216, 230, 0.9);
                 box-shadow: none;
                 border-radius: 0;
                 padding: 0;
@@ -459,8 +459,8 @@
                 padding: 10px 20px;
                 margin: 0;
                 border-bottom: 1px solid rgba(255,255,255,0.1);
-                background: rgba(255,255,255,0.05);
-                color: white;
+                background: transparent;
+                color: #002147;
                 text-decoration: none;
                 font-family: 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', serif;
                 font-size: 0.9rem;
@@ -469,7 +469,7 @@
             }
 
             .mobile-nav-list .admin-btn:hover {
-                background-color: rgba(255, 255, 255, 0.15);
+                background-color: rgba(255, 255, 255, 0.1);
             }
         }
 
@@ -510,6 +510,7 @@
                 padding: 0;
                 width: 100%;
                 margin-bottom: 0 !important;
+                position: relative;
             }
 
             .header-content {
@@ -611,7 +612,7 @@
 
             .main-content {
                 padding: 20px 0;
-                min-height: auto;
+                min-height: 150vh;
                 width: 100%;
                 overflow: hidden;
                 margin-top: 0 !important;
@@ -680,6 +681,14 @@
             }
 
             .mobile-nav {
+                position: absolute;
+                top: 60px;
+                left: 20px;
+                width: 300px;
+                display: none;
+            }
+
+            .mobile-nav.active {
                 display: block;
             }
         }
@@ -804,12 +813,6 @@
         </div>
     </header>
 
-    <div class="nav-line-container">
-        <div class="header-line"></div>
-        <nav>
-        </nav>
-    </div>
-
     <div id="mobile-nav" class="mobile-nav">
         <ul class="mobile-nav-list">
             <li class="admin-dropdown">
@@ -837,6 +840,12 @@
             <li><a href="#" class="nav-button" data-i18n="nav_contact">رابطہ</a></li>
             <li><a href="#" class="nav-button" data-i18n="nav_gallery">گیلری</a></li>
         </ul>
+    </div>
+
+    <div class="nav-line-container">
+        <div class="header-line"></div>
+        <nav>
+        </nav>
     </div>
 
     <!-- مرکزی مواد سیکشن -->
@@ -981,7 +990,7 @@
                 hamburger.addEventListener('click', function() {
                     const isExpanded = this.getAttribute('aria-expanded') === 'true';
                     this.setAttribute('aria-expanded', !isExpanded);
-                    mobileNav.classList.toggle('open');
+                    mobileNav.classList.toggle('active');
                 });
             }
 
@@ -989,9 +998,9 @@
             const mobileNavButtons = document.querySelectorAll('.mobile-nav-list .nav-button');
             mobileNavButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    e.preventDefault();
                     const buttonsGrid = this.nextElementSibling;
                     if (buttonsGrid && buttonsGrid.classList.contains('buttons-grid')) {
+                        e.preventDefault();
                         const isVisible = buttonsGrid.style.display === 'block';
                         // Hide all other dropdowns
                         document.querySelectorAll('.mobile-nav-list .buttons-grid').forEach(grid => {
