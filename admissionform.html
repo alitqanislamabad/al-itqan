@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>آن لائن داخلہ فارم برائے الاتقان اسلام آباد</title>
     <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <style>
 
         body {
@@ -199,6 +200,9 @@
             font-size: 16px;
             border-right: 3px solid #002147;
             color: #070049;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+            line-height: 1.8;
         }
 
         .warning-note {
@@ -302,9 +306,17 @@
                 padding: 10px;
             }
 
-            html[lang="ur"] * {
-                font-family: 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', 'Amiri', serif !important;
+            html[lang="ur"] body,
+            html[lang="ur"] input,
+            html[lang="ur"] textarea,
+            html[lang="ur"] select,
+            html[lang="ur"] label,
+            html[lang="ur"] button,
+            html[lang="ur"] p,
+            html[lang="ur"] div {
+                font-family: 'Noto Nastaliq Urdu', serif !important;
             }
+
 
             .container {
                 padding: 15px;
@@ -372,8 +384,19 @@
 
             .photo-upload-box,
             .photo-preview-container {
-                width: 90%;
-                height: 140px;
+            width: 150px;  /* پہلے 90% تھا، اب فکسڈ چھوٹا سائز */
+            height: 110px;
+            }
+
+            .photo-upload-icon {
+                font-size: 28px;  /* پہلے 40px تھا، اب چھوٹا کریں */
+                margin-top: 15px; /* تھوڑا کم مارجن */
+                margin-bottom: 0;
+            }
+
+            .photo-upload-box p {
+                font-size: 14px;  /* ٹیکسٹ چھوٹا کریں */
+                margin: 5px 0 0 0;
             }
         }
 
@@ -478,7 +501,7 @@
             <div>
                 <label>داخلہ فارم فیس کی رسید<span class="required">*</span></label>
                 <div class="fee-description">
-                    داخلہ فارم کی فیس 200 روپے ہے۔ براہ کرم  ارسال کردہ رقم کی تصویر اپلوڈ کریں۔ <br> (ایزی پیسہ اکاؤنٹ:PK55TMFB0000000034125014 )
+                    داخلہ فارم کی فیس 200 روپے ہے۔ارسال کردہ رقم کی تصویر اپلوڈ کریں۔ <br> ایزی پیسہ اکاؤنٹ: <br> PK55TMFB0000000034125014 
                 </div>
                 <input type="file" name="فیس_رسید" accept="image/*" required>
             </div>
