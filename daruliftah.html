@@ -16,6 +16,7 @@
             font-style: normal;
             font-display: swap;
         }
+        
         /* language-specific font choices */
         html[lang="en"] body {
             font-family: 'Noto Sans', 'El Messiri', Arial, sans-serif;
@@ -33,127 +34,263 @@
             font-family: 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', 'Amiri', serif;
             direction: rtl;
         }
-        html,body { height:100%; }
+        
+        html, body { 
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
-            margin:0;
             font-family: 'Jameel Noori Nastaleeq', serif;
-            background:#0059ffde;
-            background-image:
-                linear-gradient(rgba(3,100,170,0.40), rgba(3,100,170,0.32)),
-                url('dI.jpg'); /* "D:\Itqan files\al_itqan_islambad\dI.jpg" */
-            color:#003cff;
-            direction:rtl;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
+            background: linear-gradient(rgba(3, 100, 170, 0.7), rgba(3, 100, 170, 0.5)), 
+                        url('dI.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #003cff;
+            direction: rtl;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
         }
+        
         .container {
-            max-width:900px;
-            margin:40px auto;
-            padding:20px;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
         }
+        
         header {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:20px;
-}
-
-header h1 {
-    width:100%;
-    text-align:center;
-}
-
-        h1 { margin:0; font-size:1.8rem; color:#ffffff; }
-        .back { text-decoration:none; color:#fcfcfc; background:rgba(3, 119, 252, 0.06); padding:8px 12px; border-radius:6px; }
-        .card {
-            background:#fff;
-            padding:20px;
-            border-radius:8px;
-            box-shadow:0 6px 18px rgba(11,86,199,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
         }
-        .card h2 { margin-top:0; font-size:1.4rem; color:#002147; }
-        .card p { line-height:1.9; font-size:1.05rem; color:#233b60; text-align:justify; }
-        .actions { margin-top:18px; display:flex; justify-content: center; gap:12px; flex-wrap:wrap; }
+        
+        header h1 {
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 { 
+            margin: 0; 
+            font-size: 2.2rem; /* Increased for desktop */
+            color: #ffffff; 
+        }
+        
+        .back { 
+            text-decoration: none; 
+            color: #fcfcfc; 
+            background: rgba(3, 119, 252, 0.06); 
+            padding: 8px 12px; 
+            border-radius: 6px; 
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.85); /* More transparent */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(11, 86, 199, 0.1);
+            backdrop-filter: blur(5px); /* Adds glass effect */
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .card h2 { 
+            margin-top: 0; 
+            font-size: 1.8rem; /* Increased for desktop */
+            color: #002147; 
+        }
+        
+        .card p { 
+            line-height: 1.8; 
+            font-size: 1.25rem; /* Increased for desktop */
+            color: #233b60; 
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        
+        .actions { 
+            margin-top: 25px; 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+        }
+        
         .btn {
-        display: block;
-        padding: 14px 22px;
-        text-decoration: none;
-        border-radius: 10px;
-        font-family: inherit;
-        text-align: right;
-        background: linear-gradient(135deg, #25D366, #128C7E);
-        color: #fff;
-        font-size: 20px;
-        cursor: pointer;
-        border: none;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        transition: 0.2s;
-}
-        .highlight-box {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 2px solid #ffffff; /* سفید رنگ کی بارڈر */
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.904); /* ہلکا سا شفاف سفید پس منظر */
-  color: #003cff; /* متن سفید رہے */
-  font-weight: bold;
-}
-
-
-        .btn {
-    display: inline-block;
-    padding: 8px 18px;
-    border-radius: 10px;
-    font-family: 'Jameel Noori Nastaleeq', serif;
-    font-size: 1rem;
-    text-align: center;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transition: 0.2s;
-}
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1.1rem; /* Increased for desktop */
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        
         .btn:hover {
-  transform: translateY(-3px);
-}
-.whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E);
-}
-
-.email {
-    background: linear-gradient(135deg, #0f766e, #06b6d4);
-}
-
-        .whatsapp { background:linear-gradient(90deg,#25D366,#128C7E); }
-        .email { background:linear-gradient(90deg,#4285F4,#2663D6); }
-        .note { margin-top:14px; color:#365a8a; font-size:0.95rem; }
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+        
+        .email {
+            background: linear-gradient(135deg, #0f766e, #06b6d4);
+        }
+        
+        .highlight-box {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.15); /* More transparent */
+            color: #ffffff;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .note { 
+            margin-top: 20px; 
+            color: #365a8a; 
+            font-size: 1rem; 
+            text-align: center;
+        }
+        
+        .lang-select {
+            position: fixed;
+            left: 18px;
+            top: 18px;
+            z-index: 5;
+        }
+        
+        .lang-select select {
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            color: #003cff;
+            font-family: inherit;
+        }
 
         /* Mobile-specific settings */
         @media (max-width: 768px) {
             body {
+                background: linear-gradient(rgba(3, 100, 170, 0.8), rgba(3, 100, 170, 0.6)),
+                            url('dI.jpg') no-repeat center center;
+                background-size: cover;
                 background-attachment: scroll;
+                font-size: 0.2rem; /* Adjusted for better mobile readability */
+            }
+
+            .lang-select select {
+                padding: 3px 6px;
+                font-size: 0.5rem;
+            }
+
+            .container {
+                margin: 10px auto;
+                padding: 15px;
+            }
+
+            header {
+                margin-top: 30px;
+            }
+
+            h1 {
+                font-size: 2rem; /* Reduced for mobile */
+            }
+
+            .card {
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.76); /* Slightly less transparent on mobile for better readability */
+                backdrop-filter: none; /* Remove blur on mobile for performance */
+                -webkit-backdrop-filter: none;
+            }
+
+            .card p {
+                font-size: 0.6rem !important; /* Further reduced for mobile */
+                line-height: 1.7;
+            }
+
+           
+            .btn {
+                font-size: 0.5rem; /* Adjusted for mobile */
+                padding: 12px 20px;
+                min-width: 5px;
+            }
+
+            .highlight-box {
+                padding: 12px 20px;
+                font-size: 1.1rem;
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .actions {
+                display: flex;
+                justify-content: space-between;
+                gap: 4px;
             }
 
             html[lang="ur"] * {
                 font-family: 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', 'Amiri', serif !important;
             }
         }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                margin: 10px auto;
+            }
+            
+            h1 {
+                font-size: 1.4rem;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .card p {
+                font-size: 1rem;
+                text-align: right; /* Better for small screens */
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 14px 20px;
+            }
+            
+            .highlight-box {
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="lang-select" style="position:fixed;left:18px;top:18px;z-index:5;">
+        <div class="lang-select">
             <select id="lang-select" aria-label="Select language">
                 <option value="ur">اردو</option>
                 <option value="en">English</option>
                 <option value="ar">العربية</option>
             </select>
         </div>
+        
         <header>
-  <h1><span class="highlight-box">دارالافتاء الاتقان اسلام آباد</span></h1>
-</header>
-
-
+            <h1><span class="highlight-box">دارالافتاء الاتقان اسلام آباد</span></h1>
+        </header>
+        
         <div class="card" role="region" aria-label="دارالافتاء مواد">
             <p data-i18n="p1">
                 ہمارے دارالافتاء میں عوام و خواص کی طرف سے مختلف شرعی مسائل اور استفتاءات وصول ہوتے ہیں۔ ان سوالات پر اطمینان بخش اور مدلل جواب دینے کے لیے پہلے ان کی باریک بینی سے تحقیق اور علمی جانچ کی جاتی ہے، پھر مستند فقہی ماخذ کی روشنی میں جواب مرتب کیا جاتا ہے۔ ہر جواب کو کم از کم دو مفتیانِ کرام کی توثیق اور دستخط کے بعد ہی جاری کیا جاتا ہے تاکہ اعتماد اور ذمہ داری کے تقاضے پورے ہوں۔
@@ -161,14 +298,12 @@ header h1 {
             <p data-i18n="p2">
                 فتویٰ دینے کے لیے کوئی معینہ مدت مقرر نہیں کی گئی، البتہ سائلین کی سہولت اور ضرورت کے پیش نظر حتی المقدور جلدی جواب فراہم کرنے کی کوشش کی جاتی ہے۔ تاہم اگر جواب تحریری شکل میں مطلوب ہو تو یہ ایک قانونی دستاویز کی حیثیت اختیار کرتا ہے، جسے مرتب کرنے کے لیے مزید غور و خوض، باریک بینی سے نظرثانی اور ادارہ جاتی تصدیق کی ضرورت ہوتی ہے۔ اس اضافی عمل کی وجہ سے تحریری فتویٰ کی فراہمی میں کچھ مدت بڑھ سکتی ہے۔
             </p>
-
+            
             <div class="actions" role="navigation" aria-label="دارالافتاء اقدامات">
-               <a class="btn whatsapp" href="https://wa.me/923495995143" target="_blank" rel="noopener noreferrer">واٹس ایپ پر سوال بھیجیں</a>
-
-<a class="btn email" href="https://mail.google.com/mail/?view=cm&fs=1&to=raheemkohati@gmail.com&su=Darulifta%20Sawal&body=السلام علیکم%0A%0Aاپنا سوال یہاں لکھیں:" 
-class="mail-btn" target="_blank">
-بذریعہ ای میل استفتاء بھیجیں</a>
-          
+                <a class="btn whatsapp" href="https://wa.me/923495995143" target="_blank" rel="noopener noreferrer" data-i18n="wa_btn">واٹس ایپ پر سوال بھیجیں</a>
+                <a class="btn email" href="https://mail.google.com/mail/?view=cm&fs=1&to=raheemkohati@gmail.com&su=Darulifta%20Sawal&body=السلام علیکم%0A%0Aاپنا سوال یہاں لکھیں:" target="_blank" rel="noopener noreferrer" data-i18n="email_btn">بذریعہ ای میل استفتاء بھیجیں</a>
+            </div>
+        </div>
     </div>
     
     <script>
@@ -225,19 +360,6 @@ class="mail-btn" target="_blank">
                 select.addEventListener('change', function(){ applyLanguage(this.value); });
             }
             applyLanguage(initial);
-
-            // keep existing email behavior (open mail client and copy email as fallback)
-            const btn = document.getElementById('emailBtn');
-            if(btn){
-                btn.addEventListener('click', function(e){
-                    e.preventDefault();
-                    const email = 'raheemkohati@gmail.com';
-                    const subject = (document.documentElement.lang === 'en') ? 'Inquiry' : 'استفتاء';
-                    const mailUrl = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
-                    try { window.open(mailUrl, '_blank'); } catch(err) { window.location.href = mailUrl; }
-                    setTimeout(function(){ if(navigator.clipboard){ navigator.clipboard.writeText(email).catch(()=>{}); } }, 700);
-                });
-            }
         });
     </script>
 </body>
