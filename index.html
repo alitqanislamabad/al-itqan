@@ -437,6 +437,42 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
+        /* Mobile dropdown styles */
+        @media screen and (max-width: 768px) {
+            .mobile-nav-list .buttons-grid {
+                display: none;
+                position: static;
+                background: transparent;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                margin: 0;
+                min-width: auto;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .mobile-nav-list .admin-btn {
+                display: block;
+                width: 100%;
+                padding: 10px 20px;
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: rgba(255,255,255,0.05);
+                color: white;
+                text-decoration: none;
+                font-family: 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', serif;
+                font-size: 0.9rem;
+                font-weight: 500;
+                transition: background-color 0.3s ease;
+            }
+
+            .mobile-nav-list .admin-btn:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+
         /* Mobile Optimization */
         @media screen and (max-width: 768px) {
             html {
@@ -948,6 +984,24 @@
                     mobileNav.classList.toggle('open');
                 });
             }
+
+            // Mobile dropdown toggle
+            const mobileNavButtons = document.querySelectorAll('.mobile-nav-list .nav-button');
+            mobileNavButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const buttonsGrid = this.nextElementSibling;
+                    if (buttonsGrid && buttonsGrid.classList.contains('buttons-grid')) {
+                        const isVisible = buttonsGrid.style.display === 'block';
+                        // Hide all other dropdowns
+                        document.querySelectorAll('.mobile-nav-list .buttons-grid').forEach(grid => {
+                            grid.style.display = 'none';
+                        });
+                        // Toggle current dropdown
+                        buttonsGrid.style.display = isVisible ? 'none' : 'block';
+                    }
+                });
+            });
 
             // Navigation is now outside header, no animation needed
 
