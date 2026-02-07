@@ -67,7 +67,7 @@ l <!DOCTYPE html>
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -84,7 +84,7 @@ l <!DOCTYPE html>
 
         .main-section {
             background-color: rgba(255, 255, 255, 0.555);
-            border-radius: 10px;
+            border-radius: 30px;
             padding: 30px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             font-family: 'jameel noori nastaleeq', serif;
@@ -101,31 +101,43 @@ l <!DOCTYPE html>
         .faculty-member {
             background-color: rgba(0, 33, 71, 0.05);
             border-radius: 8px;
-            padding: 20px;
+            padding: 100px;
             margin: 20px 0;
             display: flex;
             flex-direction: row-reverse;
             align-items: flex-start;
-            gap: 20px;
+            gap: 30px;
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.6s ease, transform 1s ease;
+        }
+
+        .faculty-member:nth-child(even) {
+            transform: translateX(100px);
+        }
+
+        .faculty-member.animate {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .faculty-img {
-            width: 100px;
-            height: 100px;
+            width: 400px;
+            height: 400px;
             object-fit: cover;
             border-radius: 50%;
         }
 
         .faculty-member h3 {
-            font-size: 1.4rem;
+            font-size: 3.5rem;
             font-weight: bold;
             color: #002147;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .faculty-member p {
-            font-size: 1rem;
-            line-height: 1.8;
+            font-size: 2.8rem;
+            line-height: 2;
             text-align: center;
             color: #070049;
         }
@@ -133,18 +145,60 @@ l <!DOCTYPE html>
         .back-link {
             display: inline-block;
             margin-top: 30px;
-            padding: 10px 20px;
+            padding: 20px 40px; /* padding بڑھا دی */
             background-color: #002147;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-family: 'jameel noori nastaleeq', serif;
-            font-size: 1rem;
+            font-size: 1.5rem; /* فونٹ سائز بڑا کیا */
             transition: background-color 0.3s ease;
+            /* اگر چوڑائی کنٹرول کرنی ہو تو یہاں width بھی لگا سکتے ہیں */
         }
 
         .back-link:hover {
             background-color: #1a3a6c;
+        }
+
+        @media (min-width: 769px) {
+            .container {
+                max-width: 4000px;
+                padding: 80px;
+            }
+
+            h1 {
+                font-size: 7rem;
+            }
+
+            .main-section {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 140px;
+                padding: 80px;
+                font-size: 4rem;
+            }
+
+            .main-section p {
+                grid-column: 1 / -1;
+            }
+
+            .faculty-member h3 {
+                font-size: 4rem;
+            }
+
+            .faculty-member p {
+                font-size: 3.3rem;
+            }
+
+            .lang-select select {
+                padding: 50px 70px;
+                font-size: 3rem;
+            }
+
+            .back-link {
+                padding: 50px 70px;
+                font-size: 3rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -352,28 +406,45 @@ l <!DOCTYPE html>
             try { localStorage.setItem('faculty_lang', lang); } catch (e) {}
         }
 
+        function animateOnScroll() {
+            const members = document.querySelectorAll('.faculty-member');
+            const triggerBottom = window.innerHeight / 5 * 4;
+
+            members.forEach(member => {
+                const memberTop = member.getBoundingClientRect().top;
+
+                if (memberTop < triggerBottom) {
+                    member.classList.add('animate');
+                }
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const select = document.getElementById('lang-select');
 
             // initialize language from storage or browser
-            const saved = (function(){ 
-                try { 
-                    return localStorage.getItem('faculty_lang'); 
-                } catch(e){ 
-                    return null; 
-                } 
+            const saved = (function(){
+                try {
+                    return localStorage.getItem('faculty_lang');
+                } catch(e){
+                    return null;
+                }
             })();
-            
+
             let initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'ur');
             if (navigator.language && navigator.language.startsWith('ar')) initial = 'ar';
-            
+
             if (select) {
                 select.value = initial;
-                select.addEventListener('change', function() { 
-                    applyFacultyLanguage(this.value); 
+                select.addEventListener('change', function() {
+                    applyFacultyLanguage(this.value);
                 });
             }
             applyFacultyLanguage(initial);
+
+            // Add scroll animation
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Trigger on load
         });
     </script>
 </body>
