@@ -74,8 +74,8 @@
             align-items: center;
             gap: 12px;
             white-space: nowrap;
-            font-size: 4.8rem;
-            font-weight: 700;
+            font-size: 4.4rem;
+            font-weight: normal;
             letter-spacing: 0.02em;
             color: white;
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
@@ -113,7 +113,7 @@
         
         .ayah-text {
             font-family: 'Traditional Arabic', 'Arial', sans-serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: #e8f4ff;
             text-align: left;
             margin-left: 20px;
@@ -126,13 +126,7 @@
             width: 100%;
         }
         
-            .header-line {
-                height: 0;
-                background: linear-gradient(to right, #4dabf7, #a5d8ff94, #4dabf765);
-                margin-bottom: 0px;
-                border-radius: 1px;
-            }
-        
+                   
         nav {
             width: 100%;
             overflow-x: auto;
@@ -153,7 +147,7 @@
         }
         
         .nav-button {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(1, 2, 82, 0.534);
             color: white;
             border: none;
             padding: 12px 18px;
@@ -166,7 +160,9 @@
             text-decoration: none;
             display: inline-block;
             white-space: nowrap;
+            position: relative;
         }
+        
         
         .nav-button:hover {
             background-color: rgba(255, 255, 255, 0.25);
@@ -174,14 +170,45 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Dropdown symbol styles */
+        .admin-dropdown .nav-button::before,
+        .courses-dropdown .nav-button::before {
+            content: "▼";
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+            color: white;
+        }
+
+        .admin-dropdown:hover .nav-button::before,
+        .courses-dropdown:hover .nav-button::before {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .admin-dropdown .nav-button.open::before,
+        .courses-dropdown .nav-button.open::before {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
         /* Admin dropdown styles */
         .admin-dropdown {
             position: relative;
         }
 
+        .admin-dropdown .nav-button {
+            padding-left: 25px;
+        }
+
         /* Courses dropdown styles */
         .courses-dropdown {
             position: relative;
+        }
+
+        .courses-dropdown .nav-button {
+            padding-left: 25px;
         }
 
         .buttons-grid {
@@ -219,7 +246,7 @@
             font-weight: 500;
             transition: background-color 0.3s ease;
             border-radius: 4px;
-            margin: 2px 8px;
+            margin: px 8px;
         }
 
         .admin-btn:hover {
@@ -1004,16 +1031,7 @@
             const navList = document.querySelector('.nav-buttons');
             const select = document.getElementById('lang-select');
 
-            // Desktop hover effects
-            navButtons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.25)';
-                });
-
-                button.addEventListener('mouseleave', function() {
-                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                });
-            });
+           
 
             // Mobile navigation toggle
             const hamburger = document.querySelector('.hamburger');
@@ -1035,12 +1053,18 @@
                     if (buttonsGrid && buttonsGrid.classList.contains('buttons-grid')) {
                         e.preventDefault();
                         const isVisible = buttonsGrid.style.display === 'block';
-                        // Hide all other dropdowns
+                        // Hide all other dropdowns and remove open class
                         document.querySelectorAll('.mobile-nav-list .buttons-grid').forEach(grid => {
                             grid.style.display = 'none';
                         });
+                        document.querySelectorAll('.mobile-nav-list .nav-button').forEach(btn => {
+                            btn.classList.remove('open');
+                        });
                         // Toggle current dropdown
-                        buttonsGrid.style.display = isVisible ? 'none' : 'block';
+                        if (!isVisible) {
+                            buttonsGrid.style.display = 'block';
+                            this.classList.add('open');
+                        }
                     }
                 });
             });
