@@ -85,7 +85,7 @@ l <!DOCTYPE html>
         .main-section {
             background-color: rgba(255, 255, 255, 0.555);
             border-radius: 30px;
-            padding: 30px;
+            padding: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             font-family: 'jameel noori nastaleeq', serif;
             font-size: 1.2rem;
@@ -99,44 +99,32 @@ l <!DOCTYPE html>
         }
 
         .faculty-member {
-            background-color: rgba(0, 33, 71, 0.05);
-            border-radius: 8px;
-            padding: 100px;
-            margin: 20px 0;
-            display: flex;
-            flex-direction: row-reverse;
-            align-items: flex-start;
-            gap: 30px;
             opacity: 0;
-            transform: translateX(-100px);
-            transition: opacity 0.6s ease, transform 1s ease;
-        }
-
-        .faculty-member:nth-child(even) {
-            transform: translateX(100px);
+            transform: scale(0.95);
         }
 
         .faculty-member.animate {
             opacity: 1;
-            transform: translateX(0);
+            transform: scale(1);
         }
 
+
         .faculty-img {
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             border-radius: 50%;
         }
 
         .faculty-member h3 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: bold;
             color: #002147;
             margin-bottom: 15px;
         }
 
         .faculty-member p {
-            font-size: 2.8rem;
+            font-size: 2rem;
             line-height: 2;
             text-align: center;
             color: #070049;
@@ -163,19 +151,21 @@ l <!DOCTYPE html>
         @media (min-width: 769px) {
             .container {
                 max-width: 4000px;
-                padding: 80px;
+                padding: 8px;
             }
 
             h1 {
-                font-size: 7rem;
+                font-size: 3rem;
             }
 
             .main-section {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 140px;
-                padding: 80px;
-                font-size: 4rem;
+                gap: 10px;
+                padding: 2px;
+                font-size: 1.5rem;
+                max-width: 1200px;
+                margin: 0 auto;
             }
 
             .main-section p {
@@ -183,21 +173,21 @@ l <!DOCTYPE html>
             }
 
             .faculty-member h3 {
-                font-size: 4rem;
+                font-size: 2rem;
             }
 
             .faculty-member p {
-                font-size: 3.3rem;
+                font-size: 1.5rem;
             }
 
             .lang-select select {
-                padding: 50px 70px;
-                font-size: 3rem;
+                padding: 8px 12px;
+                font-size: 1rem;
             }
 
             .back-link {
-                padding: 50px 70px;
-                font-size: 3rem;
+                padding: 15px 30px;
+                font-size: 1.5rem;
             }
         }
 
@@ -213,6 +203,7 @@ l <!DOCTYPE html>
 
             h1 {
                 font-size: 1.5rem;
+                font-family: 'Noto Nastaliq Urdu'
             }
 
             .main-section {
