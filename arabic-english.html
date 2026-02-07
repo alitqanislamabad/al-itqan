@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-    <meta name="google-site-verification" content="urZmpfrQ_hpWN1cdzo9XMnfceAIXQW0_csG88DjDKxM" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تخصص فی اللغۃ العربیۃ والانجلیزیہ - الاتقان اسلام آباد</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        @font-face {
+            font-family: 'Jameel Noori Nastaleeq';
+            src: url('fonts/Jameel Noori Nastaleeq.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
 
         body {
             font-family: 'jameel noori nastaleeq', serif;
@@ -107,9 +115,11 @@
             margin: 20px 0;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
-            overflow: hidden;
+            overflow: visible;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
+
+
 
         .english-table th,
         .english-table td {
@@ -157,21 +167,30 @@
             }
 
             .container {
-                padding: 15px;
+                padding: 0px;
             }
 
             h1 {
                 font-size: 2rem;
+                font-family: 'jameel noori nastaleeq', serif;
             }
 
             .main-section {
-                padding: 20px;
+                padding: 15px;
                 font-size: 1rem;
+                font-family: 'jameel noori nastaleeq', serif;
+                text-align: center;
+
             }
 
             .curriculum-table,
             .english-table {
                 font-size: 0.9rem;
+            }
+
+            .english-table {
+                width: 100%;
+                margin: 0;
             }
 
             .curriculum-table th,
@@ -247,7 +266,8 @@
 
             <h2>English language course:</h2>
 
-            <table class="english-table">
+            <div class="english-table-wrapper">
+                <table class="english-table">
                 <thead>
                     <tr>
                         <th>Module</th>
@@ -303,10 +323,8 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
 
         <a href="index.html" class="back-link">واپس جائیں</a>
     </div>
 </body>
 </html>
-
