@@ -6,15 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>الاتقان - اسلام آباد</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Amiri font for الاتقان -->
-     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!-- Cairo (medium) for الاتقان -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* بنیادی سیٹنگ - پہلے جیسا ہی */
         * {
@@ -24,7 +18,13 @@
         }
         @font-face {
             font-family: 'Jameel Noori Nastaleeq';
-            src: url('JameelNooriNastaleeq.ttf') format('truetype');
+            src: url('fonts/Jameel Noori Nastaleeq.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+         @font-face {
+            font-family: 'Gandhara Suls Regular';
+            src: url('fonts/Gandhara Suls Regular.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -54,7 +54,6 @@
             color: rgb(0, 60, 255);
             padding: px 0 15px;
             position: relative;
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
         }
         
         .header-content {
@@ -77,29 +76,13 @@
         .al-itqan-title {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            white-space: nowrap;
-            font-size: 4.4rem;
-            font-weight: normal;
-            letter-spacing: 0.02em;
+            font-size: 3.4rem;
             color: white;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-            line-height: 1.05;
-            position: relative;
-            overflow: visible;
-            z-index: 1;
+            line-height: 1.5;
         }
         
         .al-itqan-word {
-            font-family: 'Cairo', 'Amiri', serif;
-            font-size: inherit;
-            font-weight: 400;
-            display: inline-block;
-            vertical-align: middle;
-            position: relative;
-            z-index: 2;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Gandhara Suls Regular', 'Amiri', serif;
         }
 
         .header-logo {
@@ -122,20 +105,8 @@
             color: #e8f4ff;
             text-align: left;
             margin-left: 20px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
-        /* نویگیشن بار اور لائن */
-        .nav-line-container {
-            margin-top: 0px;
-            width: 100%;
-        }
-        
-                   
-        nav {
-            width: 100%;
-            overflow-x: auto;
-        }
         
         .nav-buttons {
             display: flex;
@@ -387,7 +358,33 @@
             appearance: none;
         }
 
-       
+        /* Zoom Controls */
+        .zoom-controls {
+            position: absolute;
+            right: 20px;
+            top: 18px;
+            z-index: 5;
+            display: none;
+            gap: 5px;
+        }
+
+        .zoom-btn {
+            background: rgba(255,255,255,0.08);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 8px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'jameel noori nastaleeq', serif;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            min-width: 40px;
+        }
+
+        .zoom-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
         /* Hamburger Menu Styles */
         .hamburger {
             display: none;
@@ -1004,13 +1001,10 @@
                 nav_prospectus: 'Prospectus',
                 nav_majallah: 'Majallah Al-Itqan',
                 nav_students_portal: 'Students Portal',
-                nav_classes: 'classes',
                 nav_courses: 'Courses & Programs',
                 nav_ifta: 'Ifta Specialization',
                 nav_arabic_english: 'Arabic & English Specialization',
                 nav_hifz: 'Hifz Nazra Qaida',
-                nav_admission_process: 'Admission procedure',
-                nav_general_rules: 'General rules and regulations',
                 nav_articles: 'Articles & Papers',
                 nav_daruliftah: 'Darul Ifta',
                 nav_future: 'Future Projects',
@@ -1032,12 +1026,9 @@
                 nav_majallah: 'مجلة الاتقان',
                 nav_students_portal: 'بوابة الطلاب',
                 nav_courses: 'الدورات والبرامج',
-                nav_classes: 'الصفوف',
-                nav_ifta: 'التخصص في الإفتاء',
+                nav_ifta: 'تخصص الإفتاء',
                 nav_arabic_english: 'تخصص اللغة العربية والإنجليزية',
-                nav_hifz: 'قسم التحفيظ و الناظرةو الأساسي',
-                nav_admission_process: 'إجراءات القبول',
-                nav_general_rules: 'القواعد واللوائح العامة',
+                nav_hifz: 'حفظ الناظرة القاعدة',
                 nav_articles: 'مقالات وأبحاث',
                 nav_daruliftah: 'دار الإفتاء',
                 nav_future: 'مشروعات مستقبلية',
@@ -1162,8 +1153,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
