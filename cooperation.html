@@ -15,7 +15,7 @@
         }
         @font-face {
             font-family: 'Jameel Noori Nastaleeq';
-            src: url('JameelNooriNastaleeq.ttf') format('truetype');
+            src: url('fonts/Jameel Noori Nastaleeq.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -98,10 +98,17 @@
         .section li {
             margin-bottom: 10px;
         }
-
-        .back-link {
-            display: inline-block;
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .back-link, .donate-link {
+            display: inline-block;
             padding: 10px 20px;
             background-color: #002147;
             color: white;
@@ -110,12 +117,15 @@
             font-family: 'jameel noori nastaleeq', 'Noto Naskh Arabic', serif;
             font-size: 1rem;
             transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
-        .back-link:hover {
+        .back-link:hover, .donate-link:hover {
             background-color: #1a3a6c;
         }
 
+       
         /* Mobile-specific settings */
         @media (max-width: 768px) {
             body {
@@ -286,9 +296,26 @@
 
             <p>نوٹ:مدرسہ تمام عطیات کی باقاعدہ رسید فراہم کرتا ہے اور انہیں صرف دینی و تعلیمی مقاصد میں استعمال کرتا ہے۔ سالانہ حسابات و رپورٹ بھی ضرورت پڑنے پر فراہم کی جا سکتی ہے تاکہ تعاون کرنے والے مطمئن رہیں۔</p>
         </div>
+    
+        <div style="text-align: center; margin-top: 12px;">
+  <div style="display: inline-block; padding: 5px 5px; 
+              border: 1px solid white;  /* سفید بارڈر */
+              background-color: transparent;  /* شفاف بیک گراؤنڈ */
+              box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.966); 
+              border-radius: 4px;">
+    <img src="qrcode.png" alt="QR Code" 
+         style="width: 130px; height: 130px; 
+                border: 5px solid white; 
+                display: block; margin: 0 auto;">
+    <div style="margin-top: 10px; font-weight: bold; color: #DAA520; font-family: Arial, sans-serif; font-size: 18px;">
+      donate now
+    </div>
+  </div>
+</div>
 
+        <div class="button-container">
         <a href="index.html" class="back-link">واپس جائیں</a>
+        </div>
     </div>
 </body>
 </html>
-
