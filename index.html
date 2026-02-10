@@ -82,8 +82,7 @@
     overflow: visible;   /* overflow-x: auto کو replace کریں */
     position: relative;  /* ضروری ہے تاکہ dropdown parent کے حساب سے layer ہو */
 }
-
-        
+      
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -187,7 +186,7 @@
 
         /* Main content */
         .main-content {
-            padding: 30px 0;
+            padding: 0 0 30px 0;
             background-color: rgba(0, 58, 247, 0.753);
             min-height: 700px;
         }
@@ -291,14 +290,18 @@
             color: #d6e9ff;
             margin-top: 20px;
         }
-        
+        .nav-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+}
+
         /* Language selector */
         .lang-select {
-            position: absolute;
-            left: 20px;
-            top: 140px;
-            z-index: 5;
-        }
+            margin: 0;
+            text-align: left;
+}
+
 
         .lang-select select {
             background: rgba(255,255,255,0.08);
@@ -326,48 +329,92 @@
             border-radius: 3px;
         }
 
+        /* Hamburger Menu Styles */
+        .hamburger-button {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 10px;
+        }
+
+        .hamburger-button span {
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-row {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .ayah-text {
                 text-align: center;
                 margin: 15px 0 0 0;
                 font-size: 1.2rem;
             }
-            
+
+            .mobile-nav-row {
+                display: flex;
+            }
+
+            .hamburger-button {
+                display: flex;
+            }
+
             .nav-buttons {
+                display: none; /* Hidden by default on mobile */
+            }
+
+            .nav-buttons.mobile-visible {
+                display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 10px 12px;
                 font-size: 1rem;
                 min-width: 140px;
             }
-            
+
             .excerpts {
                 grid-template-columns: 1fr;
             }
-            
+
             .institute-description {
                 padding: 20px;
                 margin: 20px auto;
             }
-            
+
             .institute-description p {
                 font-size: 1.1rem;
             }
-            
+
             .lang-select {
                 position: static;
-                margin: 10px auto;
-                text-align: center;
+                margin: 0px 0;
+                text-align: left;
+                order: 1;
             }
         }
 
@@ -400,14 +447,7 @@
     <!-- ہیڈر سیکشن -->
     <header>
         <div class="container">
-            <div class="lang-select">
-                <select id="lang-select" aria-label="Select language">
-                    <option value="ur">اردو</option>
-                    <option value="en">English</option>
-                    <option value="ar">العربية</option>
-                </select>
-            </div>
-
+           
             <div class="header-content">
                 <div class="logo-section">
                     <div class="logo-text">
@@ -424,9 +464,23 @@
         </div>
     </header>
 
-    <!-- Navigation -->
-    <nav>
+    <!-- مرکزی مواد سیکشن -->
+    <main class="main-content">
         <div class="container">
+            <div class="mobile-nav-row">
+                <button class="hamburger-button" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="lang-select">
+                    <select id="lang-select" aria-label="Select language">
+                        <option value="ur">اردو</option>
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                </div>
+            </div>
             <ul class="nav-buttons">
                 <li class="admin-dropdown">
                     <a class="nav-button" data-i18n="nav_admin">ایڈمن</a>
@@ -455,12 +509,6 @@
                 <li><a href="#" class="nav-button" data-i18n="nav_contact">رابطہ</a></li>
                 <li><a href="#" class="nav-button" data-i18n="nav_gallery">گیلری</a></li>
             </ul>
-        </div>
-    </nav>
-
-    <!-- مرکزی مواد سیکشن -->
-    <main class="main-content">
-        <div class="container">
             <div class="institute-description">
                 <p id="description" data-i18n="description">
                     "الاتقان" گولڑہ موڑ اسلام آباد میں، I-14/2 (سیکٹر) کے قریب واقع ہے اور وفاق المدارس العربیہ پاکستان سے ملحق ایک معیاری دینی ادارہ ہے۔ یہاں تقریبا چالیس (40) رہائشی علماء کرام کو ہرسال، افتاء (مفتی کورس)، عربی اور انگریزی زبان کی مفت تعلیم دی جاتی ہے۔
@@ -650,7 +698,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const select = document.getElementById('lang-select');
-            
+
             const saved = localStorage.getItem('site_lang');
             let initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'ur');
             if (navigator.language && navigator.language.startsWith('ar')) initial = 'ar';
@@ -662,6 +710,32 @@
                 });
             }
             applyLanguage(initial);
+
+            // Hamburger menu functionality
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const navButtons = document.querySelector('.nav-buttons');
+
+            if (hamburgerButton && navButtons) {
+                hamburgerButton.addEventListener('click', function() {
+                    navButtons.classList.toggle('mobile-visible');
+                });
+
+                // Close menu when clicking outside or on a link
+                document.addEventListener('click', function(event) {
+                    if (!hamburgerButton.contains(event.target) && !navButtons.contains(event.target)) {
+                        navButtons.classList.remove('mobile-visible');
+                    }
+                });
+
+                // Close menu when a nav link is clicked
+               navButtons.addEventListener('click', function(event) {
+    const isDropdownButton = event.target.closest('.admin-dropdown, .courses-dropdown');
+    if (!isDropdownButton && event.target.tagName === 'A') {
+        navButtons.classList.remove('mobile-visible');
+    }
+});
+
+            }
         });
     </script>
 </body>
