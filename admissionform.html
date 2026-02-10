@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>آن لائن داخلہ فارم برائے الاتقان اسلام آباد</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <style>
-@font-face {
-    font-family: 'Jameel Noori Nastaleeq';
-    src: url('JameelNooriNastaleeq.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+        @font-face {
+            font-family: 'Jameel Noori Nastaleeq';
+            src: url('JameelNooriNastaleeq.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             font-family: 'jameel noori nastaleeq', serif;
             color: #31005f;
@@ -500,7 +499,7 @@
                 </select>
             </div>
             <div>
-                <label>دورہ حدیث میں حاصل کردہ نمبرات<span class="required">*</span></label>
+<label>دورہ حدیث/سابقہ تعلیم کس مدرسے سے حاصل کی<span class="required">*</span></label>
                 <input type="text" name="دورہ_حدیث_نمبرات" required>
             </div>
         </div>
@@ -622,13 +621,7 @@
         const feeReceiptFile = feeReceiptInput.files[0];
         const kashfFile = kashfInput.files[0];
 
-        if (!photoFile || !feeReceiptFile || !kashfFile) {
-            alert('براہ کرم تمام ضروری فائلیں اپلوڈ کریں');
-            submitBtn.disabled = false;
-            btnText.textContent = 'فارم جمع کریں';
-            btnSpinner.style.display = 'none';
-            return;
-        }
+       
 
         const readerPhoto = new FileReader();
         const readerFee = new FileReader();
@@ -682,8 +675,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
