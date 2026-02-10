@@ -775,6 +775,70 @@
             }
         }
 
+/* Excerpts Section Styles */
+.excerpts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.excerpt-card {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: calc(var(--delay) * 0.2s);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.excerpt-card h3 {
+    color: #002147;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.excerpt-card p {
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.read-more-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #002147;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-family: 'Jameel Noori Nastaleeq', serif;
+}
+
+.read-more-btn:hover {
+    background: #1a3a6c;
+}
+
+@media (max-width: 768px) {
+    .excerpts {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -890,6 +954,39 @@
                     "الاتقان" گولڑہ موڑ اسلام آباد میں، I-14/2 (سیکٹر) کے قریب واقع ہے اور وفاق المدارس العربیہ پاکستان سے ملحق ایک معیاری دینی ادارہ ہے۔ یہاں تقریبا چالیس (40) رہائشی علماء کرام کو ہرسال، افتاء (مفتی کورس)، عربی اور انگریزی زبان کی مفت تعلیم دی جاتی ہے۔
                 </p>
             </div>
+
+            <div class="excerpts">
+                <div class="excerpt-card" style="--delay: 0;">
+                    <h3 data-i18n="excerpt_title_1">داخلہ فارم</h3>
+                    <p data-i18n="excerpt_desc_1">الاتقان اسلام آباد میں داخلہ لینے کے لیے آن لائن داخلہ فارم پر کرنا ضروری ہے، اسی کی بنیاد پر رجسٹریشن اور دیگر داخلہ کاروائی کی جاتی ہے۔</p>
+                    <a href="admissionform.html" class="read-more-btn" data-i18n="excerpt_btn_1">داخلہ فارم جمع کرنے کے لیے کلک کریں</a>
+                </div>
+                <div class="excerpt-card" style="--delay: 1;">
+                    <h3 data-i18n="excerpt_title_2">دارالافتاء</h3>
+                    <p data-i18n="excerpt_desc_2">لوگوں کے مسائل کے شرعی حل کے لیے دارالافتاء الاتقان اسلام آباد تحقیقی رہنمائی کے ساتھ آن لائن استفتاء کی سہولت فراہم کرتا ہے۔</p>
+                    <a href="daruliftah.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
+                </div>
+                <div class="excerpt-card" style="--delay: 2;">
+                    <h3 data-i18n="excerpt_title_3">مستقبل کے منصوبے</h3>
+                    <p data-i18n="excerpt_desc_3">الاتقان اسلام آباد کے مستقبل کے تعلیمی اور تعمیری منصوبوں کے بارے میں جانیں۔۔۔ نئے کورسز اور سہولیات کا آغاز۔</p>
+                    <a href="mustaqbil.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
+                </div>
+                <div class="excerpt-card" style="--delay: 3;">
+                    <h3 data-i18n="excerpt_title_4">تخصص فی الافتاء</h3>
+                    <p data-i18n="excerpt_desc_4">دارالعلوم کراچی کے فضلاء ومتخصصین کی نگرانی میں۔۔۔ کم از کم 100 تحقیقی فتاوی اور ایک تحقیقی مقالہ سند کے حصول کےلیے لازم ہیں۔</p>
+                    <a href="ifta.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
+                </div>
+                <div class="excerpt-card" style="--delay: 4;">
+                    <h3 data-i18n="excerpt_title_5">تخصص فی اللغۃ العربیۃ والانجلیزیہ</h3>
+                    <p data-i18n="excerpt_desc_5">عربی اور انگریزی زبانوں میں مہارت۔۔۔دو زبانوں کی عملی تربیت دینے کا منفرد ادارہ۔</p>
+                    <a href="arabic-english.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
+                </div>
+                <div class="excerpt-card" style="--delay: 5;">
+                    <h3 data-i18n="excerpt_title_6">فیکلٹی ممبرز</h3>
+                    <p data-i18n="excerpt_desc_6">ادارہ کے اساتذہ ومفتیان کرام کا تعارف۔</p>
+                    <a href="faculty.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -908,22 +1005,20 @@
         const translations = {
             ur: {
                 title: 'الاتقان - اسلام آباد',
-                title_word: 'الاتقان',
-                islamabad_text: 'اسلام آباد',
-                ayah_text: 'فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونَ',
+                ayah_text: 'تو اگر تمہیں علم نہیں تو اہل ذکر سے پوچھو',
                 nav_admin: 'ایڈمن',
                 nav_admission_form: 'داخلہ فارم',
                 nav_faculty_members: 'فیکلٹی ممبرز',
                 nav_prospectus: 'پراسپیکٹس',
                 nav_majallah: 'مجلۃ الاتقان',
                 nav_students_portal: 'سٹوڈنٹس پورٹل',
-                nav_courses: 'کورسز اور پروگرام',
                 nav_classes: 'کلاسز',
+                nav_admission_process: 'داخلے کا طریقہ کار',
+                nav_general_rules: 'عمومی قواعد وضوابط',
+                nav_courses: 'کورسز اور پروگرام',
                 nav_ifta: 'تخصص فی الافتاء',
                 nav_arabic_english: 'تخصص فی اللغۃ العربیۃ والانجلیزیہ',
                 nav_hifz: 'حفظ، ناظرہ وقاعدہ',
-                nav_admission_process: 'داخلے کا طریقہ کار',
-                nav_general_rules: 'عمومی قواعد وضوابط',
                 nav_articles: 'آرٹیکل اور مقالہ جات',
                 nav_daruliftah: 'دارالافتاء',
                 nav_future: 'مستقبل کے منصوبہ جات',
@@ -932,6 +1027,21 @@
                 nav_gallery: 'گیلری',
                 description: '"الاتقان" گولڑہ موڑ اسلام آباد میں، I-14/2 (سیکٹر) کے قریب واقع ہے اور وفاق المدارس العربیہ پاکستان سے ملحق ایک معیاری دینی ادارہ ہے۔ یہاں تقریبا چالیس (40) رہائشی علماء کرام کو ہرسال، افتاء (مفتی کورس)، عربی اور انگریزی زبان کی مفت تعلیم دی جاتی ہے۔',
                 footer_text: 'ممتاز فضلاء کےلیے افتاء اور لغۃ عربیہ وانجلیزیہ کا معیاری ادارہ',
+                copyright: '© 2026 All rights reserved.',
+                excerpt_title_1: 'داخلہ فارم',
+                excerpt_desc_1: 'الاتقان اسلام آباد میں داخلہ لینے کے لیے آن لائن داخلہ فارم پر کرنا ضروری ہے، اسی کی بنیاد پر رجسٹریشن اور دیگر داخلہ کاروائی کی جاتی ہے۔',
+                excerpt_btn_1: 'داخلہ فارم جمع کرنے کے لیے کلک کریں',
+                excerpt_title_2: 'دارالافتاء',
+                excerpt_desc_2: 'لوگوں کے مسائل کے شرعی حل کے لیے دارالافتاء الاتقان اسلام آباد تحقیقی رہنمائی کے ساتھ آن لائن استفتاء کی سہولت فراہم کرتا ہے۔',
+                excerpt_title_3: 'مستقبل کے منصوبے',
+                excerpt_desc_3: 'الاتقان اسلام آباد کے مستقبل کے تعلیمی اور تعمیری منصوبوں کے بارے میں جانیں۔۔۔ نئے کورسز اور سہولیات کا آغاز۔',
+                excerpt_title_4: 'تخصص فی الافتاء',
+                excerpt_desc_4: 'دارالعلوم کراچی کے فضلاء ومتخصصین کی نگرانی میں۔۔۔ کم از کم 100 تحقیقی فتاوی اور ایک تحقیقی مقالہ سند کے حصول کےلیے لازم ہیں۔',
+                excerpt_title_5: 'تخصص فی اللغۃ العربیۃ والانجلیزیہ',
+                excerpt_desc_5: 'عربی اور انگریزی زبانوں میں مہارت۔۔۔دو زبانوں کی عملی تربیت دینے کا منفرد ادارہ۔',
+                excerpt_title_6: 'فیکلٹی ممبرز',
+                excerpt_desc_6: 'ادارہ کے اساتذہ ومفتیان کرام کا تعارف۔',
+                read_more: 'مزید پڑھیں'
             },
             en: {
                 title: 'Al-Itqan - Islamabad',
@@ -958,7 +1068,21 @@
                 nav_contact: 'Contact',
                 nav_gallery: 'Gallery',
                 description: '"Al-Itqan" is located near Golra Mor, Islamabad, close to sector I-14/2, and is a reputable religious institution affiliated with Wifaq ul Madaris al-Arabia Pakistan. Each year approximately forty (40) resident scholars receive free education in Ifta (Mufti course), Arabic and English.',
-                footer_text: 'A premier institute for Ifta and Arabic & English languages for distinguished scholars.'
+                footer_text: 'A premier institute for Ifta and Arabic & English languages for distinguished scholars.',
+                excerpt_title_1: 'Admission Form',
+                excerpt_desc_1: 'It is necessary to fill the online admission form to get admission in Al-Itqan Islamabad, registration and other admission processes are done on its basis.',
+                excerpt_btn_1: 'Click to Submit Admission Form',
+                excerpt_title_2: 'Darul Ifta',
+                excerpt_desc_2: 'Darul Ifta Al-Itqan Islamabad provides online Ifta facility with research guidance for Sharia solutions to people\'s problems.',
+                excerpt_title_3: 'Future Projects',
+                excerpt_desc_3: 'Learn about the future educational and developmental plans of Al-Itqan Islamabad... Launch of new courses and facilities.',
+                excerpt_title_4: 'Ifta Specialization',
+                excerpt_desc_4: 'Under the supervision of scholars and specialists of Darul Uloom Karachi... At least 100 research fatwas and one research article are required for obtaining the certificate.',
+                excerpt_title_5: 'Arabic & English Specialization',
+                excerpt_desc_5: 'Proficiency in Arabic and English languages... A unique institution providing practical training in two languages.',
+                excerpt_title_6: 'Faculty Members',
+                excerpt_desc_6: 'Introduction of the institute\'s teachers and Muftis.',
+                read_more: 'Read More'
             },
             ar: {
                 title: 'الاتقان - إسلام أباد',
@@ -986,6 +1110,20 @@
                 nav_gallery: 'المعرض',
                 description: 'تقع "الاتقان" قرب جُلره مور في إسلام أباد بالقرب من القطاع I-14/2، وهي مؤسسة دينية معروفة مرتبطة بوفاق المدارس العربية باكستان. يتلقى حوالي أربعون (40) عالمًا مقيمًا سنويًا تعليمًا مجانيًا في الإفتاء (دورة مفتي) واللغة العربية والإنجليزية.',
                 footer_text: 'مؤسسة متميزة للإفتاء وتعليم اللغتين العربية والإنجليزية للعلماء المرموقين.',
+                excerpt_title_1: 'استمارة الالتحاق',
+                excerpt_desc_1: 'من الضروري ملء استمارة الالتحاق عبر الإنترنت للقبول في معهد الاتقان إسلام آباد، ويتم التسجيل وعمليات القبول الأخرى على أساسها.',
+                excerpt_btn_1: 'انقر لتقديم استمارة الالتحاق',
+                excerpt_title_2: 'دار الإفتاء',
+                excerpt_desc_2: 'يوفر دار الإفتاء الاتقان إسلام آباد خدمة الإفتاء عبر الإنترنت مع إرشاد بحثي لحلول شرعية لمشاكل الناس.',
+                excerpt_title_3: 'مشاريع مستقبلية',
+                excerpt_desc_3: 'تعرف على الخطط التعليمية والتطويرية المستقبلية لمعهد الاتقان إسلام آباد... إطلاق دورات جديدة ومرافق.',
+                excerpt_title_4: 'تخصص الإفتاء',
+                excerpt_desc_4: 'تحت إشراف علماء ومتخصصي دار العلوم كراتشي... مطلوب على الأقل 100 فتوى بحثية ومقالة بحثية واحدة للحصول على الشهادة.',
+                excerpt_title_5: 'تخصص اللغة العربية والإنجليزية',
+                excerpt_desc_5: 'المهارة في اللغتين العربية والإنجليزية... مؤسسة فريدة توفر تدريبًا عمليًا في لغتين.',
+                excerpt_title_6: 'أعضاء هيئة التدريس',
+                excerpt_desc_6: 'مقدمة لمعلمي المعهد والمفتين.',
+                read_more: 'اقرأ المزيد'
             }
         };
 
@@ -1008,11 +1146,27 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            const navButtons = document.querySelectorAll('.nav-button');
-            const navList = document.querySelector('.nav-buttons');
             const select = document.getElementById('lang-select');
 
-           
+            // initialize language from storage or browser
+            const saved = (function(){
+                try {
+                    return localStorage.getItem('site_lang');
+                } catch(e){
+                    return null;
+                }
+            })();
+
+            let initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'ur');
+            if (navigator.language && navigator.language.startsWith('ar')) initial = 'ar';
+
+            if (select) {
+                select.value = initial;
+                select.addEventListener('change', function() {
+                    applyLanguage(this.value);
+                });
+            }
+            applyLanguage(initial);
 
             // Mobile navigation toggle
             const hamburger = document.querySelector('.hamburger');
@@ -1060,7 +1214,6 @@
                 }
             });
 
-            // Navigation is now outside header, no animation needed
             // Nested dropdown toggle for all instances
             const nestedBtns = document.querySelectorAll('.nested-btn');
             nestedBtns.forEach(btn => {
@@ -1072,32 +1225,6 @@
                     }
                 });
             });
-
-            // Navigation is now outside header, no animation needed
-
-            // Nested dropdown is handled by CSS hover
-
-            // initialize language from storage or browser
-            const saved = (function(){
-                try {
-                    return localStorage.getItem('site_lang');
-                } catch(e){
-                    return null;
-                }
-            })();
-
-            let initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'ur');
-            if (navigator.language && navigator.language.startsWith('ar')) initial = 'ar';
-
-            if (select) {
-                select.value = initial;
-                select.addEventListener('change', function() {
-                    applyLanguage(this.value);
-                });
-            }
-            applyLanguage(initial);
-
-
         });
     </script>
 </body>
