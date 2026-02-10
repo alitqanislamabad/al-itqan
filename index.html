@@ -17,7 +17,7 @@
         
         @font-face {
             font-family: 'Jameel Noori Nastaleeq';
-            src: url('JameelNooriNastaleeq.ttf') format('truetype');
+            src: url('fonts/Jameel Noori Nastaleeq.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -358,6 +358,14 @@
             padding: 10px 0;
         }
 
+        .desktop-lang {
+            display: block;
+        }
+
+        .mobile-lang {
+            display: none;
+        }
+
         
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -416,6 +424,14 @@
                 text-align: left;
                 order: 1;
             }
+
+            .desktop-lang {
+                display: none;
+            }
+
+            .mobile-lang {
+                display: block;
+            }
         }
 
         @media (max-width: 480px) {
@@ -473,13 +489,20 @@
                     <span></span>
                     <span></span>
                 </button>
-                <div class="lang-select">
-                    <select id="lang-select" aria-label="Select language">
+                <div class="lang-select mobile-lang">
+                    <select id="lang-select-mobile" aria-label="Select language">
                         <option value="ur">اردو</option>
                         <option value="en">English</option>
                         <option value="ar">العربية</option>
                     </select>
                 </div>
+            </div>
+            <div class="lang-select desktop-lang">
+                <select id="lang-select" aria-label="Select language">
+                    <option value="ur">اردو</option>
+                    <option value="en">English</option>
+                    <option value="ar">العربية</option>
+                </select>
             </div>
             <ul class="nav-buttons">
                 <li class="admin-dropdown">
