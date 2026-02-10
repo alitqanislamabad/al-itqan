@@ -567,6 +567,14 @@
 </span>
 
         </div>
+        <div class="two-column" style="margin-top: 20px;">
+            <div>
+                <button type="button" class="submit-btn" id="newFormBtn">نیا فارم پر کریں</button>
+            </div>
+            <div>
+                <button type="button" class="submit-btn" id="backBtn">واپس جائیں</button>
+            </div>
+        </div>
         <div class="success-subtext">
         </div>
     </div>
@@ -583,6 +591,8 @@
     const photoPreview = document.getElementById('photoPreview');
     const photoPreviewContainer = document.getElementById('photoPreviewContainer');
     const changePhotoBtn = document.getElementById('changePhotoBtn');
+    const newFormBtn = document.getElementById('newFormBtn');
+    const backBtn = document.getElementById('backBtn');
 
     photoUploadBox.addEventListener('click', function() {
         photoInput.click();
@@ -671,6 +681,19 @@
             readerKashf.readAsDataURL(kashfFile);
         };
         readerFee.readAsDataURL(feeReceiptFile);
+    });
+
+    newFormBtn.addEventListener('click', function() {
+        form.reset();
+        photoPreviewContainer.style.display = 'none';
+        photoUploadBox.style.display = 'block';
+        changePhotoBtn.style.display = 'none';
+        submittedMessage.style.display = 'none';
+        form.style.display = 'block';
+    });
+
+    backBtn.addEventListener('click', function() {
+        window.location.href = 'index.html';
     });
     </script>
 </body>
