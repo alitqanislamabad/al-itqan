@@ -17,7 +17,7 @@
         
         @font-face {
             font-family: 'Jameel Noori Nastaleeq';
-            src: url('fonts/Jameel Noori Nastaleeq.ttf') format('truetype');
+            src: url('JameelNooriNastaleeq.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -720,18 +720,36 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            const select = document.getElementById('lang-select');
+            const desktopSelect = document.getElementById('lang-select');
+            const mobileSelect = document.getElementById('lang-select-mobile');
 
             const saved = localStorage.getItem('site_lang');
             let initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'ur');
             if (navigator.language && navigator.language.startsWith('ar')) initial = 'ar';
 
-            if (select) {
-                select.value = initial;
-                select.addEventListener('change', function() {
+            // Function to sync both selectors
+            const syncSelectors = (value) => {
+                if (desktopSelect) desktopSelect.value = value;
+                if (mobileSelect) mobileSelect.value = value;
+            };
+
+            // Set initial values
+            syncSelectors(initial);
+
+            // Add event listeners
+            if (desktopSelect) {
+                desktopSelect.addEventListener('change', function() {
                     applyLanguage(this.value);
+                    syncSelectors(this.value);
                 });
             }
+            if (mobileSelect) {
+                mobileSelect.addEventListener('change', function() {
+                    applyLanguage(this.value);
+                    syncSelectors(this.value);
+                });
+            }
+
             applyLanguage(initial);
 
             // Hamburger menu functionality
