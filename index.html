@@ -3,7 +3,7 @@
 <head>
     <meta name="google-site-verification" content="urZmpfrQ_hpWN1cdzo9XMnfceAIXQW0_csG88DjDKxM" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>الاتقان - اسلام آباد</title>
     <!-- Amiri font for الاتقان -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -33,6 +33,8 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            overflow-x: hidden;
+            width: 100%;
         }
        
         .container {
@@ -41,48 +43,35 @@
             padding: 0 20px;
         }
         
-        /* ہیڈر سٹائل */
+        /* ========== 🌟 ڈیسک ٹاپ اور موبائل دونوں کے لیے شاندار اینیمیشنز 🌟 ========== */
+        
+        /* ہیڈر اینیمیشن */
         header {
             background: linear-gradient(to right, #002147a6, #1a3a6c);
             color: rgb(0, 60, 255);
             padding: 15px 0;
             position: relative;
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .logo-section {
-            display: flex;
-            align-items: center;
+            opacity: 0;
+            animation: headerSlideDown 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            will-change: transform, opacity;
         }
         
         .header-logo {
-            width: 90px;
-            z-index: 2;
-        }
-       
-        .ayah-text {
-            font-family: 'amiri', 'Arial', sans-serif;
-            font-size: 1.5rem;
-            color: #e8f4ff;
-            text-align: left;
-            margin-left: 20px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+                width: 90px;
+            }
+        @keyframes headerSlideDown {
+            0% { opacity: 0; transform: translateY(-50px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
         
-        /* نویگیشن بار */
-        nav {
-    width: 100%;
-    overflow: visible;   /* overflow-x: auto کو replace کریں */
-    position: relative;  /* ضروری ہے تاکہ dropdown parent کے حساب سے layer ہو */
-}
-      
+        .ayah-text {
+                text-align: left;
+                font-size: 1.8rem;
+                color: #d6e9ff;
+                font-family: amiri;
+            }
+        /* نویگیشن بار اینیمیشن */
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -90,11 +79,16 @@
             list-style: none;
             gap: 2px;
             padding: 10px 0;
+            opacity: 0;
+            animation: navFadeIn 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s forwards;
+            will-change: transform, opacity;
+            position: relative;
+            z-index: 1000;
         }
         
-        .nav-buttons li {
-            margin: 0;
-            flex-shrink: 0;
+        @keyframes navFadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         
         .nav-button {
@@ -106,91 +100,21 @@
             font-size: 1.05rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border-radius: 4px;
             text-decoration: none;
             display: inline-block;
             white-space: nowrap;
+            transform: scale(1);
         }
         
         .nav-button:hover {
             background-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Dropdown styles */
-        .admin-dropdown,
-        .courses-dropdown {
-            position: relative;
-        }
-
-        .admin-dropdown .nav-button::before,
-        .courses-dropdown .nav-button::before {
-            content: "▼";
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: transform 0.3s ease;
-            font-size: 0.8em;
-            color: white;
-        }
-
-        .admin-dropdown .nav-button,
-        .courses-dropdown .nav-button {
-            padding-left: 25px;
-        }
-
-        .buttons-grid {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: linear-gradient(to right, #002147a6, #1a3a6c);
-            border-radius: 5px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.466);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            min-width: 150px;
-            padding: 8px 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .admin-dropdown:hover .buttons-grid,
-        .courses-dropdown:hover .buttons-grid {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .admin-btn {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 16px;
-            font-family: 'Jameel Noori Nastaleeq', serif;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            border-radius: 4px;
-            margin: 2px 8px;
-        }
-
-        .admin-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Main content */
-        .main-content {
-            padding: 0 0 30px 0;
-            background-color: rgba(0, 58, 247, 0.753);
-            min-height: 700px;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
         }
         
+        /* ادارے کی تفصیل اینیمیشن */
         .institute-description {
             background-color: #02000062;
             border-right: 5px solid #1a6fd0;
@@ -199,6 +123,16 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             max-width: 900px;
+            opacity: 0;
+            animation: descriptionSlideIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.5s forwards;
+            will-change: transform, opacity;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes descriptionSlideIn {
+            0% { opacity: 0; transform: translateX(-30px) scale(0.97); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
         }
         
         .institute-description p {
@@ -208,7 +142,7 @@
             color: #ffffffe7;
         }
         
-        /* Excerpts Section */
+        /* Excerpt Cards - شاندار ڈیسک ٹاپ اینیمیشن */
         .excerpts {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -217,65 +151,46 @@
         }
 
         .excerpt-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(2px);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: calc(var(--delay) * 0.2s);
+            animation: cardReveal 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            will-change: transform, opacity, box-shadow;
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        
+        /* سٹیگرڈ کارڈ اینیمیشن */
+        .excerpt-card:nth-child(1) { animation-delay: 0.1s; }
+        .excerpt-card:nth-child(2) { animation-delay: 0.3s; }
+        .excerpt-card:nth-child(3) { animation-delay: 0.5s; }
+        .excerpt-card:nth-child(4) { animation-delay: 0.7s; }
+        .excerpt-card:nth-child(5) { animation-delay: 0.9s; }
+        .excerpt-card:nth-child(6) { animation-delay: 1.1s; }
+        
+        @keyframes cardReveal {
+            0% { opacity: 0; transform: translateY(40px) scale(0.9); filter: blur(2px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
         }
-
-        @keyframes slideInFromTop {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInFromLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInFromBottom {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .excerpt-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+            background: white;
         }
 
         .excerpt-card h3 {
             color: #002147;
             margin-bottom: 10px;
             font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .excerpt-card:hover h3 {
+            color: #1a6fd0;
         }
 
         .excerpt-card p {
@@ -291,20 +206,55 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            transition: background 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             font-family: 'Jameel Noori Nastaleeq', serif;
+            position: relative;
+            overflow: hidden;
         }
-
+        
         .read-more-btn:hover {
             background: #1a3a6c;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(26, 111, 208, 0.4);
+        }
+        
+        .read-more-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .read-more-btn:hover::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% { transform: scale(0, 0); opacity: 0.5; }
+            100% { transform: scale(20, 20); opacity: 0; }
         }
 
-        /* Footer */
+        /* فوٹر اینیمیشن */
         footer {
             background-color: #002147;
             color: rgb(255, 255, 255);
             padding: 30px 0;
             text-align: center;
+            opacity: 0;
+            animation: footerSlideUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.7s forwards;
+            will-change: transform, opacity;
+        }
+        
+        @keyframes footerSlideUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         
         .footer-content {
@@ -323,18 +273,81 @@
             color: #d6e9ff;
             margin-top: 20px;
         }
-        .nav-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-}
+        
+        /* Dropdown styles */
+        .admin-dropdown,
+        .courses-dropdown {
+            position: relative;
+            z-index: 4000;
+        }
 
+        .admin-dropdown .nav-button::before,
+        .courses-dropdown .nav-button::before {
+            content: "▼";
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+            color: white;
+       }
+
+        .admin-dropdown .nav-button,
+        .courses-dropdown .nav-button {
+            padding-left: 25px;
+        }
+
+        .buttons-grid {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(to right, #002147af, #1a3a6c);
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.466);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 5000;
+            min-width: 150px;
+            padding: 8px 0;
+            display: flex;
+            flex-direction: column;
+            transform-origin: top center;
+        }
+
+        .admin-dropdown:hover .buttons-grid,
+        .courses-dropdown:hover .buttons-grid {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .admin-btn {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            font-family: 'Jameel Noori Nastaleeq', serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            margin: 2px 8px;
+            transform: translateX(0);
+        }
+
+        .admin-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        
         /* Language selector */
         .lang-select {
             margin: 0;
             text-align: left;
-}
-
+        }
 
         .lang-select select {
             background: rgba(255,255,255,0.08);
@@ -345,24 +358,16 @@
             font-size: 1rem;
             font-family: 'Jameel Noori Nastaleeq', serif;
             outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-select select:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgb(255, 255, 255);
         }
 
-        /* Scrollbar styling */
-        nav::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        nav::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-        }
-
-        nav::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
-        }
-
-        /* Hamburger Menu Styles */
+        /* Hamburger Menu Styles - صرف موبائل میں */
         .hamburger-button {
             display: none;
             flex-direction: column;
@@ -374,6 +379,7 @@
             cursor: pointer;
             padding: 0;
             margin: 10px;
+            transition: all 0.3s ease;
         }
 
         .hamburger-button span {
@@ -381,7 +387,7 @@
             height: 3px;
             background: white;
             border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .mobile-nav-row {
@@ -398,10 +404,85 @@
         .mobile-lang {
             display: none;
         }
-
         
-        /* Responsive Design */
+        /* ========== 🌟 موبائل کے لیے مخصوص اینیمیشنز 🌟 ========== */
         @media (max-width: 768px) {
+            .excerpts {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+            
+            .excerpt-card {
+                animation: none;
+                opacity: 0;
+                transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+                            transform 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+                            box-shadow 0.4s ease;
+            }
+            
+            .excerpt-card.visible {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                animation: mobileCardReveal 0.9s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            }
+            
+            @keyframes mobileCardReveal {
+                0% { opacity: 0; transform: translateY(45px) scale(0.92); filter: blur(2px); }
+                100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+            }
+            
+            .nav-buttons {
+                display: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                padding: 15px 5px;
+                backdrop-filter: blur(5px);
+                margin-top: 5px;
+                width: 100%;
+                opacity: 1;
+            }
+            
+            .nav-buttons.mobile-visible {
+                display: flex !important;
+                animation: mobileNavSlide 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            }
+            
+            @keyframes mobileNavSlide {
+                0% { opacity: 0; transform: perspective(400px) rotateX(-15deg) translateY(-30px); }
+                100% { opacity: 1; transform: perspective(400px) rotateX(0) translateY(0); }
+            }
+            
+            .hamburger-button.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger-button.active span:nth-child(2) {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            
+            .hamburger-button.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .mobile-nav-row {
+                display: flex;
+                width: 100%;
+            }
+
+            .hamburger-button {
+                display: flex;
+            }
+
+            .desktop-lang {
+                display: none;
+            }
+
+            .mobile-lang {
+                display: block;
+            }
+            
             .header-content {
                 flex-direction: column;
                 text-align: center;
@@ -412,36 +493,7 @@
                 margin: 15px 0 0 0;
                 font-size: 1.2rem;
             }
-
-            .mobile-nav-row {
-                display: flex;
-            }
-
-            .hamburger-button {
-                display: flex;
-            }
-
-            .nav-buttons {
-                display: none; /* Hidden by default on mobile */
-            }
-
-            .nav-buttons.mobile-visible {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 5px;
-            }
-
-            .nav-button {
-                padding: 10px 12px;
-                font-size: 1rem;
-                min-width: 140px;
-            }
-
-            .excerpts {
-                grid-template-columns: 1fr;
-            }
-
+            
             .institute-description {
                 padding: 20px;
                 margin: 20px auto;
@@ -450,53 +502,58 @@
             .institute-description p {
                 font-size: 1.1rem;
             }
-
-            .lang-select {
-                position: static;
-                margin: 0px 0;
-                text-align: left;
-                order: 1;
-            }
-
-            .desktop-lang {
-                display: none;
-            }
-
-            .mobile-lang {
-                display: block;
+            
+            .nav-button {
+                padding: 10px 16px;
+                font-size: 1rem;
+                min-width: 140px;
+                white-space: nowrap;
             }
         }
-
+        
         @media (max-width: 480px) {
             .header-logo {
                 width: 70px;
             }
-            
+
             .nav-button {
-                padding: 8px 10px;
-                font-size: 0.9rem;
-                min-width: 120px;
+                padding: 8px 12px;
+                font-size: 0.95rem;
+                min-width: 130px;
             }
-            
+
             .excerpt-card h3 {
                 font-size: 1.3rem;
             }
-            
+
             .excerpt-card p {
                 font-size: 1rem;
             }
-            
+
             .footer-content p {
                 font-size: 1rem;
+            }
+        }
+        
+        /* ڈیسک ٹاپ میں کارڈز پر ہوور اثر */
+        @media (min-width: 769px) {
+            .excerpt-card {
+                transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                            box-shadow 0.5s ease,
+                            background 0.3s ease;
+            }
+            
+            .excerpt-card:hover {
+                transform: translateY(-12px) scale(1.04);
+                box-shadow: 0 25px 35px rgba(0, 0, 0, 0.2);
             }
         }
     </style>
 </head>
 <body>
     <!-- ہیڈر سیکشن -->
-    <header style="animation: slideInFromTop 1s ease forwards;">
+    <header>
         <div class="container">
-
             <div class="header-content">
                 <div class="logo-section">
                     <div class="logo-text">
@@ -537,6 +594,7 @@
                     <option value="ar">العربية</option>
                 </select>
             </div>
+            
             <ul class="nav-buttons">
                 <li class="admin-dropdown">
                     <a class="nav-button" data-i18n="nav_admin">ایڈمن</a>
@@ -565,39 +623,40 @@
                 <li><a href="#" class="nav-button" data-i18n="nav_contact">رابطہ</a></li>
                 <li><a href="#" class="nav-button" data-i18n="nav_gallery">گیلری</a></li>
             </ul>
-            <div class="institute-description" style="animation: slideInFromLeft 1s ease forwards; animation-delay: 0.5s;">
+            
+            <div class="institute-description">
                 <p id="description" data-i18n="description">
                     "الاتقان" گولڑہ موڑ اسلام آباد میں، I-14/2 (سیکٹر) کے قریب واقع ہے اور وفاق المدارس العربیہ پاکستان سے ملحق ایک معیاری دینی ادارہ ہے۔ یہاں تقریبا چالیس (40) رہائشی علماء کرام کو ہرسال، افتاء (مفتی کورس)، عربی اور انگریزی زبان کی مفت تعلیم دی جاتی ہے۔
                 </p>
             </div>
 
             <div class="excerpts">
-                <div class="excerpt-card" style="--delay: 0;">
+                <div class="excerpt-card" data-excerpt="1">
                     <h3 data-i18n="excerpt_title_1">داخلہ فارم</h3>
                     <p data-i18n="excerpt_desc_1">الاتقان اسلام آباد میں داخلہ لینے کے لیے آن لائن داخلہ فارم پر کرنا ضروری ہے، اسی کی بنیاد پر رجسٹریشن اور دیگر داخلہ کاروائی کی جاتی ہے۔</p>
                     <a href="admissionform.html" class="read-more-btn" data-i18n="excerpt_btn_1">داخلہ فارم جمع کرنے کے لیے کلک کریں</a>
                 </div>
-                <div class="excerpt-card" style="--delay: 1;">
+                <div class="excerpt-card" data-excerpt="2">
                     <h3 data-i18n="excerpt_title_2">دارالافتاء</h3>
                     <p data-i18n="excerpt_desc_2">لوگوں کے مسائل کے شرعی حل کے لیے دارالافتاء الاتقان اسلام آباد تحقیقی رہنمائی کے ساتھ آن لائن استفتاء کی سہولت فراہم کرتا ہے۔</p>
                     <a href="daruliftah.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
-                <div class="excerpt-card" style="--delay: 2;">
+                <div class="excerpt-card" data-excerpt="3">
                     <h3 data-i18n="excerpt_title_3">مستقبل کے منصوبے</h3>
                     <p data-i18n="excerpt_desc_3">الاتقان اسلام آباد کے مستقبل کے تعلیمی اور تعمیری منصوبوں کے بارے میں جانیں۔۔۔ نئے کورسز اور سہولیات کا آغاز۔</p>
                     <a href="mustaqbil.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
-                <div class="excerpt-card" style="--delay: 3;">
+                <div class="excerpt-card" data-excerpt="4">
                     <h3 data-i18n="excerpt_title_4">تخصص فی الافتاء</h3>
                     <p data-i18n="excerpt_desc_4">دارالعلوم کراچی کے فضلاء ومتخصصین کی نگرانی میں۔۔۔ کم از کم 100 تحقیقی فتاوی اور ایک تحقیقی مقالہ سند کے حصول کےلیے لازم ہیں۔</p>
                     <a href="ifta.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
-                <div class="excerpt-card" style="--delay: 4;">
+                <div class="excerpt-card" data-excerpt="5">
                     <h3 data-i18n="excerpt_title_5">تخصص فی اللغۃ العربیۃ والانجلیزیہ</h3>
                     <p data-i18n="excerpt_desc_5">عربی اور انگریزی زبانوں میں مہارت۔۔۔دو زبانوں کی عملی تربیت دینے کا منفرد ادارہ۔</p>
                     <a href="arabic-english.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
-                <div class="excerpt-card" style="--delay: 5;">
+                <div class="excerpt-card" data-excerpt="6">
                     <h3 data-i18n="excerpt_title_6">فیکلٹی ممبرز</h3>
                     <p data-i18n="excerpt_desc_6">ادارہ کے اساتذہ ومفتیان کرام کا تعارف۔</p>
                     <a href="faculty.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
@@ -607,7 +666,7 @@
     </main>
 
     <!-- فوٹر سیکشن -->
-    <footer style="animation: slideInFromBottom 1s ease forwards; animation-delay: 2s;">
+    <footer>
         <div class="footer-content">
             <p id="footer-text" data-i18n="footer_text">
                 ممتاز فضلاء کےلیے افتاء اور لغۃ عربیہ وانجلیزیہ کا معیاری ادارہ
@@ -760,16 +819,13 @@
             let initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'ur');
             if (navigator.language && navigator.language.startsWith('ar')) initial = 'ar';
 
-            // Function to sync both selectors
             const syncSelectors = (value) => {
                 if (desktopSelect) desktopSelect.value = value;
                 if (mobileSelect) mobileSelect.value = value;
             };
 
-            // Set initial values
             syncSelectors(initial);
 
-            // Add event listeners
             if (desktopSelect) {
                 desktopSelect.addEventListener('change', function() {
                     applyLanguage(this.value);
@@ -785,30 +841,71 @@
 
             applyLanguage(initial);
 
-            // Hamburger menu functionality
-            const hamburgerButton = document.querySelector('.hamburger-button');
-            const navButtons = document.querySelector('.nav-buttons');
+            // ========== 🌟 موبائل اسکرول اینیمیشنز (صرف موبائل میں) 🌟 ==========
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            
+            if (isMobile) {
+                const cards = document.querySelectorAll('.excerpt-card');
+                
+                // پہلے تمام کارڈز کو opacity:0 رکھیں
+                cards.forEach(card => {
+                    card.style.opacity = '0';
+                });
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, idx) => {
+                        if (entry.isIntersecting) {
+                            // سٹیگرڈ ڈیلی کے ساتھ کارڈز دکھائیں
+                            setTimeout(() => {
+                                entry.target.classList.add('visible');
+                            }, idx * 80); // 80ms کا فرق - بہت ہی سموتھ
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2, rootMargin: '0px 0px -10px 0px' });
+                
+                cards.forEach(card => observer.observe(card));
+            }
+            
+            // ========== 🌟 ہیمبرگر مینو 🌟 ==========
+            const hamburgerBtn = document.querySelector('.hamburger-button');
+            const navMenu = document.querySelector('.nav-buttons');
 
-            if (hamburgerButton && navButtons) {
-                hamburgerButton.addEventListener('click', function() {
-                    navButtons.classList.toggle('mobile-visible');
+            if (hamburgerBtn && navMenu) {
+                hamburgerBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('mobile-visible');
                 });
 
-                // Close menu when clicking outside or on a link
+                // باہر کلک کرنے پر مینو بند کریں
                 document.addEventListener('click', function(event) {
-                    if (!hamburgerButton.contains(event.target) && !navButtons.contains(event.target)) {
-                        navButtons.classList.remove('mobile-visible');
+                    if (isMobile && navMenu.classList.contains('mobile-visible') &&
+                        !hamburgerBtn.contains(event.target) && 
+                        !navMenu.contains(event.target)) {
+                        navMenu.classList.remove('mobile-visible');
+                        hamburgerBtn.classList.remove('active');
                     }
                 });
 
-                // Close menu when a nav link is clicked
-               navButtons.addEventListener('click', function(event) {
-    const isDropdownButton = event.target.closest('.admin-dropdown, .courses-dropdown');
-    if (!isDropdownButton && event.target.tagName === 'A') {
-        navButtons.classList.remove('mobile-visible');
-    }
-});
-
+                // لنک پر کلک کرنے پر مینو بند کریں
+                navMenu.addEventListener('click', function(event) {
+                    const isDropdownTrigger = event.target.closest('.admin-dropdown, .courses-dropdown');
+                    if (!isDropdownTrigger && event.target.tagName === 'A') {
+                        if (!event.target.classList.contains('admin-btn') && 
+                            !event.target.closest('.buttons-grid')) {
+                            navMenu.classList.remove('mobile-visible');
+                            hamburgerBtn.classList.remove('active');
+                        }
+                    }
+                });
+            }
+            
+            // ڈیسک ٹاپ میں تمام کارڈز کو نمایاں کریں
+            if (!isMobile) {
+                document.querySelectorAll('.excerpt-card').forEach(card => {
+                    card.style.opacity = '1';
+                });
             }
         });
     </script>
