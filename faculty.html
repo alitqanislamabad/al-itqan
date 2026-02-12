@@ -9,7 +9,7 @@
         /* === مکمل طور پر موبائل فرسٹ ڈیزائن === */
         @font-face {
             font-family: 'Jameel Noori Nastaleeq';
-            src: url('JameelNooriNastaleeq.ttf') format('truetype');
+            src: url('fonts/Jameel Noori Nastaleeq.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -646,8 +646,8 @@
             
             // پہلے سے محفوظ زبان
             let savedLang = 'ur';
-            try { 
-                savedLang = localStorage.getItem('faculty_lang') || 'ur'; 
+            try {
+                savedLang = localStorage.getItem('site_lang') || 'ur';
             } catch(e) {}
             
             if (select) {
@@ -669,4 +669,3 @@
     </script>
 </body>
 </html>
-
