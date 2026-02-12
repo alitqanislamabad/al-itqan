@@ -231,7 +231,40 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -461,9 +494,9 @@
 </head>
 <body>
     <!-- ہیڈر سیکشن -->
-    <header>
+    <header style="animation: slideInFromTop 1s ease forwards;">
         <div class="container">
-           
+
             <div class="header-content">
                 <div class="logo-section">
                     <div class="logo-text">
@@ -532,7 +565,7 @@
                 <li><a href="#" class="nav-button" data-i18n="nav_contact">رابطہ</a></li>
                 <li><a href="#" class="nav-button" data-i18n="nav_gallery">گیلری</a></li>
             </ul>
-            <div class="institute-description">
+            <div class="institute-description" style="animation: slideInFromLeft 1s ease forwards; animation-delay: 0.5s;">
                 <p id="description" data-i18n="description">
                     "الاتقان" گولڑہ موڑ اسلام آباد میں، I-14/2 (سیکٹر) کے قریب واقع ہے اور وفاق المدارس العربیہ پاکستان سے ملحق ایک معیاری دینی ادارہ ہے۔ یہاں تقریبا چالیس (40) رہائشی علماء کرام کو ہرسال، افتاء (مفتی کورس)، عربی اور انگریزی زبان کی مفت تعلیم دی جاتی ہے۔
                 </p>
@@ -574,7 +607,7 @@
     </main>
 
     <!-- فوٹر سیکشن -->
-    <footer>
+    <footer style="animation: slideInFromBottom 1s ease forwards; animation-delay: 2s;">
         <div class="footer-content">
             <p id="footer-text" data-i18n="footer_text">
                 ممتاز فضلاء کےلیے افتاء اور لغۃ عربیہ وانجلیزیہ کا معیاری ادارہ
