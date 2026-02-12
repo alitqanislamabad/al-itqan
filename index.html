@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
+     <script>
+        // force Urdu for multi-language site
+        try {
+            localStorage.setItem('preferredLanguage', 'ur'); // previous choice override
+            document.documentElement.lang = 'ur';
+            document.documentElement.dir = 'rtl';
+        } catch(e) {
+            console.log('Error setting default language', e);
+        }
+    </script>
     <meta name="google-site-verification" content="urZmpfrQ_hpWN1cdzo9XMnfceAIXQW0_csG88DjDKxM" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -998,3 +1008,4 @@ body.arabic-font .fa-brands {
     </script>
 </body>
 </html>
+
