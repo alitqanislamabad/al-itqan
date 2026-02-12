@@ -164,6 +164,13 @@
             opacity: 0;
             animation: cardReveal 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
             will-change: transform, opacity, box-shadow;
+            display: flex;
+            flex-direction: column;
+            height: 350px;
+        }
+
+        .excerpt-card .card-content {
+            flex-grow: 1;
         }
         
         /* سٹیگرڈ کارڈ اینیمیشن */
@@ -213,6 +220,7 @@
             font-family: 'Jameel Noori Nastaleeq', serif;
             position: relative;
             overflow: hidden;
+            margin-top: auto;
         }
         
         .read-more-btn:hover {
@@ -635,33 +643,45 @@
 
             <div class="excerpts">
                 <div class="excerpt-card" data-excerpt="1">
-                    <h3 data-i18n="excerpt_title_1">داخلہ فارم</h3>
-                    <p data-i18n="excerpt_desc_1">الاتقان اسلام آباد میں داخلہ لینے کے لیے آن لائن داخلہ فارم پر کرنا ضروری ہے، اسی کی بنیاد پر رجسٹریشن اور دیگر داخلہ کاروائی کی جاتی ہے۔</p>
+                    <div class="card-content">
+                        <h3 data-i18n="excerpt_title_1">داخلہ فارم</h3>
+                        <p data-i18n="excerpt_desc_1">الاتقان اسلام آباد میں داخلہ لینے کے لیے آن لائن داخلہ فارم پر کرنا ضروری ہے، اسی کی بنیاد پر رجسٹریشن اور دیگر داخلہ کاروائی کی جاتی ہے۔</p>
+                    </div>
                     <a href="admissionform.html" class="read-more-btn" data-i18n="excerpt_btn_1">داخلہ فارم جمع کرنے کے لیے کلک کریں</a>
                 </div>
                 <div class="excerpt-card" data-excerpt="2">
-                    <h3 data-i18n="excerpt_title_2">دارالافتاء</h3>
-                    <p data-i18n="excerpt_desc_2">لوگوں کے مسائل کے شرعی حل کے لیے دارالافتاء الاتقان اسلام آباد تحقیقی رہنمائی کے ساتھ آن لائن استفتاء کی سہولت فراہم کرتا ہے۔</p>
+                    <div class="card-content">
+                        <h3 data-i18n="excerpt_title_2">دارالافتاء</h3>
+                        <p data-i18n="excerpt_desc_2">لوگوں کے مسائل کے شرعی حل کے لیے دارالافتاء الاتقان اسلام آباد تحقیقی رہنمائی کے ساتھ آن لائن استفتاء کی سہولت فراہم کرتا ہے۔</p>
+                    </div>
                     <a href="daruliftah.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
                 <div class="excerpt-card" data-excerpt="3">
-                    <h3 data-i18n="excerpt_title_3">مستقبل کے منصوبے</h3>
-                    <p data-i18n="excerpt_desc_3">الاتقان اسلام آباد کے مستقبل کے تعلیمی اور تعمیری منصوبوں کے بارے میں جانیں۔۔۔ نئے کورسز اور سہولیات کا آغاز۔</p>
+                    <div class="card-content">
+                        <h3 data-i18n="excerpt_title_3">مستقبل کے منصوبے</h3>
+                        <p data-i18n="excerpt_desc_3">الاتقان اسلام آباد کے مستقبل کے تعلیمی اور تعمیری منصوبوں کے بارے میں جانیں۔۔۔ نئے کورسز اور سہولیات کا آغاز۔</p>
+                    </div>
                     <a href="mustaqbil.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
                 <div class="excerpt-card" data-excerpt="4">
-                    <h3 data-i18n="excerpt_title_4">تخصص فی الافتاء</h3>
-                    <p data-i18n="excerpt_desc_4">دارالعلوم کراچی کے فضلاء ومتخصصین کی نگرانی میں۔۔۔ کم از کم 100 تحقیقی فتاوی اور ایک تحقیقی مقالہ سند کے حصول کےلیے لازم ہیں۔</p>
+                    <div class="card-content">
+                        <h3 data-i18n="excerpt_title_4">تخصص فی الافتاء</h3>
+                        <p data-i18n="excerpt_desc_4">دارالعلوم کراچی کے فضلاء ومتخصصین کی نگرانی میں۔۔۔ کم از کم 100 تحقیقی فتاوی اور ایک تحقیقی مقالہ سند کے حصول کےلیے لازم ہیں۔</p>
+                    </div>
                     <a href="ifta.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
                 <div class="excerpt-card" data-excerpt="5">
-                    <h3 data-i18n="excerpt_title_5">تخصص فی اللغۃ العربیۃ والانجلیزیہ</h3>
-                    <p data-i18n="excerpt_desc_5">عربی اور انگریزی زبانوں میں مہارت۔۔۔دو زبانوں کی عملی تربیت دینے کا منفرد ادارہ۔</p>
+                    <div class="card-content">
+                        <h3 data-i18n="excerpt_title_5">تخصص فی اللغۃ العربیۃ والانجلیزیہ</h3>
+                        <p data-i18n="excerpt_desc_5">عربی اور انگریزی زبانوں میں مہارت۔۔۔دو زبانوں کی عملی تربیت دینے کا منفرد ادارہ۔</p>
+                    </div>
                     <a href="arabic-english.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
                 <div class="excerpt-card" data-excerpt="6">
-                    <h3 data-i18n="excerpt_title_6">فیکلٹی ممبرز</h3>
-                    <p data-i18n="excerpt_desc_6">ادارہ کے اساتذہ ومفتیان کرام کا تعارف۔</p>
+                    <div class="card-content">
+                        <h3 data-i18n="excerpt_title_6">فیکلٹی ممبرز</h3>
+                        <p data-i18n="excerpt_desc_6">ادارہ کے اساتذہ ومفتیان کرام کا تعارف۔</p>
+                    </div>
                     <a href="faculty.html" class="read-more-btn" data-i18n="read_more">مزید پڑھیں</a>
                 </div>
             </div>
@@ -921,4 +941,3 @@
     </script>
 </body>
 </html>
-
