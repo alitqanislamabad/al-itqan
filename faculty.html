@@ -1,50 +1,19 @@
-l <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>فیکلٹی ممبرز - الاتقان اسلام آباد</title>
     <style>
-        /* language selector (top-left) */
-        .lang-select {
-            position: absolute;
-            left: 20px;
-            top: 18px;
-            z-index: 5;
-        }
+        /* === مکمل طور پر موبائل فرسٹ ڈیزائن === */
         @font-face {
             font-family: 'Jameel Noori Nastaleeq';
             src: url('JameelNooriNastaleeq.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
-}
-        .lang-select select {
-            background: rgba(255,255,255,0.08);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.15);
-            padding: 6px 8px;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: 'jameel noori nastaleeq', serif;
-            outline: none;
-            -webkit-appearance: none;
-            appearance: none;
         }
 
-        /* language-specific font choices */
-        html[lang="en"] body {
-            font-family: 'Noto Sans', 'El Messiri', Arial, sans-serif;
-        }
-
-        html[lang="ar"] body {
-            font-family: 'Amiri', 'Noto Sans Arabic', 'El Messiri', serif;
-        }
-
-        html[lang="ur"] body {
-            font-family: 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', 'Amiri', serif;
-        }
- 
         * {
             margin: 0;
             padding: 0;
@@ -52,272 +21,515 @@ l <!DOCTYPE html>
         }
 
         body {
-            font-family: 'jameel noori nastaleeq', serif;
-            color: #31005f;
+            font-family: 'Jameel Noori Nastaleeq', 'Amiri', serif;
+            color: #2d1b4e;
             line-height: 1.6;
-            background-image:
-                linear-gradient(rgba(3,100,170,0.40), rgba(3,100,170,0.32)),
-                url('background.png');
-            background-size: cover;
-            background-position: center;
-            background-color: #001f47cb;
-            background-repeat: no-repeat;
+            background: linear-gradient(145deg, #0a2a4a 0%, #1a3f5c 100%);
             background-attachment: fixed;
-            background-blend-mode: overlay;
-            padding: 20px;
+            padding: 10px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* === لینگویج سلیکٹر - موبائل فرسٹ === */
+        .lang-select {
+            position: sticky;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .lang-select select {
+            background: rgba(0, 33, 71, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-family: 'Jameel Noori Nastaleeq', serif;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            width: auto;
+            min-width: 140px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+            padding-left: 45px;
+        }
+
+        /* === ہیڈنگ - موبائل فرسٹ === */
         h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background-color: rgba(0, 0, 0, 0.295);
+            font-size: 2rem;
+            font-weight: 700;
             text-align: center;
-            color: #00ecfd;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            padding-bottom: 10px;
+            position: relative;
+            word-break: break-word;
         }
 
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #00ecfd, #ffb347);
+            border-radius: 3px;
+        }
+
+        /* === مین سیکشن - مکمل طور پر موبائل کے لیے === */
         .main-section {
-            background-color: rgba(255, 255, 255, 0.555);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: 30px;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            font-family: 'jameel noori nastaleeq', serif;
-            font-size: 1.2rem;
-            line-height: 2;
-            text-align: center;
-            color: #34005f;
-        }
-
-        .main-section p {
+            padding: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
             margin-bottom: 20px;
+            flex: 1;
+            width: 100%;
+            overflow-x: hidden;
         }
 
+        /* === انٹرو ٹیکسٹ - موبائل فرینڈلی === */
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #1e2f4e;
+            background: rgba(0, 188, 212, 0.06);
+            padding: 18px;
+            border-radius: 25px;
+            margin-bottom: 25px;
+            border-right: 5px solid #00bcd4;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        /* === فیکلٹی گرڈ - سنگل کالم موبائل === */
+        .faculty-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* === فیکلٹی کارڈز - موبائل آپٹمائزڈ === */
         .faculty-member {
-            opacity: 0;
-            transform: scale(0.95);
-        }
-
-        .faculty-member.animate {
+            background: white;
+            border-radius: 25px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 33, 71, 0.15);
+            transition: all 0.3s ease;
+            width: 100%;
+            margin: 0;
             opacity: 1;
-            transform: scale(1);
+            transform: none;
+            border: 1px solid rgba(255,255,255,0.8);
         }
 
-
+        /* === تصاویر - موبائل سائز === */
         .faculty-img {
-            width: 200px;
-            height: 200px;
+            width: 120px;
+            height: 120px;
+            min-width: 120px;
+            min-height: 120px;
             object-fit: cover;
             border-radius: 50%;
-        }
-
-        .faculty-member h3 {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #002147;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
 
+        .faculty-member:hover .faculty-img {
+            transform: scale(1.05);
+        }
+
+        /* === نام - موبائل سائز === */
+        .faculty-member h3 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #003b6f;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            word-break: break-word;
+            width: 100%;
+        }
+
+        .faculty-member h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: #0077be;
+            border-radius: 2px;
+        }
+
+        /* === تفصیل - موبائل ریڈایبل === */
         .faculty-member p {
-            font-size: 2rem;
-            line-height: 2;
-            text-align: center;
-            color: #070049;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #2c3e50;
+            text-align: justify;
+            padding: 12px;
+            background: rgba(245, 245, 250, 0.6);
+            border-radius: 20px;
+            width: 100%;
+            margin-top: 5px;
+            word-break: break-word;
         }
-        .faculty-member {
-            opacity: 0;
-            transform: scale(0.95);
-            transition: all 1s ease;
-        }
-        
 
-
+        /* === واپس جائیں بٹن - موبائل فرینڈلی === */
         .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 20px 40px; /* padding بڑھا دی */
-            background-color: #002147;
+            display: block;
+            width: 100%;
+            margin: 15px auto 10px;
+            padding: 14px 20px;
+            background: linear-gradient(145deg, #003366, #002147);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-family: 'jameel noori nastaleeq', serif;
-            font-size: 1.5rem; /* فونٹ سائز بڑا کیا */
-            transition: background-color 0.3s ease;
-            /* اگر چوڑائی کنٹرول کرنی ہو تو یہاں width بھی لگا سکتے ہیں */
+            border-radius: 50px;
+            font-family: 'Jameel Noori Nastaleeq', serif;
+            font-size: 1.4rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            letter-spacing: 1px;
         }
 
-        .back-link:hover {
-            background-color: #1a3a6c;
+        .back-link:active {
+            transform: scale(0.97);
+            background: linear-gradient(145deg, #002244, #001b36);
         }
 
-        @media (min-width: 769px) {
+        /* === ٹیبلٹ ڈیزائن === */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
             .container {
-                max-width: 4000px;
-                padding: 8px;
+                padding: 20px;
             }
-
+            
             h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
-
+            
+            h1::after {
+                width: 150px;
+                height: 4px;
+            }
+            
             .main-section {
+                padding: 30px;
+                border-radius: 40px;
+            }
+            
+            .intro-text {
+                font-size: 1.3rem;
+                padding: 25px;
+                border-right-width: 8px;
+            }
+            
+            .faculty-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-                padding: 2px;
-                font-size: 1.5rem;
-                max-width: 1200px;
-                margin: 0 auto;
+                gap: 25px;
             }
-
-            .main-section p {
-                grid-column: 1 / -1;
+            
+            .faculty-member {
+                padding: 25px;
             }
+            
+            .faculty-img {
+                width: 160px;
+                height: 160px;
+                min-width: 160px;
+                min-height: 160px;
+            }
+            
+            .faculty-member h3 {
+                font-size: 1.8rem;
+            }
+            
+            .faculty-member p {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+            
+            .back-link {
+                width: auto;
+                display: inline-block;
+                padding: 16px 50px;
+                font-size: 1.6rem;
+                margin: 20px auto 10px;
+            }
+            
+            .lang-select select {
+                font-size: 1.2rem;
+                padding: 14px 30px 14px 50px;
+                min-width: 180px;
+            }
+        }
 
+        /* === ڈیسک ٹاپ ڈیزائن === */
+        @media (min-width: 1024px) {
+            .faculty-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .faculty-img {
+                width: 180px;
+                height: 180px;
+            }
+            
             .faculty-member h3 {
                 font-size: 2rem;
             }
-
+            
             .faculty-member p {
-                font-size: 1.5rem;
-            }
-
-            .lang-select select {
-                padding: 8px 12px;
-                font-size: 1rem;
-            }
-
-            .back-link {
-                padding: 15px 30px;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
         }
 
-        @media (max-width: 768px) {
+        /* === بڑی اسکرینز === */
+        @media (min-width: 1400px) {
+            .faculty-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* === چھوٹی موبائل اسکرینز === */
+        @media (max-width: 380px) {
             body {
-                padding: 10px;
-                font-family: 'jameel noori nastaleeq', 'Noto Naskh Arabic', 'Amiri', serif;
+                padding: 8px;
             }
-
-            .container {
-                padding: 15px;
-            }
-
+            
             h1 {
-                font-size: 1.5rem;
-                font-family: 'jameel noori nastaleeq'
+                font-size: 1.6rem;
             }
-
-            .main-section {
-                padding: 20px;
-                font-family: 'jameel noori nastaleeq', serif;
-                font-size: 0.9rem;
-            }
-
-            .faculty-member {
-                padding: 15px;
-                justify-content: center;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .faculty-text {
-                text-align: center;
-            }
-
-            .faculty-member h3 {
-                font-size: 1rem;
-            }
-
-            .faculty-member p {
-                font-size: 0.85rem;
-                text-align: justify;
-            }
-
+            
             .faculty-img {
-                width: 60px;
-                height: 60px;
+                width: 100px;
+                height: 100px;
+                min-width: 100px;
+                min-height: 100px;
             }
+            
+            .faculty-member h3 {
+                font-size: 1.2rem;
+            }
+            
+            .faculty-member p {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+            
+            .back-link {
+                font-size: 1.2rem;
+                padding: 12px 20px;
+            }
+            
+            .intro-text {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
 
-            body {
-                font-family: 'jameel noori nastaleeq', 'Noto Naskh Arabic', 'Amiri', serif;
+        /* === یقینی بنائیں کہ تمام کونٹینٹ نظر آئے === */
+        .faculty-member:last-child {
+            margin-bottom: 5px;
+        }
+
+        .container > * {
+            flex-shrink: 0;
+        }
+
+        /* === اسکرول ایفیکٹ === */
+        .fade-in-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0.8;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === کسٹم اسکرول بار - صرف ڈیسک ٹاپ === */
+        @media (min-width: 1024px) {
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #0a1f2e;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: linear-gradient(145deg, #0072b0, #00a1c9);
+                border-radius: 10px;
+                border: 2px solid #0a1f2e;
+            }
+        }
+
+        /* === موبائل میں تمام مواد دکھانے کے لیے === */
+        .main-section {
+            max-height: none;
+            overflow: visible;
+        }
+
+        body {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* === یقینی بنائیں کہ کوئی مواد کٹ نہ ہو === */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* === کارڈز پر ہوور صرف ڈیسک ٹاپ === */
+        @media (min-width: 1024px) {
+            .faculty-member:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(0, 188, 212, 0.3);
             }
         }
     </style>
 </head>
 <body>
     <div class="lang-select">
-        <select id="lang-select" aria-label="Select language">
-            <option value="ur">اردو</option>
-            <option value="en">English</option>
-            <option value="ar">العربية</option>
+        <select id="lang-select" aria-label="زبان منتخب کریں">
+            <option value="ur">🇵🇰 اردو</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="ar">🇸🇦 العربية</option>
         </select>
     </div>
+
     <div class="container">
         <h1 data-i18n="faculty_title">فیکلٹی ممبرز</h1>
 
         <div class="main-section">
-            <p data-i18n="faculty_intro">ادارۃ الاتقان اسلام آباد اپنے اساتذہ و عملہ پر فخر کرتا ہے۔ ہمارے ہاں ایسے جید اور تجربہ کار اساتذہ موجود ہیں جنہوں نے ملک کی ممتاز دینی و عصری جامعات سے تعلیم حاصل کی اور مختلف اداروں میں تدریسی و علمی خدمات انجام دیں۔ یہ حضرات نہ صرف اپنے اپنے میدان میں ماہر ہیں بلکہ طلبہ کی علمی، فکری اور عملی تربیت میں بھی خصوصی توجہ دیتے ہیں۔</p>
-
-            <div class="faculty-member">
-                <img src="501304807_122171777828439375_6817733778473225572_n (1)_edited.jpg" alt="ڈاکٹر مفتی رحیم اللہ صاحب" class="faculty-img">
-                <div class="faculty-text">
-                    <h3 data-i18n="faculty_1_name">ڈاکٹر مفتی رحیم اللہ صاحب</h3>
-                    <p data-i18n="faculty_1_desc">آپ کاتعلق کوہاٹ سے ہے، دارالعلوم کراچی کے فاضل ہیں اور تین سالہ تخصص فی الفقہ مکمل کر چکے ہیں، گذشتہ ایک دہائی سے تدریسی خدمات انجام دے رہے ہیں اور بحریہ یونیورسٹی اسلام آباد میں اسسٹنٹ پروفیسر کے طور پر بھی خدمات سرانجام دے رہے ہیں، ادارہ ہذا میں آپ ڈائریکٹر کی حیثیت سے علمی و انتظامی قیادت کر رہے ہیں اور نصاب و نظام تعلیم کی نگرانی آپ ہی کے ذمہ ہے۔</p>
-                </div>
+            <div class="intro-text" data-i18n="faculty_intro">
+                ادارۃ الاتقان اسلام آباد اپنے اساتذہ و عملہ پر فخر کرتا ہے۔ ہمارے ہاں ایسے جید اور تجربہ کار اساتذہ موجود ہیں جنہوں نے ملک کی ممتاز دینی و عصری جامعات سے تعلیم حاصل کی اور مختلف اداروں میں تدریسی و علمی خدمات انجام دیں۔ یہ حضرات نہ صرف اپنے اپنے میدان میں ماہر ہیں بلکہ طلبہ کی علمی، فکری اور عملی تربیت میں بھی خصوصی توجہ دیتے ہیں۔
             </div>
 
-            <div class="faculty-member">
-                <img src="398693759_796369805832044_5566140223752972635_n.jpg" alt="ڈاکٹر مفتی شاد محمد شاد صاحب" class="faculty-img">
-                <div class="faculty-text">
-                    <h3 data-i18n="faculty_2_name">ڈاکٹر مفتی شاد محمد شاد صاحب</h3>
-                    <p data-i18n="faculty_2_desc">جامعہ دارالعلوم کراچی کے فاضل و متخصص ہیں اور دارالرشاد اسلام آباد کےمؤسس ہیں، علمی و فقہی میدان میں گہرا تجربہ رکھتے ہیں، ادارہ ہذا میں آپ فقہی کتب کے مدرس ہیں اور اعلیٰ درجے کی فقہی بصیرت کے ساتھ طلبہ کی رہنمائی کرتے ہیں۔</p>
+            <div class="faculty-grid">
+                <!-- فیکلٹی ممبر 1 -->
+                <div class="faculty-member">
+                    <img src="501304807_122171777828439375_6817733778473225572_n (1)_edited.jpg" alt="ڈاکٹر مفتی رحیم اللہ صاحب" class="faculty-img" loading="lazy">
+                    <div class="faculty-text">
+                        <h3 data-i18n="faculty_1_name">ڈاکٹر مفتی رحیم اللہ صاحب</h3>
+                        <p data-i18n="faculty_1_desc">
+                            آپ کا تعلق کوہاٹ سے ہے، دارالعلوم کراچی کے فاضل ہیں اور تین سالہ تخصص فی الفقہ مکمل کر چکے ہیں، گذشتہ ایک دہائی سے تدریسی خدمات انجام دے رہے ہیں اور بحریہ یونیورسٹی اسلام آباد میں اسسٹنٹ پروفیسر کے طور پر بھی خدمات سرانجام دے رہے ہیں، ادارہ ہذا میں آپ ڈائریکٹر کی حیثیت سے علمی و انتظامی قیادت کر رہے ہیں اور نصاب و نظام تعلیم کی نگرانی آپ ہی کے ذمہ ہے۔
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faculty-member">
-                <img src="492538326_1209156290590633_6688716037523305323_n.jpg" alt="مولانا مفتی سیف اللہ صاحب" class="faculty-img">
-                <div class="faculty-text">
-                    <h3 data-i18n="faculty_3_name">مولانا مفتی سیف اللہ صاحب</h3>
-                    <p data-i18n="faculty_3_desc">فاضل جامعہ دارالعلوم کراچی ہیں اور دس سالہ تدریسی تجربہ رکھتے ہیں،آپ کا تعلق مانسہرہ(بٹگرام)سے ہے، عربی زبان و ادب پر گہری دسترس رکھتے ہیں اور اپنے طلبہ کو جدید تدریسی انداز میں عربی سکھانے پر خاص مہارت رکھتے ہیں، ادارہ ہذا میں آپ اسسٹنٹ ڈائریکٹر ہیں اور تدریسی و تربیتی امور میں ڈائریکٹر کے معاون کی حیثیت سے اہم کردار ادا کر رہے ہیں۔</p>
+                <!-- فیکلٹی ممبر 2 -->
+                <div class="faculty-member">
+                    <img src="398693759_796369805832044_5566140223752972635_n.jpg" alt="ڈاکٹر مفتی شاد محمد شاد صاحب" class="faculty-img" loading="lazy">
+                    <div class="faculty-text">
+                        <h3 data-i18n="faculty_2_name">ڈاکٹر مفتی شاد محمد شاد صاحب</h3>
+                        <p data-i18n="faculty_2_desc">
+                            جامعہ دارالعلوم کراچی کے فاضل و متخصص ہیں اور دارالرشاد اسلام آباد کے مؤسس ہیں، علمی و فقہی میدان میں گہرا تجربہ رکھتے ہیں، ادارہ ہذا میں آپ فقہی کتب کے مدرس ہیں اور اعلیٰ درجے کی فقہی بصیرت کے ساتھ طلبہ کی رہنمائی کرتے ہیں۔
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faculty-member">
-                <img src="WhatsApp Image 2026-02-07 at 11.30.57 AM.jpeg" alt="مولانا ڈاکٹر نور ولی شاہ صاحب" class="faculty-img">
-                <div class="faculty-text">
-                    <h3 data-i18n="faculty_4_name">مولانا ڈاکٹر نور ولی شاہ صاحب</h3>
-                    <p data-i18n="faculty_4_desc">آپ کا تعلق ڈی آئی خان سےہے،جامعہ علوم اسلامیہ بنوری ٹاؤن کراچی کے فاضل ہیں اور نمل یونیورسٹی اسلام آباد میں پروفیسر کی حیثیت سے بھی اپنی خدمات انجام دے رہے ہیں، انگریزی زبان میں آپ کی مہارت ہمارے ادارے کے لیے ایک قیمتی اضافہ ہے، ادارہ ہذا میں آپ انگریزی زبان کے استاد ہیں اور طلبہ کی لسانی استعداد کو بہتر بنانے میں کلیدی کردار ادا کر رہے ہیں۔</p>
+                <!-- فیکلٹی ممبر 3 -->
+                <div class="faculty-member">
+                    <img src="492538326_1209156290590633_6688716037523305323_n.jpg" alt="مولانا مفتی سیف اللہ صاحب" class="faculty-img" loading="lazy">
+                    <div class="faculty-text">
+                        <h3 data-i18n="faculty_3_name">مولانا مفتی سیف اللہ صاحب</h3>
+                        <p data-i18n="faculty_3_desc">
+                            فاضل جامعہ دارالعلوم کراچی ہیں اور دس سالہ تدریسی تجربہ رکھتے ہیں، آپ کا تعلق مانسہرہ (بٹگرام) سے ہے، عربی زبان و ادب پر گہری دسترس رکھتے ہیں اور اپنے طلبہ کو جدید تدریسی انداز میں عربی سکھانے پر خاص مہارت رکھتے ہیں، ادارہ ہذا میں آپ اسسٹنٹ ڈائریکٹر ہیں اور تدریسی و تربیتی امور میں ڈائریکٹر کے معاون کی حیثیت سے اہم کردار ادا کر رہے ہیں۔
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faculty-member">
-                <img src="WhatsApp Image 2025-09-14 at 10.34.31_e3bd38fb.jpg" alt="مولانا فیصل صاحب" class="faculty-img">
-                <div class="faculty-text">
-                    <h3 data-i18n="faculty_5_name">مولانا فیصل صاحب</h3>
-                    <p data-i18n="faculty_5_desc">آپ کا تعلق کوہاٹ سے ہے،جامعہ فریدیہ اسلام آباد کے فاضل اور پراچہ جامعہ اسلامیہ انجرا کے متخصص ہیں، ادارہ ہذا میں آپ عربی زبان کے استاد ہیں اور نصاب کی تدریس میں جدید اسالیب کو بروئے کار لاتے ہوئے آپ طلبہ کی زبان و بیان کی مہارتوں کو بہتر بنانے میں خصوصی توجہ دیتے ہیں۔</p>
+                <!-- فیکلٹی ممبر 4 -->
+                <div class="faculty-member">
+                    <img src="WhatsApp Image 2026-02-07 at 11.30.57 AM.jpeg" alt="مولانا ڈاکٹر نور ولی شاہ صاحب" class="faculty-img" loading="lazy">
+                    <div class="faculty-text">
+                        <h3 data-i18n="faculty_4_name">مولانا ڈاکٹر نور ولی شاہ صاحب</h3>
+                        <p data-i18n="faculty_4_desc">
+                            آپ کا تعلق ڈی آئی خان سے ہے، جامعہ علوم اسلامیہ بنوری ٹاؤن کراچی کے فاضل ہیں اور نمل یونیورسٹی اسلام آباد میں پروفیسر کی حیثیت سے بھی اپنی خدمات انجام دے رہے ہیں، انگریزی زبان میں آپ کی مہارت ہمارے ادارے کے لیے ایک قیمتی اضافہ ہے، ادارہ ہذا میں آپ انگریزی زبان کے استاد ہیں اور طلبہ کی لسانی استعداد کو بہتر بنانے میں کلیدی کردار ادا کر رہے ہیں۔
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faculty-member">
-                <img src="WhatsApp Image 2025-09-28 at 20.02.18_977a2427.jpg" alt="مولانا افتخار صاحب" class="faculty-img">
-                <div class="faculty-text">
-                    <h3 data-i18n="faculty_6_name">مولانا افتخار صاحب</h3>
-                    <p data-i18n="faculty_6_desc">مانسہرہ(شانگلہ)سے آپ کا تعلق ہے، جامعہ حقانیہ اکوڑہ خٹک کے فاضل ہیں اور تخصص فی الافتاء ، الاتقان اسلام آباد سے مکمل کیا ہے، فقہ و فتاویٰ کے میدان میں مہارت رکھتے ہیں اور ادارہ ہذا میں فتاویٰ کی تصحیح کی ذمہ داری سنبھالے ہوئے ہیں، آپ کی نگرانی میں طلبہ کو عملی طور پر فتویٰ نویسی کی تربیت دی جاتی ہے۔</p>
+                <!-- فیکلٹی ممبر 5 -->
+                <div class="faculty-member">
+                    <img src="WhatsApp Image 2025-09-14 at 10.34.31_e3bd38fb.jpg" alt="مولانا فیصل صاحب" class="faculty-img" loading="lazy">
+                    <div class="faculty-text">
+                        <h3 data-i18n="faculty_5_name">مولانا فیصل صاحب</h3>
+                        <p data-i18n="faculty_5_desc">
+                            آپ کا تعلق کوہاٹ سے ہے، جامعہ فریدیہ اسلام آباد کے فاضل اور پراچہ جامعہ اسلامیہ انجرا کے متخصص ہیں، ادارہ ہذا میں آپ عربی زبان کے استاد ہیں اور نصاب کی تدریس میں جدید اسالیب کو بروئے کار لاتے ہوئے طلبہ کی زبان و بیان کی مہارتوں کو بہتر بنانے میں خصوصی توجہ دیتے ہیں۔
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faculty-member">
-                <img src="IMG_4456 (2).JPG" alt="حبیب اللہ امین" class="faculty-img">
-                <div class="faculty-text">
-                    <h3 data-i18n="faculty_7_name">حبیب اللہ امین</h3>
-                    <p data-i18n="faculty_7_desc">جامعہ دارالعلوم کراچی کے فاضل اور الاتقان اسلام آباد کے متخصص ہیں، ادارہ ہذا میں ناظم امور داخلیہ اور آئی ٹی اسسٹنٹ کے طور پر ذمہ داریاں ادا کر رہے ہیں، تعلیمی و انتظامی امور کی تنظیم اور انفارمیشن ٹیکنالوجی کی سہولیات کو بہتر بنانا آپ ہی کی نگرانی میں ہوتا ہے۔</p>
+                <!-- فیکلٹی ممبر 6 -->
+                <div class="faculty-member">
+                    <img src="WhatsApp Image 2025-09-28 at 20.02.18_977a2427.jpg" alt="مولانا افتخار صاحب" class="faculty-img" loading="lazy">
+                    <div class="faculty-text">
+                        <h3 data-i18n="faculty_6_name">مولانا افتخار صاحب</h3>
+                        <p data-i18n="faculty_6_desc">
+                            مانسہرہ (شانگلہ) سے آپ کا تعلق ہے، جامعہ حقانیہ اکوڑہ خٹک کے فاضل ہیں اور تخصص فی الافتاء، الاتقان اسلام آباد سے مکمل کیا ہے، فقہ و فتاویٰ کے میدان میں مہارت رکھتے ہیں اور ادارہ ہذا میں فتاویٰ کی تصحیح کی ذمہ داری سنبھالے ہوئے ہیں، آپ کی نگرانی میں طلبہ کو عملی طور پر فتویٰ نویسی کی تربیت دی جاتی ہے۔
+                        </p>
+                    </div>
+                </div>
+
+                <!-- فیکلٹی ممبر 7 -->
+                <div class="faculty-member">
+                    <img src="IMG_4456 (2).JPG" alt="حبیب اللہ امین" class="faculty-img" loading="lazy">
+                    <div class="faculty-text">
+                        <h3 data-i18n="faculty_7_name">حبیب اللہ امین</h3>
+                        <p data-i18n="faculty_7_desc">
+                            جامعہ دارالعلوم کراچی کے فاضل اور الاتقان اسلام آباد کے متخصص ہیں، ادارہ ہذا میں ناظم امور داخلیہ اور آئی ٹی اسسٹنٹ کے طور پر ذمہ داریاں ادا کر رہے ہیں، تعلیمی و انتظامی امور کی تنظیم اور انفارمیشن ٹیکنالوجی کی سہولیات کو بہتر بنانا آپ ہی کی نگرانی میں ہوتا ہے۔
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -326,23 +538,23 @@ l <!DOCTYPE html>
     </div>
 
     <script>
-        // Translations for faculty page
+        // === ترجمہ ڈیٹا ===
         const facultyTranslations = {
             ur: {
                 faculty_title: 'فیکلٹی ممبرز',
                 faculty_intro: 'ادارۃ الاتقان اسلام آباد اپنے اساتذہ و عملہ پر فخر کرتا ہے۔ ہمارے ہاں ایسے جید اور تجربہ کار اساتذہ موجود ہیں جنہوں نے ملک کی ممتاز دینی و عصری جامعات سے تعلیم حاصل کی اور مختلف اداروں میں تدریسی و علمی خدمات انجام دیں۔ یہ حضرات نہ صرف اپنے اپنے میدان میں ماہر ہیں بلکہ طلبہ کی علمی، فکری اور عملی تربیت میں بھی خصوصی توجہ دیتے ہیں۔',
                 faculty_1_name: 'ڈاکٹر مفتی رحیم اللہ صاحب',
-                faculty_1_desc: 'آپ کاتعلق کوہاٹ سے ہے، دارالعلوم کراچی کے فاضل ہیں اور تین سالہ تخصص فی الفقہ مکمل کر چکے ہیں، گذشتہ ایک دہائی سے تدریسی خدمات انجام دے رہے ہیں اور بحریہ یونیورسٹی اسلام آباد میں اسسٹنٹ پروفیسر کے طور پر بھی خدمات سرانجام دے رہے ہیں، ادارہ ہذا میں آپ ڈائریکٹر کی حیثیت سے علمی و انتظامی قیادت کر رہے ہیں اور نصاب و نظام تعلیم کی نگرانی آپ ہی کے ذمہ ہے۔',
+                faculty_1_desc: 'آپ کا تعلق کوہاٹ سے ہے، دارالعلوم کراچی کے فاضل ہیں اور تین سالہ تخصص فی الفقہ مکمل کر چکے ہیں، گذشتہ ایک دہائی سے تدریسی خدمات انجام دے رہے ہیں اور بحریہ یونیورسٹی اسلام آباد میں اسسٹنٹ پروفیسر کے طور پر بھی خدمات سرانجام دے رہے ہیں، ادارہ ہذا میں آپ ڈائریکٹر کی حیثیت سے علمی و انتظامی قیادت کر رہے ہیں اور نصاب و نظام تعلیم کی نگرانی آپ ہی کے ذمہ ہے۔',
                 faculty_2_name: 'ڈاکٹر مفتی شاد محمد شاد صاحب',
-                faculty_2_desc: 'جامعہ دارالعلوم کراچی کے فاضل و متخصص ہیں اور دارالرشاد اسلام آباد کےمؤسس ہیں، علمی و فقہی میدان میں گہرا تجربہ رکھتے ہیں، ادارہ ہذا میں آپ فقہی کتب کے مدرس ہیں اور اعلیٰ درجے کی فقہی بصیرت کے ساتھ طلبہ کی رہنمائی کرتے ہیں۔',
+                faculty_2_desc: 'جامعہ دارالعلوم کراچی کے فاضل و متخصص ہیں اور دارالرشاد اسلام آباد کے مؤسس ہیں، علمی و فقہی میدان میں گہرا تجربہ رکھتے ہیں، ادارہ ہذا میں آپ فقہی کتب کے مدرس ہیں اور اعلیٰ درجے کی فقہی بصیرت کے ساتھ طلبہ کی رہنمائی کرتے ہیں۔',
                 faculty_3_name: 'مولانا مفتی سیف اللہ صاحب',
-                faculty_3_desc: 'فاضل جامعہ دارالعلوم کراچی ہیں اور دس سالہ تدریسی تجربہ رکھتے ہیں،آپ کا تعلق مانسہرہ(بٹگرام)سے ہے، عربی زبان و ادب پر گہری دسترس رکھتے ہیں اور اپنے طلبہ کو جدید تدریسی انداز میں عربی سکھانے پر خاص مہارت رکھتے ہیں، ادارہ ہذا میں آپ اسسٹنٹ ڈائریکٹر ہیں اور تدریسی و تربیتی امور میں ڈائریکٹر کے معاون کی حیثیت سے اہم کردار ادا کر رہے ہیں۔',
+                faculty_3_desc: 'فاضل جامعہ دارالعلوم کراچی ہیں اور دس سالہ تدریسی تجربہ رکھتے ہیں، آپ کا تعلق مانسہرہ (بٹگرام) سے ہے، عربی زبان و ادب پر گہری دسترس رکھتے ہیں اور اپنے طلبہ کو جدید تدریسی انداز میں عربی سکھانے پر خاص مہارت رکھتے ہیں، ادارہ ہذا میں آپ اسسٹنٹ ڈائریکٹر ہیں اور تدریسی و تربیتی امور میں ڈائریکٹر کے معاون کی حیثیت سے اہم کردار ادا کر رہے ہیں۔',
                 faculty_4_name: 'مولانا ڈاکٹر نور ولی شاہ صاحب',
-                faculty_4_desc: 'آپ کا تعلق ڈی آئی خان سےہے،جامعہ علوم اسلامیہ بنوری ٹاؤن کراچی کے فاضل ہیں اور نمل یونیورسٹی اسلام آباد میں پروفیسر کی حیثیت سے بھی اپنی خدمات انجام دے رہے ہیں، انگریزی زبان میں آپ کی مہارت ہمارے ادارے کے لیے ایک قیمتی اضافہ ہے، ادارہ ہذا میں آپ انگریزی زبان کے استاد ہیں اور طلبہ کی لسانی استعداد کو بہتر بنانے میں کلیدی کردار ادا کر رہے ہیں۔',
+                faculty_4_desc: 'آپ کا تعلق ڈی آئی خان سے ہے، جامعہ علوم اسلامیہ بنوری ٹاؤن کراچی کے فاضل ہیں اور نمل یونیورسٹی اسلام آباد میں پروفیسر کی حیثیت سے بھی اپنی خدمات انجام دے رہے ہیں، انگریزی زبان میں آپ کی مہارت ہمارے ادارے کے لیے ایک قیمتی اضافہ ہے، ادارہ ہذا میں آپ انگریزی زبان کے استاد ہیں اور طلبہ کی لسانی استعداد کو بہتر بنانے میں کلیدی کردار ادا کر رہے ہیں۔',
                 faculty_5_name: 'مولانا فیصل صاحب',
-                faculty_5_desc: 'آپ کا تعلق کوہاٹ سے ہے،جامعہ فریدیہ اسلام آباد کے فاضل اور پراچہ جامعہ اسلامیہ انجرا کے متخصص ہیں، ادارہ ہذا میں آپ عربی زبان کے استاد ہیں اور نصاب کی تدریس میں جدید اسالیب کو بروئے کار لاتے ہوئے آپ طلبہ کی زبان و بیان کی مہارتوں کو بہتر بنانے میں خصوصی توجہ دیتے ہیں۔',
+                faculty_5_desc: 'آپ کا تعلق کوہاٹ سے ہے، جامعہ فریدیہ اسلام آباد کے فاضل اور پراچہ جامعہ اسلامیہ انجرا کے متخصص ہیں، ادارہ ہذا میں آپ عربی زبان کے استاد ہیں اور نصاب کی تدریس میں جدید اسالیب کو بروئے کار لاتے ہوئے طلبہ کی زبان و بیان کی مہارتوں کو بہتر بنانے میں خصوصی توجہ دیتے ہیں۔',
                 faculty_6_name: 'مولانا افتخار صاحب',
-                faculty_6_desc: 'مانسہرہ(شانگلہ)سے آپ کا تعلق ہے، جامعہ حقانیہ اکوڑہ خٹک کے فاضل ہیں اور تخصص فی الافتاء ، الاتقان اسلام آباد سے مکمل کیا ہے، فقہ و فتاویٰ کے میدان میں مہارت رکھتے ہیں اور ادارہ ہذا میں فتاویٰ کی تصحیح کی ذمہ داری سنبھالے ہوئے ہیں، آپ کی نگرانی میں طلبہ کو عملی طور پر فتویٰ نویسی کی تربیت دی جاتی ہے۔',
+                faculty_6_desc: 'مانسہرہ (شانگلہ) سے آپ کا تعلق ہے، جامعہ حقانیہ اکوڑہ خٹک کے فاضل ہیں اور تخصص فی الافتاء، الاتقان اسلام آباد سے مکمل کیا ہے، فقہ و فتاویٰ کے میدان میں مہارت رکھتے ہیں اور ادارہ ہذا میں فتاویٰ کی تصحیح کی ذمہ داری سنبھالے ہوئے ہیں، آپ کی نگرانی میں طلبہ کو عملی طور پر فتویٰ نویسی کی تربیت دی جاتی ہے۔',
                 faculty_7_name: 'حبیب اللہ امین',
                 faculty_7_desc: 'جامعہ دارالعلوم کراچی کے فاضل اور الاتقان اسلام آباد کے متخصص ہیں، ادارہ ہذا میں ناظم امور داخلیہ اور آئی ٹی اسسٹنٹ کے طور پر ذمہ داریاں ادا کر رہے ہیں، تعلیمی و انتظامی امور کی تنظیم اور انفارمیشن ٹیکنالوجی کی سہولیات کو بہتر بنانا آپ ہی کی نگرانی میں ہوتا ہے۔',
                 back_link: 'واپس جائیں'
@@ -351,49 +563,49 @@ l <!DOCTYPE html>
                 faculty_title: 'Faculty Members',
                 faculty_intro: 'The administration of Al-Itqan Islamabad takes pride in its faculty and staff. We have excellent and experienced teachers who have obtained education from the country\'s prominent religious and modern universities and have performed teaching and academic services in various institutions. These gentlemen are not only experts in their respective fields but also pay special attention to the intellectual, mental, and practical training of students.',
                 faculty_1_name: 'Dr. Mufti Rahimullah Sahib',
-                faculty_1_desc: 'He belongs to Kohat, is a graduate of Darul Uloom Karachi, and has completed a three-year specialization in Fiqh. He has been performing teaching services for the past decade and also serves as an Assistant Professor at Bahria University Islamabad. In this institution, you are leading academically and administratively as Director, and the supervision of curriculum and education system is your responsibility.',
+                faculty_1_desc: 'He belongs to Kohat, is a graduate of Darul Uloom Karachi, and has completed a three-year specialization in Fiqh. He has been performing teaching services for the past decade and also serves as an Assistant Professor at Bahria University Islamabad. In this institution, he is leading academically and administratively as Director, and the supervision of curriculum and education system is his responsibility.',
                 faculty_2_name: 'Dr. Mufti Shad Muhammad Shad Sahib',
-                faculty_2_desc: 'He is a graduate and specialist of Jamia Darul Uloom Karachi and the founder of Darul Rashad Islamabad. He has deep experience in academic and fiqhi fields. In this institution, you are the teacher of fiqhi books and guide students with high-level fiqhi insight.',
+                faculty_2_desc: 'He is a graduate and specialist of Jamia Darul Uloom Karachi and the founder of Darul Rashad Islamabad. He has deep experience in academic and Fiqhi fields. In this institution, he is the teacher of Fiqh books and guides students with high-level Fiqhi insight.',
                 faculty_3_name: 'Maulana Mufti Saifullah Sahib',
-                faculty_3_desc: 'He is a graduate of Jamia Darul Uloom Karachi and has ten years of teaching experience. He belongs to Mansehra (Battagram), has deep access to Arabic language and literature, and has special expertise in teaching Arabic to his students in modern teaching methods. In this institution, you are the Assistant Director and play an important role as the Director\'s assistant in teaching and training affairs.',
+                faculty_3_desc: 'He is a graduate of Jamia Darul Uloom Karachi and has ten years of teaching experience. He belongs to Mansehra (Battagram), has deep access to Arabic language and literature, and has special expertise in teaching Arabic to his students in modern teaching methods. In this institution, he is the Assistant Director and plays an important role as the Director\'s assistant in teaching and training affairs.',
                 faculty_4_name: 'Maulana Dr. Noor Wali Shah Sahib',
-                faculty_4_desc: 'He belongs to D.I. Khan, is a graduate of Jamia Uloom Islamia Banori Town Karachi, and also serves as a Professor at NML University Islamabad. His proficiency in English is a valuable addition to our institution. In this institution, you are the English teacher and play a key role in improving students\' linguistic abilities.',
+                faculty_4_desc: 'He belongs to D.I. Khan, is a graduate of Jamia Uloom Islamia Banori Town Karachi, and also serves as a Professor at NML University Islamabad. His proficiency in English is a valuable addition to our institution. In this institution, he is the English teacher and plays a key role in improving students\' linguistic abilities.',
                 faculty_5_name: 'Maulana Faisal Sahib',
-                faculty_5_desc: 'He belongs to Kohat, is a graduate of Jamia Faridia Islamabad and a specialist of Parcha Jamia Islamia Injra. In this institution, you are the Arabic language teacher and, by implementing modern methods in curriculum teaching, pay special attention to improving students\' language and expression skills.',
+                faculty_5_desc: 'He belongs to Kohat, is a graduate of Jamia Faridia Islamabad and a specialist of Parcha Jamia Islamia Injra. In this institution, he is the Arabic language teacher and, by implementing modern methods in curriculum teaching, pays special attention to improving students\' language and expression skills.',
                 faculty_6_name: 'Maulana Iftikhar Sahib',
-                faculty_6_desc: 'He belongs to Mansehra (Shangla), is a graduate of Jamia Haqania Akora Khattak, and has completed specialization in Ifta from Al-Itqan Islamabad. He has expertise in the field of Fiqh and Fatwas, and is responsible for the correction of fatwas in this institution. Under your supervision, students are practically trained in fatwa writing.',
+                faculty_6_desc: 'He belongs to Mansehra (Shangla), is a graduate of Jamia Haqania Akora Khattak, and has completed specialization in Ifta from Al-Itqan Islamabad. He has expertise in the field of Fiqh and Fatwas, and is responsible for the correction of fatwas in this institution. Under his supervision, students are practically trained in fatwa writing.',
                 faculty_7_name: 'Habibullah Amin',
-                faculty_7_desc: 'He is a graduate of Jamia Darul Uloom Karachi and a specialist of Al-Itqan Islamabad. In this institution, he is performing duties as the In-charge of Internal Affairs and IT Assistant. The organization of educational and administrative affairs and the improvement of information technology facilities is under your supervision.',
+                faculty_7_desc: 'He is a graduate of Jamia Darul Uloom Karachi and a specialist of Al-Itqan Islamabad. In this institution, he is performing duties as the In-charge of Internal Affairs and IT Assistant. The organization of educational and administrative affairs and the improvement of information technology facilities is under his supervision.',
                 back_link: 'Go Back'
             },
             ar: {
                 faculty_title: 'أعضاء هيئة التدريس',
                 faculty_intro: 'تفخر إدارة الاتقان إسلام آباد بأساتذتها وموظفيها. لدينا أساتذة ممتازون وذوو خبرة حصلوا على التعليم من الجامعات الدينية والحديثة البارزة في البلاد وقاموا بأداء الخدمات التدريسية والأكاديمية في مؤسسات مختلفة. هؤلاء السادة ليسوا خبراء في مجالاتهم فحسب، بل يولون اهتمامًا خاصًا أيضًا للتدريب العلمي والفكري والعملي للطلاب.',
                 faculty_1_name: 'الدكتور المفتي رحيم الله صاحب',
-                faculty_1_desc: 'ينتمي إلى كوهات، وهو خريج دار العلوم كراتشي، وقد أكمل تخصصًا لمدة ثلاث سنوات في الفقه. يقوم بخدمات تدريسية منذ العقد الماضي ويخدم أيضًا كأستاذ مساعد في جامعة بحرية إسلام آباد. في هذه المؤسسة، أنت تقود أكاديميًا وإداريًا كمدير، وإشراف المناهج ونظام التعليم مسؤوليتك.',
+                faculty_1_desc: 'ينتمي إلى كوهات، وهو خريج دار العلوم كراتشي، وقد أكمل تخصصًا لمدة ثلاث سنوات في الفقه. يقوم بخدمات تدريسية منذ العقد الماضي ويخدم أيضًا كأستاذ مساعد في جامعة بحرية إسلام آباد. في هذه المؤسسة، هو يقود أكاديميًا وإداريًا كمدير، وإشراف المناهج ونظام التعليم مسؤوليته.',
                 faculty_2_name: 'الدكتور المفتي شاد محمد شاد صاحب',
-                faculty_2_desc: 'هو خريج ومتخصص في جامعة دار العلوم كراتشي ومؤسس دار الرشاد إسلام آباد. لديه خبرة عميقة في المجالات الأكاديمية والفقهية. في هذه المؤسسة، أنت مدرس الكتب الفقهية وترشد الطلاب برؤية فقهية عالية المستوى.',
+                faculty_2_desc: 'هو خريج ومتخصص في جامعة دار العلوم كراتشي ومؤسس دار الرشاد إسلام آباد. لديه خبرة عميقة في المجالات الأكاديمية والفقهية. في هذه المؤسسة، هو مدرس الكتب الفقهية ويرشد الطلاب برؤية فقهية عالية المستوى.',
                 faculty_3_name: 'مولانا المفتي سيف الله صاحب',
-                faculty_3_desc: 'خريج جامعة دار العلوم كراتشي ولديه خبرة تدريسية لمدة عشر سنوات. ينتمي إلى مانسيهرا (باتاغرام)، ولديه وصول عميق إلى اللغة العربية والأدب، ولديه مهارة خاصة في تدريس العربية لطلابه بطرق تدريس حديثة. في هذه المؤسسة، أنت نائب المدير وتلعب دورًا مهمًا كمساعد المدير في الشؤون التدريسية والتدريبية.',
+                faculty_3_desc: 'خريج جامعة دار العلوم كراتشي ولديه خبرة تدريسية لمدة عشر سنوات. ينتمي إلى مانسيهرا (باتاغرام)، ولديه وصول عميق إلى اللغة العربية والأدب، ولديه مهارة خاصة في تدريس العربية لطلابه بطرق تدريس حديثة. في هذه المؤسسة، هو نائب المدير ويلعب دورًا مهمًا كمساعد المدير في الشؤون التدريسية والتدريبية.',
                 faculty_4_name: 'مولانا الدكتور نور ولي شاه صاحب',
-                faculty_4_desc: 'ينتمي إلى دي آي خان، وهو خريج جامعة علوم إسلامية بنوري تاون كراتشي، ويخدم أيضًا كأستاذ في جامعة إن إم إل إسلام آباد. إتقانه للغة الإنجليزية إضافة قيمة لمؤسستنا. في هذه المؤسسة، أنت مدرس اللغة الإنجليزية وتلعب دورًا رئيسيًا في تحسين قدرات الطلاب اللغوية.',
+                faculty_4_desc: 'ينتمي إلى دي آي خان، وهو خريج جامعة علوم إسلامية بنوري تاون كراتشي، ويخدم أيضًا كأستاذ في جامعة إن إم إل إسلام آباد. إتقانه للغة الإنجليزية إضافة قيمة لمؤسستنا. في هذه المؤسسة، هو مدرس اللغة الإنجليزية ويلعب دورًا رئيسيًا في تحسين قدرات الطلاب اللغوية.',
                 faculty_5_name: 'مولانا فيصل صاحب',
-                faculty_5_desc: 'ينتمي إلى كوهات، وهو خريج جامعة فريدية إسلام آباد ومتخصص في بارشا جامعة إسلامية إنجرا. في هذه المؤسسة، أنت مدرس اللغة العربية وتولي اهتمامًا خاصًا لتحسين مهارات الطلاب في اللغة والتعبير من خلال تطبيق طرق حديثة في تدريس المناهج.',
+                faculty_5_desc: 'ينتمي إلى كوهات، وهو خريج جامعة فريدية إسلام آباد ومتخصص في بارشا جامعة إسلامية إنجرا. في هذه المؤسسة، هو مدرس اللغة العربية ويولي اهتمامًا خاصًا لتحسين مهارات الطلاب في اللغة والتعبير من خلال تطبيق طرق حديثة في تدريس المناهج.',
                 faculty_6_name: 'مولانا إفتخار صاحب',
-                faculty_6_desc: 'ينتمي إلى مانسيهرا (شانغلا)، وهو خريج جامعة حقانية أكورة ختك، وقد أكمل تخصصًا في الإفتاء من الاتقان إسلام آباد. لديه خبرة في مجال الفقه والفتاوى، وهو مسؤول عن تصحيح الفتاوى في هذه المؤسسة. تحت إشرافك، يتم تدريب الطلاب عمليًا في كتابة الفتاوى.',
+                faculty_6_desc: 'ينتمي إلى مانسيهرا (شانغلا)، وهو خريج جامعة حقانية أكورة ختك، وقد أكمل تخصصًا في الإفتاء من الاتقان إسلام آباد. لديه خبرة في مجال الفقه والفتاوى، وهو مسؤول عن تصحيح الفتاوى في هذه المؤسسة. تحت إشرافه، يتم تدريب الطلاب عمليًا في كتابة الفتاوى.',
                 faculty_7_name: 'حبيب الله أمين',
-                faculty_7_desc: 'خريج جامعة دار العلوم كراتشي ومتخصص في الاتقان إسلام آباد. في هذه المؤسسة، يؤدي واجباته كمسؤول عن الشؤون الداخلية ومساعد تكنولوجيا المعلومات. تنظيم الشؤون التعليمية والإدارية وتحسين مرافق تكنولوجيا المعلومات تحت إشرافك.',
+                faculty_7_desc: 'خريج جامعة دار العلوم كراتشي ومتخصص في الاتقان إسلام آباد. في هذه المؤسسة، يؤدي واجباته كمسؤول عن الشؤون الداخلية ومساعد تكنولوجيا المعلومات. تنظيم الشؤون التعليمية والإدارية وتحسين مرافق تكنولوجيا المعلومات تحت إشرافه.',
                 back_link: 'العودة'
             }
         };
 
+        // === زبان تبدیل کرنے کا فنکشن ===
         function applyFacultyLanguage(lang) {
             const dict = facultyTranslations[lang] || facultyTranslations.ur;
             document.documentElement.lang = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'ur');
             document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
             document.title = dict.faculty_title + ' - الاتقان اسلام آباد';
 
-            // set all elements with data-i18n
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (dict[key]) {
@@ -401,54 +613,49 @@ l <!DOCTYPE html>
                 }
             });
 
-            // store choice
             try { localStorage.setItem('faculty_lang', lang); } catch (e) {}
         }
 
+        // === اسکرول پر ہلکا سا اینیمیشن ===
         function animateOnScroll() {
             const members = document.querySelectorAll('.faculty-member');
-            const triggerBottom = window.innerHeight / 5 * 4;
-
-            members.forEach(member => {
+            members.forEach((member, index) => {
                 const memberTop = member.getBoundingClientRect().top;
-
-                if (memberTop < triggerBottom) {
-                    member.classList.add('animate');
+                const windowHeight = window.innerHeight;
+                if (memberTop < windowHeight - 50) {
+                    setTimeout(() => {
+                        member.classList.add('fade-in-scroll');
+                    }, index * 50);
                 }
             });
         }
 
+        // === انیشیالائز ===
         document.addEventListener('DOMContentLoaded', function() {
             const select = document.getElementById('lang-select');
-
-            // initialize language from storage or browser
-            const saved = (function(){
-                try {
-                    return localStorage.getItem('faculty_lang');
-                } catch(e){
-                    return null;
-                }
-            })();
-
-            let initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'ur');
-            if (navigator.language && navigator.language.startsWith('ar')) initial = 'ar';
-
+            
+            // پہلے سے محفوظ زبان
+            let savedLang = 'ur';
+            try { 
+                savedLang = localStorage.getItem('faculty_lang') || 'ur'; 
+            } catch(e) {}
+            
             if (select) {
-                select.value = initial;
+                select.value = savedLang;
                 select.addEventListener('change', function() {
                     applyFacultyLanguage(this.value);
                 });
             }
-            applyFacultyLanguage(initial);
-
-            // Add scroll animation
+            applyFacultyLanguage(savedLang);
+            
+            // اسکرول ایونٹ
             window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll(); // Trigger on load
+            animateOnScroll();
+            
+            // موبائل میں بھرپور اسکرولنگ
+            document.body.style.overflowY = 'auto';
+            document.body.style.webkitOverflowScrolling = 'touch';
         });
     </script>
 </body>
 </html>
-
-
-
-
