@@ -1,26 +1,6 @@
 <!DOCTYPE html>
+<html lang="ur" dir="rtl">
 <head>
-    <script>
-(function () {
-
-    // اگر پہلے سے زبان محفوظ ہے تو وہی استعمال کرو
-    var savedLang = localStorage.getItem("siteLang");
-
-    // اگر کچھ نہیں ملا تو ڈیفالٹ اردو رکھ سکتے ہو
-    if (!savedLang) savedLang = "ur";
-
-    // html پر لگاؤ
-    document.documentElement.lang = savedLang;
-
-    // سمت خود سیٹ کرو
-    if (savedLang === "ur" || savedLang === "ar")
-        document.documentElement.dir = "rtl";
-    else
-        document.documentElement.dir = "ltr";
-
-})();
-</script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>دارالافتاء - الاتقان اسلام آباد</title>
@@ -397,7 +377,7 @@
             },
             ar: {
                 title: 'دار الإفتاء - الاتقان إسلام آباد',
-                header_title: 'دارالافتاء الاتقان اسلام آباد',
+                header_title: 'دارالإفتاء الإتقان إسلام آباد',
                 back: 'العودة إلى الصفحة الرئيسية',
                 p1: 'في دار الإفتاء لدينا نستقبل استفسارات شرعية متعددة من الجمهور والأفراد. ولتقديم إجابات وافية ومؤسسة نقوم أولاً بالبحث الدقيق والمراجعة العلمية، ثم نعد الرد في ضوء المصادر الفقهية الموثوقة. يصدر كل جواب بعد توثيق وتوقيع ما لا يقل عن مفتين لضمان الثقة والمسؤولية.',
                 p2: 'لا يوجد إطار زمني محدد لإصدار الفتوى، ومع ذلك نسعى للرد بأقرب وقت ممكن لخدمة المستفتين. وإذا طُلِبَت فتوى مكتوبة فإنها قد تتطلب مزيدًا من المراجعة والتحقق المؤسسي، مما قد يطيل مدة الإعداد.',
@@ -446,4 +426,5 @@
     </script>
 </body>
 </html>
+
 
