@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
 <head>
+    <script>
+        // always force Urdu as default if nothing is saved
+        (function() {
+            // Check if there's a saved preference, if not, set Urdu
+            let saved = localStorage.getItem('site_lang');
+            if (!saved) {
+                localStorage.setItem('site_lang', 'urdu'); // default urdu
+                saved = 'urdu';
+            }
+            // Apply to html element
+            document.documentElement.lang = saved === 'arabic' ? 'ar' : (saved === 'english' ? 'en' : 'ur');
+            document.documentElement.dir = saved === 'english' ? 'ltr' : 'rtl';
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تخصص فی الافتاء - الاتقان اسلام آباد</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,8 +31,11 @@
             font-style: normal;
         }
 
+        .lang-arabic {
+            font-family: 'Amiri', serif;
+        }
         body {
-            font-family: 'jameel noori nastaleeq', serif;
+            font-family: 'jameel noori nastaleeq', 'El Messiri', serif;
             color: #333333;
             line-height: 1.6;
             background-image:
@@ -41,16 +56,97 @@
             padding: 20px;
         }
 
+        /* header with title + language button */
+        .header-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+
         h1 {
             font-size: 2.5rem;
             font-weight: bold;
             background-color: rgba(0, 0, 0, 0.295);
             text-align: center;
             color: #00ecfd;
-            margin-bottom: 30px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 5px 25px;
+            border-radius: 50px;
+            margin: 0;
+            flex: 1;
         }
 
+        /* Language dropdown - fully active and styled */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-switch {
+            background: #002147;
+            color: white;
+            border: none;
+            padding: 2px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Jameel noori nastaleeq', serif;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #ffd966;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: 0.2s;
+        }
+        
+        .lang-switch:hover {
+            background-color: #1a3a6c;
+            transform: scale(1.02);
+        }
+
+        .lang-menu {
+            position: absolute;
+            top: 110%;
+            background: rgba(255, 255, 255, 0.432);
+            border-radius: 12px;
+            overflow: hidden;
+            min-width: 130px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 999;
+            font-family: 'Jameel noori nastaleeq', serif;
+            border: 1px solid #4dabf7;
+        }
+
+        .lang-menu div {
+            padding: 10px 18px;
+            cursor: pointer;
+            color: #002147;
+            background: rgba(255, 255, 255, 0.87);
+            text-align: center;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .lang-menu div:last-child {
+            border-bottom: none;
+        }
+
+        .lang-menu div:hover {
+            background: #e8f1ff;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .lang-dropdown.open .lang-menu {
+            display: block;
+        }
+
+        /* main content area */
         .main-section {
             background-color: rgba(255, 255, 255, 0.555);
             border-radius: 10px;
@@ -87,10 +183,14 @@
             display: flex;
             justify-content: space-between;
             margin: 15px 0;
+            gap: 15px;
         }
 
         .study-section {
             width: 48%;
+            background: rgba(255, 255, 240, 0.2);
+            padding: 10px;
+            border-radius: 12px;
         }
 
         .main-section ul {
@@ -121,212 +221,354 @@
             background-color: #1a3a6c;
         }
 
+        /* language toggling classes */
+        .lang-urdu, .lang-arabic, .lang-english {
+            display: none;
+        }
+
+        body[data-lang="urdu"] .lang-urdu {
+            display: block;
+        }
+        body[data-lang="arabic"] .lang-arabic {
+            display: block;
+        }
+        body[data-lang="english"] .lang-english {
+            display: block;
+        }
+
+        /* small adjustment for ltr */
+        body[dir="ltr"] {
+            text-align: left;
+        }
+        body[dir="ltr"] .main-section ul {
+            text-align: left;
+            padding-right: 0;
+            padding-left: 20px;
+        }
+        body[dir="ltr"] .main-section h2,
+        body[dir="ltr"] .main-section h3 {
+            text-align: left;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 10px;
             }
-
             .container {
                 padding: 15px;
             }
-
             h1 {
                 font-size: 2rem;
             }
-
             .main-section {
                 padding: 20px;
                 font-size: 1rem;
             }
-
-            .main-section h2 {
-                font-size: 1.5rem;
+            .study-columns {
+                flex-direction: column;
             }
-
-            .main-section h3 {
-                font-size: 1.2rem;
+            .study-section {
+                width: 100%;
+            }
+            .header-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .lang-switch {
+                justify-content: center;
             }
         }
     </style>
 </head>
-<body>
+<body dir="rtl" data-lang="urdu">
     <div class="container">
-        <h1>تخصص فی الافتاء، الاتقان اسلام آباد</h1>
-
-        <div class="main-section">
-            <p>تخصص فی الافتاء میں داخلے کےلیے دورہ حدیث میں ممتاز ہونا شرط ہے، البتہ داخلہ میرٹ پر ہی ہوگا۔</p>
-
-            <h2>:نصابِ تخصص فی الافتاء</h2>
-
-            <h3>پہلی سہ ماہی</h3>
-
-            <div class="study-columns">
-                <div class="study-section">
-                    <h4>برائے مطالعہ</h4>
-                    <ul>
-                        <li>عید تک کم از کم پچاس فتاویٰ کی تخریج املاء و ترقیم کے ساتھ</li>
-                        <li>روزانہ ایک فتویٰ</li>
-                        <li>کتاب: امداد الفتاویٰ</li>
-                    </ul>
-
-                    <ul>
-                        <li>عید تک چالیس کتب کا تعارف</li>
-                        <li>دو دن میں ایک کتاب</li>
-                        <li>کتاب: تعارفِ کتب</li>
-                    </ul>
-
-                    <ul>
-                        <li>فقہی ابواب کا مطالعہ (روزانہ کم از کم پانچ صفحات)</li>
-                        <li>کتاب الطہارة (سوائے باب التیمم والمياه)</li>
-                        <li>باب المسح علی الخفین</li>
-                        <li>باب صفة الصلاة</li>
-                        <li>باب ما یفسد الصلاة وما یکره</li>
-                        <li>باب الجمعة</li>
-                        <li>باب الجنائز</li>
-                    </ul>
-
-                    <ul>
-                        <li>امداد الاحکام جلد اول مکمل</li>
-                        <li>روزانہ پندرہ صفحات</li>
-                        <li>کل تقریباً 800 صفحات</li>
-                    </ul>
-                </div>
-
-                <div class="study-section">
-                    <h4>برائے درس</h4>
-                    <ul>
-                        <li>اصول الافتاء (مفتی محمد تقی عثمانی) مکمل</li>
-                    </ul>
-
-                    <ul>
-                        <li>اسلام اور جدید معیشت و تجارت مکمل</li>
-                    </ul>
-
-                    <ul>
-                        <li>السراجی فی المیراث بمع تمرینات</li>
-                    </ul>
-
-                    <ul>
-                        <li>فقہی قواعد (مبادیات اور ننانوے قواعد)</li>
-                    </ul>
-
-                    <ul>
-                        <li>فقہ المعاملات</li>
-                        <li>بیوع، ربا، شرکت، مضاربت، مزارعت، اجارہ، عقودِ تبرع، جدید تحقیقات</li>
-                    </ul>
+        <div class="header-row">
+            <!-- title in three languages (only one visible at a time) -->
+            <h1 class="lang-urdu">تخصص فی الافتاء، الاتقان اسلام آباد</h1>
+            <h1 class="lang-arabic">تخصُّص الإفتاء – الاتقان إسلام آباد</h1>
+            <h1 class="lang-english">Ifta Specialization – Al-Itqan Islamabad</h1>
+            
+            <!-- fully active dropdown language selector -->
+            <div class="lang-dropdown" id="langDropdown">
+                <button class="lang-switch" id="langBtn">
+                    🌐 <span id="currentLang">اردو</span>
+                </button>
+                <div class="lang-menu" id="langMenu">
+                    <div data-lang="urdu">اردو</div>
+                    <div data-lang="arabic">العربية</div>
+                    <div data-lang="english">English</div>
                 </div>
             </div>
-
-            <h4>انگریزی</h4>
-            <ul>
-                <li>Parts of Speech</li>
-                <li>Tenses</li>
-                <li>Active English Book 1</li>
-            </ul>
-
-            <h3>دوسری سہ ماہی</h3>
-
-            <div class="study-columns">
-                <div class="study-section">
-                    <h4>برائے مطالعہ</h4>
-                    <ul>
-                        <li>امداد الفتاویٰ جلد دوم مکمل (700 صفحات)</li>
-                    </ul>
-
-                    <ul>
-                        <li>الدر المختار باعانتِ شامی (388 صفحات)</li>
-                        <li>کتاب الزکاة تا کتاب الطلاق منتخب ابواب</li>
-                    </ul>
-
-                    <ul>
-                        <li>فتاویٰ عثمانی</li>
-                        <li>جلد اول مکمل</li>
-                        <li>جلد دوم تا کتاب الصوم</li>
-                    </ul>
-
-                    <ul>
-                        <li>منتخب رسائل</li>
-                        <li>تریاق اکبر بزبان صفدر</li>
-                    </ul>
-                </div>
-
-                <div class="study-section">
-                    <h4>برائے درس</h4>
-                    <ul>
-                        <li>مجلۃ الاحکام العدلیہ باعانتِ شرح اتاسی</li>
-                        <li>قواعد المجلۃ</li>
-                        <li>الکتاب الاول باب اول تا سادس</li>
-                    </ul>
-
-                    <ul>
-                        <li>جدید مالی معاملات</li>
-                        <li>اسلامی بینکاری کی بنیادیں</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h4>انگریزی</h4>
-            <ul>
-                <li>Translation</li>
-                <li>Active Passive</li>
-                <li>800 Phrases from English Pronunciation Guide</li>
-            </ul>
-
-            <h3>تیسری سہ ماہی</h3>
-
-            <div class="study-columns">
-                <div class="study-section">
-                    <h4>برائے مطالعہ</h4>
-                    <ul>
-                        <li>فتاویٰ عثمانی</li>
-                        <li>بقیہ جلد دوم</li>
-                        <li>جلد سوم مکمل (899 صفحات)</li>
-                    </ul>
-
-                    <ul>
-                        <li>الدر المختار باعانتِ شامی</li>
-                        <li>تفویضِ طلاق تا آخر کتاب الطلاق</li>
-                        <li>کتاب الایمان مکمل</li>
-                    </ul>
-
-                    <ul>
-                        <li>امداد الفتاویٰ</li>
-                        <li>جلد سوم سوائے کتاب البیوع</li>
-                        <li>جلد چہارم سوائے کتاب الفرائض</li>
-                    </ul>
-                </div>
-
-                <div class="study-section">
-                    <h4>برائے درس</h4>
-                    <ul>
-                        <li>امداد الفتاویٰ</li>
-                        <li>کتاب البیوع</li>
-                    </ul>
-
-                    <ul>
-                        <li>مجلۃ الاحکام العدلیہ</li>
-                        <li>بقیہ الکتاب الاول</li>
-                        <li>الکتاب الثانی</li>
-                    </ul>
-
-                    <ul>
-                        <li>جدید مالی معاملات</li>
-                        <li>بین الاقوامی تجارت اور قوانینِ تجارت</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h4>انگریزی</h4>
-            <ul>
-                <li>Translation</li>
-                <li>Direct and Indirect</li>
-                <li>Paragraph اور Essay Writing</li>
-                <li>International Express Elementary کے پانچ یونٹس</li>
-            </ul>
         </div>
 
-        <a href="index.html" class="back-link">واپس جائیں</a>
+        <!-- main content area with three versions (urdu default) -->
+        <div class="main-section">
+            <!-- Urdu version (original) -->
+            <div class="lang-urdu">
+                <p>تخصص فی الافتاء میں داخلے کےلیے دورہ حدیث میں ممتاز ہونا شرط ہے، البتہ داخلہ میرٹ پر ہی ہوگا۔</p>
+
+                <h2>:نصابِ تخصص فی الافتاء</h2>
+
+                <h3>پہلی سہ ماہی</h3>
+
+                <div class="study-columns">
+                    <div class="study-section">
+                        <h4>برائے مطالعہ</h4>
+                        <ul>
+                            <li>عید تک کم از کم پچاس فتاویٰ کی تخریج املاء و ترقیم کے ساتھ</li>
+                            <li>روزانہ ایک فتویٰ</li>
+                            <li>کتاب: امداد الفتاویٰ</li>
+                            <li>عید تک چالیس کتب کا تعارف</li>
+                            <li>دو دن میں ایک کتاب</li>
+                            <li>کتاب: تعارفِ کتب</li>
+                            <li>فقہی ابواب کا مطالعہ (روزانہ کم از کم پانچ صفحات)</li>
+                            <li>کتاب الطہارة (سوائے باب التیمم والمياه)</li>
+                            <li>باب المسح علی الخفین</li>
+                            <li>باب صفة الصلاة</li>
+                            <li>باب ما یفسد الصلاة وما یکره</li>
+                            <li>باب الجمعة</li>
+                            <li>باب الجنائز</li>
+                            <li>امداد الاحکام جلد اول مکمل</li>
+                            <li>روزانہ پندرہ صفحات</li>
+                            <li>کل تقریباً 800 صفحات</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-section">
+                        <h4>برائے درس</h4>
+                        <ul>
+                            <li>اصول الافتاء (مفتی محمد تقی عثمانی) مکمل</li>
+                            <li>اسلام اور جدید معیشت و تجارت مکمل</li>
+                            <li>السراجی فی المیراث بمع تمرینات</li>
+                            <li>فقہی قواعد (مبادیات اور ننانوے قواعد)</li>
+                            <li>فقہ المعاملات</li>
+                            <li>بیوع، ربا، شرکت، مضاربت، مزارعت، اجارہ، عقودِ تبرع، جدید تحقیقات</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>انگریزی</h4>
+                <ul>
+                    <li>Parts of Speech</li>
+                    <li>Tenses</li>
+                    <li>Active English Book 1</li>
+                </ul>
+
+                <h3>دوسری سہ ماہی</h3>
+
+                <div class="study-columns">
+                    <div class="study-section">
+                        <h4>برائے مطالعہ</h4>
+                        <ul>
+                            <li>امداد الفتاویٰ جلد دوم مکمل (700 صفحات)</li>
+                            <li>الدر المختار باعانتِ شامی (388 صفحات)</li>
+                            <li>کتاب الزکاة تا کتاب الطلاق منتخب ابواب</li>
+                            <li>فتاویٰ عثمانی</li>
+                            <li>جلد اول مکمل</li>
+                            <li>جلد دوم تا کتاب الصوم</li>
+                            <li>منتخب رسائل</li>
+                            <li>تریاق اکبر بزبان صفدر</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-section">
+                        <h4>برائے درس</h4>
+                        <ul>
+                            <li>مجلۃ الاحکام العدلیہ باعانتِ شرح اتاسی</li>
+                            <li>قواعد المجلۃ</li>
+                            <li>الکتاب الاول باب اول تا سادس</li>
+                            <li>جدید مالی معاملات</li>
+                            <li>اسلامی بینکاری کی بنیادیں</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>انگریزی</h4>
+                <ul>
+                    <li>Translation</li>
+                    <li>Active Passive</li>
+                    <li>800 Phrases from English Pronunciation Guide</li>
+                </ul>
+
+                <h3>تیسری سہ ماہی</h3>
+
+                <div class="study-columns">
+                    <div class="study-section">
+                        <h4>برائے مطالعہ</h4>
+                        <ul>
+                            <li>فتاویٰ عثمانی</li>
+                            <li>بقیہ جلد دوم</li>
+                            <li>جلد سوم مکمل (899 صفحات)</li>
+                            <li>الدر المختار باعانتِ شامی</li>
+                            <li>تفویضِ طلاق تا آخر کتاب الطلاق</li>
+                            <li>کتاب الایمان مکمل</li>
+                            <li>امداد الفتاویٰ</li>
+                            <li>جلد سوم سوائے کتاب البیوع</li>
+                            <li>جلد چہارم سوائے کتاب الفرائض</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-section">
+                        <h4>برائے درس</h4>
+                        <ul>
+                            <li>امداد الفتاویٰ</li>
+                            <li>کتاب البیوع</li>
+                            <li>مجلۃ الاحکام العدلیہ</li>
+                            <li>بقیہ الکتاب الاول</li>
+                            <li>الکتاب الثانی</li>
+                            <li>جدید مالی معاملات</li>
+                            <li>بین الاقوامی تجارت اور قوانینِ تجارت</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>انگریزی</h4>
+                <ul>
+                    <li>Translation</li>
+                    <li>Direct and Indirect</li>
+                    <li>Paragraph اور Essay Writing</li>
+                    <li>International Express Elementary کے پانچ یونٹس</li>
+                </ul>
+
+                <a href="index.html" class="back-link">واپس جائیں</a>
+            </div>
+
+            <!-- Arabic translation -->
+            <div class="lang-arabic">
+                <p>يشترط للقبول في تخصص الإفتاء التميز في دورة الحديث، على أن يكون القبول على أساس الاستحقاق.</p>
+                <h2>منهج تخصص الإفتاء</h2>
+
+                <h3>الربع الأول</h3>
+                <div class="study-columns">
+                    <div class="study-section"><h4>مطالعة</h4>
+                        <ul><li>تخريج خمسين فتوى مع الإملاء والترقيم على الأقل حتى العيد</li><li>فتوى واحدة يومياً</li><li>كتاب: إمداد الفتاوى</li><li>التعريف بأربعين كتاباً حتى العيد (كتاب كل يومين)</li><li>كتاب: تعريف الكتب</li><li>مطالعة أبواب فقهية (خمس صفحات يومياً): كتاب الطهارة (باستثناء باب التيمم والمياه)، باب المسح على الخفين، باب صفة الصلاة، باب ما يفسد الصلاة وما يكره، باب الجمعة، باب الجنائز</li><li>إمداد الأحكام الجزء الأول كاملاً (١٥ صفحة يومياً) نحو ٨٠٠ صفحة</li></ul>
+                    </div>
+                    <div class="study-section"><h4>دروس</h4>
+                        <ul><li>أصول الإفتاء (لمفتي محمد تقي عثماني) كاملاً</li><li>الإسلام والاقتصاد والتجارة الحديثة كاملاً</li><li>السراجي في الميراث مع تمرينات</li><li>القواعد الفقهية (المبادئ وتسعة وتسعون قاعدة)</li><li>فقه المعاملات: بيوع، ربا، شركة، مضاربة، مزارعة، إجارة، عقود تبرع، بحوث معاصرة</li></ul>
+                    </div>
+                </div>
+                <h4>اللغة الإنجليزية</h4><ul><li>أقسام الكلام، الأزمنة، Active English Book 1</li></ul>
+
+                <h3>الربع الثاني</h3>
+                <div class="study-columns">
+                    <div class="study-section"><h4>مطالعة</h4>
+                        <ul><li>إمداد الفتاوى الجزء الثاني كاملاً (٧٠٠ ص)</li><li>الدر المختار (بمعونة الشامي) ٣٨٨ صفحة: كتاب الزكاة إلى كتاب الطلاق (أبواب منتخبة)</li><li>فتاوى عثماني الجزء الأول كاملاً، الجزء الثاني إلى كتاب الصوم</li><li>رسائل منتخبة: ترياق أكبر بزبان صفدر</li></ul>
+                    </div>
+                    <div class="study-section"><h4>دروس</h4>
+                        <ul><li>مجلة الأحكام العدلية (بمعونة شرح الأتاسي)؛ قواعد المجلة؛ الكتاب الأول باب الأول إلى السادس</li><li>المعاملات المالية الحديثة: أسس المصرفية الإسلامية</li></ul>
+                    </div>
+                </div>
+                <h4>الإنجليزية</h4><ul><li>ترجمة، مبني للمعلوم والمبني للمجهول، ٨٠٠ عبارة من English Pronunciation Guide</li></ul>
+
+                <h3>الربع الثالث</h3>
+                <div class="study-columns">
+                    <div class="study-section"><h4>مطالعة</h4>
+                        <ul><li>فتاوى عثماني: باقي الجزء الثاني، الجزء الثالث كاملاً (٨٩٩ ص)</li><li>الدر المختار (بمعونة الشامي) من تفويض الطلاق إلى نهاية كتاب الطلاق، كتاب الأيمان كاملاً</li><li>إمداد الفتاوى الجزء الثالث (باستثناء كتاب البيوع)، الجزء الرابع (باستثناء كتاب الفرائض)</li></ul>
+                    </div>
+                    <div class="study-section"><h4>دروس</h4>
+                        <ul><li>إمداد الفتاوى (كتاب البيوع)</li><li>مجلة الأحكام العدلية (بقية الكتاب الأول، الكتاب الثاني)</li><li>المعاملات المالية الحديثة: التجارة الدولية وقوانين التجارة</li></ul>
+                    </div>
+                </div>
+                <h4>الإنجليزية</h4><ul><li>ترجمة، كلام مباشر وغير مباشر، كتابة فقرة ومقال، خمس وحدات من International Express Elementary</li></ul>
+                <a href="index.html" class="back-link">↩ العودة</a>
+            </div>
+
+            <!-- English translation -->
+            <div class="lang-english">
+                <p>Admission to Ifta Specialization requires excellence in Daurah Hadith, and selection will be merit‑based.</p>
+                <h2>Ifta Specialization Syllabus</h2>
+
+                <h3>First Quarter</h3>
+                <div class="study-columns">
+                    <div class="study-section"><h4>Self‑study</h4>
+                        <ul><li>At least fifty fatāwā with takhrīj, dictation & punctuation by Eid</li><li>One fatwā daily</li><li>Book: Imdād al‑Fatāwā</li><li>Introduction to forty books by Eid (one book per two days)</li><li>Book: Ta‘āruf‑i Kutub</li><li>Study of fiqh chapters (minimum 5 pages daily): Kitāb aṭ‑Ṭahārah (except bāb at‑tayammum & al‑miyāh), bāb al‑masḥ ‘ala’l‑khuffayn, bāb ṣifat aṣ‑ṣalāh, bāb mā yufsid aṣ‑ṣalāh wa mā yukrah, bāb al‑jumu‘ah, bāb al‑janā’iz.</li><li>Imdād al‑Aḥkām, vol. 1 complete (approx. 800 pp., 15 pp. daily)</li></ul>
+                    </div>
+                    <div class="study-section"><h4>Taught lessons</h4>
+                        <ul><li>Uṣūl al‑Iftā (Mufti Muḥammad Taqī ‘Uthmānī) complete</li><li>Islam and Modern Economy & Trade complete</li><li>As‑Sirājī fī ’l‑Mīrāth with exercises</li><li>Fiqhī Qawā‘id (basics and 99 rules)</li><li>Fiqh al‑Mu‘āmalāt: sales, ribā, sharikah, muḍārabah, muzāra‘ah, ijārah, contracts of donation, contemporary research</li></ul>
+                    </div>
+                </div>
+                <h4>English</h4><ul><li>Parts of Speech, Tenses, Active English Book 1</li></ul>
+
+                <h3>Second Quarter</h3>
+                <div class="study-columns">
+                    <div class="study-section"><h4>Self‑study</h4>
+                        <ul><li>Imdād al‑Fatāwā, vol. 2 complete (700 pp.)</li><li>Ad‑Durr al‑Mukhtār (with Radd al‑Muḥtār) 388 pp.: Kitāb az‑Zakāh to Kitāb aṭ‑Ṭalāq (selected chapters)</li><li>Fatāwā ‘Uthmānī, vol. 1 complete; vol. 2 up to Kitāb aṣ‑Ṣawm</li><li>Muntakhab Rasā’il: Tiryāq‑i Akbar (in Safdar’s language)</li></ul>
+                    </div>
+                    <div class="study-section"><h4>Taught lessons</h4>
+                        <ul><li>Majallah al‑Aḥkām al‑‘Adliyyah (with Sharḥ al‑Atāsī): Qawā‘id al‑Majallah; al‑Kitāb al‑Awwal, bāb 1‑6</li><li>Modern Financial Transactions: Foundations of Islamic Banking</li></ul>
+                    </div>
+                </div>
+                <h4>English</h4><ul><li>Translation, Active & Passive Voice, 800 phrases from English Pronunciation Guide</li></ul>
+
+                <h3>Third Quarter</h3>
+                <div class="study-columns">
+                    <div class="study-section"><h4>Self‑study</h4>
+                        <ul><li>Fatāwā ‘Uthmānī: remainder of vol. 2, vol. 3 complete (899 pp.)</li><li>Ad‑Durr al‑Mukhtār (with Radd al‑Muḥtār): Tafwīḍ aṭ‑Ṭalāq to end of Kitāb aṭ‑Ṭalāq; Kitāb al‑Ayāmīn complete</li><li>Imdād al‑Fatāwā, vol. 3 (except Kitāb al‑Buyū‘), vol. 4 (except Kitāb al‑Farā’iḍ)</li></ul>
+                    </div>
+                    <div class="study-section"><h4>Taught lessons</h4>
+                        <ul><li>Imdād al‑Fatāwā (Kitāb al‑Buyū‘)</li><li>Majallah al‑Aḥkām al‑‘Adliyyah (remainder of al‑Kitāb al‑Awwal, al‑Kitāb ath‑Thānī)</li><li>Modern Financial Transactions: International Trade and Trade Laws</li></ul>
+                    </div>
+                </div>
+                <h4>English</h4><ul><li>Translation, Direct & Indirect Speech, Paragraph & Essay Writing, five units from International Express Elementary</li></ul>
+                <a href="index.html" class="back-link">↩ Go Back</a>
+            </div>
+        </div>
     </div>
+
+    <script>
+        (function() {
+            const dropdown = document.getElementById('langDropdown');
+            const langBtn = document.getElementById('langBtn');
+            const langMenu = document.getElementById('langMenu');
+            const currentSpan = document.getElementById('currentLang');
+
+            // Toggle dropdown on button click
+            langBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
+
+            // Language selection
+            langMenu.querySelectorAll('div').forEach(item => {
+                item.addEventListener('click', () => {
+                    const selectedLang = item.getAttribute('data-lang');
+                    
+                    // Update body language and direction
+                    document.body.setAttribute('data-lang', selectedLang);
+                    document.body.setAttribute('dir', selectedLang === 'english' ? 'ltr' : 'rtl');
+                    
+                    // Update button text
+                    currentSpan.innerText = item.innerText;
+                    
+                    // Close dropdown
+                    dropdown.classList.remove('open');
+                    
+                    // Save to localStorage
+                    localStorage.setItem('site_lang', selectedLang);
+                });
+            });
+
+            // Load saved language on page load (ensure it matches initial setting)
+            const savedLang = localStorage.getItem('site_lang') || 'urdu'; // fallback to urdu
+            document.body.setAttribute('data-lang', savedLang);
+            document.body.setAttribute('dir', savedLang === 'english' ? 'ltr' : 'rtl');
+            const selectedItem = langMenu.querySelector(`div[data-lang="${savedLang}"]`);
+            if (selectedItem) {
+                currentSpan.innerText = selectedItem.innerText;
+            } else {
+                // if somehow invalid, default to urdu
+                document.body.setAttribute('data-lang', 'urdu');
+                document.body.setAttribute('dir', 'rtl');
+                currentSpan.innerText = 'اردو';
+            }
+        })();
+    </script>
 </body>
 </html>
-
